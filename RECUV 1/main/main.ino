@@ -1,7 +1,9 @@
 #include "config.h"
 
+
 void setup() {
   Serial.begin(9600);
+  wdt_disable();
   // put your setup code here, to run once:
   //Se inicializa el metodo de presion atmosferica
   estacion.bmp180begin();
@@ -21,6 +23,10 @@ void setup() {
 
   //Se inicializa la interrupcion del pluviometro
   attachInterrupt(digitalPinToInterrupt(rainPulsePin), rainCounterInterrupt, FALLING);
+
+  estacion.actTiempo();
+
+  wdt_enable(WDTO_8S); //WATCHDOG HABILITACIÓN
 }
 
 void loop() {
@@ -52,5 +58,8 @@ void loop() {
     estacion.contarTiempo();
 
     estacion.reciboEsp();
+
+    estacion.actTiempo();
   }
+  wdt_reset();
 }

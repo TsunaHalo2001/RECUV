@@ -21,4 +21,6 @@ void Tiempo::actTiempo() {
   hora = now.hour();
   minn = now.minute();
   seg = now.second();
+  Serial.println(String(dia)+"/"+String(mes)+"/"+String(annio)+" //// "+String(hora)+":"+String(minn)+String(":")+String(seg));
+
 }

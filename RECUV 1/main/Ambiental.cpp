@@ -53,19 +53,23 @@ void Ambiental::actualizarHumAire() {
 }
 
 void Ambiental::actualizarVelViento() {
+
   wind_Speed = sen15901.getVelViento();
   wind_Speed_Temp += wind_Speed;
+  Serial.println("WST"+String(wind_Speed_Temp));
   sen15901.windCont = 0;
 }
 
 void Ambiental::actualizarPreci() {
   preci_actual = sen15901.getPrecipitacion();
+  Serial.println("PRECI_ACT"+String(preci_actual));
   sen15901.rainCont = 0;
 }
 
 void Ambiental::actualizarRad() {
   radiacion_valor = davis6450.getRadiacion();
   radiacion_valor_prom += radiacion_valor;
+  Serial.print("RAD: "+String(radiacion_valor));
 }
 
 void Ambiental::actualizarHumSuelo() {
@@ -119,16 +123,18 @@ void Ambiental::actualizarAmbiental() {
 }
 
 //150 es banda
-void Ambiental::windCounterInterrupt() {
+void Ambiental::rainCounterInterrupt() {
   if (millis() - rainTime > 150) {
     sen15901.rainCont++;
     rainTime = millis();
+    Serial.println(rainTime);
   }
 }
 
-void Ambiental::rainCounterInterrupt() {
+void Ambiental::windCounterInterrupt() {
   if (millis() - windTime > 150) {
     sen15901.windCont++;
     windTime = millis();
+    Serial.println(windTime);
   }
 }

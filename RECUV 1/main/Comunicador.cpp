@@ -16,7 +16,7 @@ Comunicador::Comunicador(Tiempo tiempo, Ambiental ambiental, Energia energia) : 
   ESPString[100] = "";
   errorrecibo = 0;
 
-  tEnvio = 500;
+  tEnvio = 3000;
 }
 
 Comunicador::~Comunicador() {

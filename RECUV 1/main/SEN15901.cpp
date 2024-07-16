@@ -7,7 +7,7 @@ SEN15901::SEN15901(uint8_t pinViento, uint8_t pinLluvia) : pinViento(pinViento),
   pinMode(pinLluvia, INPUT_PULLUP); //Inicialización del pin para Pluviometro
   windCont = 0;
   rainCont = 0;
-  timeWindSpeed = 0;
+  timeWindSpeed = 5;
 }
 
 SEN15901::~SEN15901() {

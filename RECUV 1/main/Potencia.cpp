@@ -13,6 +13,8 @@ float Potencia::getConsumoV() {
   int consumoV = analogRead(pinVoltaje);
   float vol_bat = (consumoV * m) - b;
 
+  Serial.println("Volbat" + String(vol_bat));
+  Serial.println("ConsumoV" + consumoV);
   return vol_bat;
 }
 

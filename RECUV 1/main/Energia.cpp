@@ -14,10 +14,12 @@ Energia::~Energia() {
 void Energia::actualizarEnergia() {
   float sens_consumoV = (pot1.getConsumoV() + pot2.getConsumoV()) / 2;
   float sens_consumoC = (pot1.getConsumoC() + pot2.getConsumoC()) / 2;
-
-  vdc_bat_comp = (sens_consumoV * 0.068) + 22.0;
-  idc_bat_comp = sens_consumoC;
-  cbat_comp = sens_consumoV;
-  idc_siscomp = -1 * sens_consumoC;
-  valcon_siscomp = vdc_bat_comp * idc_siscomp;
+  
+  float auxV = (sens_consumoV * 0.068) + 22.0;
+  vdc_bat_comp += auxV;
+  idc_bat_comp += sens_consumoC; //m                    //b
+  cbat_comp += (sens_consumoV + 150) * 6;
+  Serial.println("(sens_consumoV + 150) * 6 = " + String((sens_consumoV + 150) * 6));
+  idc_siscomp += sens_consumoC;
+  valcon_siscomp += auxV * sens_consumoC;
 }

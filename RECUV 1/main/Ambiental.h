@@ -73,6 +73,7 @@ class Ambiental {
     void actualizarHumSuelo();
     void actualizarTempSuelo();
     void actualizarPres();
+    void actualizarNiebla();
     void actualizarAmbiental();
     void windCounterInterrupt();
     void rainCounterInterrupt();

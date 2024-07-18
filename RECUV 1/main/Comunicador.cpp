@@ -43,6 +43,7 @@ void Comunicador::enviarAmbiental() {
   ambiental.h_prom = ambiental.h_prom / ambiental.cont_prom;
   ambiental.P_prom = ambiental.P_prom / ambiental.cont_prom;
   ambiental.wind_Speed_Prom = ambiental.wind_Speed_Temp / ambiental.cont_prom;
+  ambiental.wind_Speed_Temp = ambiental.wind_Speed_Prom;
 
   buffer_tx = "";
   buffer_tx = "A/" + String(ambiental.radiacion_valor_prom, DEC) +
@@ -60,6 +61,12 @@ void Comunicador::enviarAmbiental() {
 }
 
 void Comunicador::enviarEnergia() {
+  energia.vdc_bat_comp = energia.vdc_bat_comp / ambiental.cont_prom;
+  energia.idc_bat_comp = energia.idc_bat_comp / ambiental.cont_prom;
+  energia.cbat_comp = energia.cbat_comp / ambiental.cont_prom;
+  energia.idc_siscomp = energia.idc_siscomp / ambiental.cont_prom;
+  energia.valcon_siscomp = energia.valcon_siscomp / ambiental.cont_prom;
+
   buffer_tx = "";
   buffer_tx = "C/"+String(energia.vdc_bat_comp, DEC) +
                "/"+String(energia.idc_bat_comp, DEC) +

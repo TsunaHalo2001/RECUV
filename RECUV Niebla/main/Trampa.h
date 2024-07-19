@@ -29,5 +29,9 @@ class Trampa {
     void actualizarPreci();
     void actualizarPeso();
     void actualizarVis();
-    void rainCounterInterrupt();
+    void actTrampa();
+    void rainCounterInterrupt1();
+    void rainCounterInterrupt2();
+    void rainCounterInterrupt3();
+    void rainCounterInterrupt4();
 };

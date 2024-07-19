@@ -17,5 +17,17 @@ class Trampa {
     //Extincion visual
 
     //Pluviometro
-    
-}
+    SEN15901 p1, p2, p3, p4;
+
+    //Pesos
+
+    //Extincion visual
+
+
+    Trampa(SEN15901, SEN15901, SEN15901, SEN15901);
+    ~Trampa();
+    void actualizarPreci();
+    void actualizarPeso();
+    void actualizarVis();
+    void rainCounterInterrupt();
+};

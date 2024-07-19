@@ -1,3 +1,6 @@
+#ifndef DAVIS6450_H
+#define DAVIS6450_H
+
 #include <Arduino.h>
 #include <stdint.h>
 
@@ -9,3 +12,5 @@ class DAVIS6450 {
     ~DAVIS6450();
     float getRadiacion();
 };
+
+#endif // DAVIS6450_H

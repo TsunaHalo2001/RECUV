@@ -40,6 +40,12 @@ Ambiental::Ambiental(DHT dht, DAVIS6450 davis6450, FC28 fc28, DallasTemperature 
   P = 0;
   T_prom = 0.0;
   P_prom = 0.0;
+
+  //Trampa
+  preci_actual1 = 0;
+  preci_actual2 = 0;
+  preci_actual3 = 0;
+  preci_actual4 = 0;
 }
 
 Ambiental::~Ambiental() {

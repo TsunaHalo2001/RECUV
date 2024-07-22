@@ -56,6 +56,7 @@ void loop() {
     estacion.contarTiempo();
 
     estacion.reciboEsp();
+    estacion.reciboArd();
 
     estacion.actTiempo();
   }

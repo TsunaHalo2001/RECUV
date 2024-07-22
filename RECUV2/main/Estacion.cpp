@@ -69,3 +69,7 @@ void Estacion::enviarTodo() {
 void Estacion::reciboEsp() {
   comunicador.reciboEsp();
 }
+
+void Estacion::reciboArd() {
+  comunicador.reciboArd();
+}

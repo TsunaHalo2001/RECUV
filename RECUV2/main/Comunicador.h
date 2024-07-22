@@ -22,10 +22,15 @@ class Comunicador {
     int banderaL3;
     char banderaESPRx;
     char banderaESPRx3;
+    char banderaARDRX;
     char indiceESPRX;
-    int contadorseparador;
+    char indiceARDRX;
+    int contadorseparador1;
+    int contadorseparador2;
     char contadorFRAMEESPRX;
+    char contadorFRAMEARDRX;
     char ESPString[100];
+    char ARDString[100];
     int errorrecibo;
 
     char *ptr = NULL;
@@ -40,5 +45,7 @@ class Comunicador {
 
     //Recepcion
     void serialEvent1();
+    void serialEvent2();
     void reciboEsp();
+    void reciboArd();
 };

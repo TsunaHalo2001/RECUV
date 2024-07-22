@@ -31,4 +31,5 @@ class Estacion {
     void actualizarEnergia();
     void enviarTodo();
     void reciboEsp();
+    void reciboArd();
 };

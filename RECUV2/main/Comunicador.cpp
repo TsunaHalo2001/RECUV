@@ -2,6 +2,7 @@
 
 Comunicador::Comunicador(Tiempo tiempo, Ambiental ambiental, Energia energia) : tiempo(tiempo), ambiental(ambiental), energia(energia) {
   Serial1.begin(9600);
+  Serial2.begin(9600);
 
   buffer_tx = "";
 
@@ -11,9 +12,12 @@ Comunicador::Comunicador(Tiempo tiempo, Ambiental ambiental, Energia energia) : 
   banderaESPRx = 0;
   banderaESPRx3 = 0;
   indiceESPRX = 0;
-  contadorseparador = 0;
+  indiceARDRX = 0;
+  contadorseparador1 = 0;
+  contadorseparador2 = 0;
   contadorFRAMEESPRX = 0;
   ESPString[100] = "";
+  ARDString[100] = "";
   errorrecibo = 0;
 
   tEnvio = 3000;
@@ -105,16 +109,16 @@ void Comunicador::serialEvent1() {
     }
     if (banderaL2 == 1) {
       ESPString[indiceESPRX] = inChar;
-      if (inChar == '/') contadorseparador++;
+      if (inChar == '/') contadorseparador1++;
       if (inChar == '#') {
-        if(contadorseparador == 12) {
+        if(contadorseparador1 == 12) {
           banderaESPRx = 1;
           indiceESPRX = 0;
           banderaL2 = 0;
-          contadorseparador = 0;
+          contadorseparador1 = 0;
         }
         else {
-          contadorseparador = 0;
+          contadorseparador1 = 0;
           banderaESPRx = 0;
           indiceESPRX = 0;
           banderaL2 = 0;
@@ -124,6 +128,35 @@ void Comunicador::serialEvent1() {
       else {
         indiceESPRX++;
         banderaESPRx = 0;
+      }
+    }
+  }
+}
+
+void Comunicador::serialEvent2() {
+  if (Serial2.available()) {
+    char inChar = (char)Serial2.read();
+    if (inChar == 'A') banderaL = 1;
+    if (banderaL == 1) {
+      ARDString[indiceARDRX] = inChar;
+      if (inChar == '/') contadorseparador2++;
+      if (inChar == 'F') {
+        if(contadorseparador2 == 5) {
+          banderaARDRX = 1;
+          indiceARDRX = 0;
+          banderaL = 0;
+          contadorseparador2 = 0;
+        }
+        else {
+          contadorseparador2 = 0;
+          banderaARDRX = 0;
+          indiceARDRX = 0;
+          banderaL = 0;
+        }
+      }
+      else {
+        indiceARDRX++;
+        banderaARDRX = 0;
       }
     }
   }
@@ -171,5 +204,29 @@ void Comunicador::reciboEsp() {
     }
     errorrecibo = 1;
     banderaESPRx3 = 0;
+  }
+}
+
+void Comunicador::reciboArd() {
+  char delimitadores[] = "/";
+  if(banderaARDRX == 1) {
+    Serial2.println("K/0/X");
+
+    contadorFRAMEARDRX = 0;
+
+    ptr = strtok(ARDString, "F");
+    ptr = strtok(ARDString, "/");
+
+    while(ptr != NULL) {
+      switch(contadorFRAMEARDRX) {
+        case 1: ambiental.preci_actual1 = atof(ptr); break;
+        case 2: ambiental.preci_actual2 = atof(ptr); break;
+        case 3: ambiental.preci_actual3 = atof(ptr); break;
+        case 4: ambiental.preci_actual4 = atof(ptr); break;
+      }
+      ptr = strtok(NULL, delimitadores);
+      contadorFRAMEARDRX++;
+    }
+    banderaARDRX = 0;
   }
 }

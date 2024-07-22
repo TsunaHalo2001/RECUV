@@ -49,6 +49,12 @@ class Ambiental {
     float T_prom;
     float P_prom;
 
+    //Trampa
+    float preci_actual1;
+    float preci_actual2;
+    float preci_actual3;
+    float preci_actual4;
+
     //Humedad del aire
     DHT dht;
 

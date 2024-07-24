@@ -48,7 +48,6 @@ void Comunicador::enviarAmbiental() {
   ambiental.P_prom = ambiental.P_prom / ambiental.cont_prom;
   ambiental.wind_Speed_Prom = ambiental.wind_Speed_Temp / ambiental.cont_prom;
   ambiental.wind_Speed_Temp = ambiental.wind_Speed_Prom;
-  ambiental.dirviento = ambiental.dirviento / ambiental.cont_prom;
 
   buffer_tx = "";
   buffer_tx = "A/" + String(ambiental.radiacion_valor_prom, DEC) +

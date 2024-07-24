@@ -69,7 +69,7 @@ void Ambiental::actualizarVelViento() {
 }
 
 void Ambiental::actualizarDirViento(){
-  dirviento += sen15901.getDirViento();
+  dirviento = sen15901.getDirViento();
 }
 
 void Ambiental::actualizarPreci() {

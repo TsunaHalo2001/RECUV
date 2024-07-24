@@ -42,6 +42,7 @@ void Trampa::actualizarPreci() {
 }
 
 void Trampa::actualizarPeso() {
+  
 }
 
 void Trampa::actualizarVis() {

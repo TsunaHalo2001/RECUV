@@ -5,7 +5,7 @@ import json
 from time import *
 import network
 
-#wdt = WDT(timeout=60000)
+wdt = WDT(timeout=60000)
 
 import urequests as requests
 import ujson
@@ -17,16 +17,15 @@ global modemwifi
 
 
 CONNECTION_MODE  = "WIFI"
-#CONNECTION_MODE = "GPRS"
 
-#SSID     = "univalle"
-#PASSWORD = "Univalle"
+SSID     = "univalle"
+PASSWORD = "Univalle"
 
-SSID     = "GISMODEL"
-PASSWORD = "GISMODEL23"
+#SSID     = "GISMODEL"
+#PASSWORD = "GISMODEL23"
 
 
-global tramaRx, sensor_amb_values, gprs, modemwifi, bandera_muestreo
+global tramaRx, sensor_values, gprs, modemwifi, bandera_muestreo
 global textoCompuerta,textoLamina, textoMuestreo, textoHora, t_envio, contador_envio
 global banderaConsumo, banderaNivel, banderaAmb
 global consumoIF, nivelIF, ambIF
@@ -49,53 +48,25 @@ uart = UART(1, 9600)
 
 #CREAMOS UN DICCIONARIO DONDE GUARDAREMOS LAS VARIABLES DE CONSUMO
 
-sensor_consumo_values={
-"tiempo_ele":"2022-05-25 19:00:00",
-"vdc_bat_comp1":"26.8",
-"idc_bat_comp1":"5.5",
-"cbat_comp1":"80",
-"idc_siscomp1":"3.4",
-"valcon_siscomp1":"52",
-}
-
-
-#------------------------------------------------------------------#
-#                        VARIABLES DE NIVEL                        #
-#------------------------------------------------------------------#
-
-#CREAMOS UN DICCIONARIO DONDE GUARDAREMOS LAS VARIABLES DE NIVEL
-
-sensor_nivel_values={
-    "tiempo_la":"2022-05-25 19:00:00",
-    "niv_lamagua":"600",
-    "niv_compadm":"150",
-    "niv_compsal":"40",
-    "detec_amax_comp1":"False",
-    "detec_ctol_comp1":"True",
-    "detec_amax_comp2":"False",
-    "detec_ctol_comp2":"True",
-    "pos_comp1":"800",
-    "pos_comp2":"650",
-    "niv_compadm_ext":"270",
-    "niv_compadm_cau":"400",
-    "niv_compsal_cau":"250"
-}
-
-#------------------------------------------------------------------#
-#                        VARIABLES AMBIENTALES                     #
-#------------------------------------------------------------------#
-
-#CREAMOS UN DICCIONARIO DONDE GUARDAREMOS LAS VARIABLES AMBIENTALES
-sensor_amb_values={
-    "tiempo_amb":"2022-05-25 19:00:00",
-    "precipitacion":"30",
+sensor_values={
+    "fecha":"2022-05-25",
+    "hora":"10:00:00",
+    "voltaje":"26.8",
+    "corriente":"5.5",
+    "temperatura_ambiente":"45",
+    "rain":"30",
+    "presion_atmos":"55",
+    "humedad_ambiente":"40",
     "rad_solar":"35",
-    "hum_aire":"40",
-    "temp_aire":"45",
+    "dir_viento":"70",
     "vel_viento":"50",
-    "pres_atm":"55",
-    "temp_suelo":"60",
-    "hum_suelo":"65"
+    "temperatura_suelo":"60",
+    "humedad_suelo":"65",
+    "extin_visual":"75",
+    "peso_malla1":"80",
+    "peso_malla2":"85",
+    "rainh1":"90",
+    "rainh2":"95"
 }
 
 def interpreta_trama(tramaRx):
@@ -124,11 +95,11 @@ def interpreta_trama(tramaRx):
            minn = '{0:02d}'.format(minn)
            seg  = '{0:02d}'.format(seg)
 
-           valorTemporal = anio+'-'+mes+'-'+dia+' '+hora+':'+minn+':'+seg
-
-           sensor_amb_values['tiempo_amb']    = valorTemporal
-           sensor_consumo_values["tiempo_ele"]= valorTemporal
-           sensor_nivel_values["tiempo_la"]   = valorTemporal
+           fechaTemporal = anio+'-'+mes+'-'+dia
+           horaTemporal = hora+':'+minn+':'+seg
+            
+           sensor_values['fecha']    = fechaTemporal
+           sensor_values['hora']    = horaTemporal
 
         elif (tramaRx[0] == "b'A"):
 
@@ -141,6 +112,12 @@ def interpreta_trama(tramaRx):
             anemo     = tramaRx[6]
             pluvi     = tramaRx[7]
             bmp       = tramaRx[8]
+            dirviento = tramaRx[9]
+            extin_visual = tramaRx[10]
+            peso_malla1 = tramaRx[11]
+            peso_malla2 = tramaRx[12]
+            rainh1      = tramaRx[13]
+            rainh2      = tramaRx[14]
 
             rad_solar = float(rad_solar)
             fc28      = float(fc28)
@@ -150,6 +127,12 @@ def interpreta_trama(tramaRx):
             anemo     = float(anemo)
             pluvi     = float(pluvi)
             bmp       = float(bmp)
+            dirviento = float(dirviento)
+            extin_visual = float(extin_visual)
+            peso_malla1 = float(peso_malla1)
+            peso_malla2 = float(peso_malla2)
+            rainh1      = float(rainh1)
+            rainh2      = float(rainh2)
 
             rad_solar = '{0:.2f}'.format(rad_solar)
             fc28      = '{0:.2f}'.format(fc28)
@@ -159,17 +142,27 @@ def interpreta_trama(tramaRx):
             anemo     = '{0:.2f}'.format(anemo)
             pluvi     = '{0:.2f}'.format(pluvi)
             bmp       = '{0:.2f}'.format(bmp)
+            dirviento = '{0:.2f}'.format(dirviento)
+            extin_visual = '{0:.2f}'.format(extin_visual)
+            peso_malla1 = '{0:.2f}'.format(peso_malla1)
+            peso_malla2 = '{0:.2f}'.format(peso_malla2)
+            rainh1      = '{0:.2f}'.format(rainh1)
+            rainh2      = '{0:.2f}'.format(rainh2)
 
-
-
-            sensor_amb_values['precipitacion']=str(pluvi)
-            sensor_amb_values['rad_solar']    =str(rad_solar)
-            sensor_amb_values['hum_aire']     =str(dht22_hum)
-            sensor_amb_values['temp_aire']    =str(dht22_tmp)
-            sensor_amb_values['vel_viento']   =str(anemo)
-            sensor_amb_values['pres_atm']     =str(bmp)
-            sensor_amb_values['temp_suelo']   =str(ds18b)
-            sensor_amb_values['hum_suelo']    =str(fc28)
+            sensor_values['rain']=str(pluvi)
+            sensor_values['rad_solar']    =str(rad_solar)
+            sensor_values['humedad_ambiente']     =str(dht22_hum)
+            sensor_values['tempertura_ambiente']    =str(dht22_tmp)
+            sensor_values['vel_viento']   =str(anemo)
+            sensor_values['presion_atmos']     =str(bmp)
+            sensor_values['temperatura_suelo']   =str(ds18b)
+            sensor_values['humedad_suelo']    =str(fc28)
+            sensor_values['dir_viento']    =str(dirviento)
+            sensor_values['extin_visual'] =str(extin_visual)
+            sensor_values['peso_malla1']  =str(peso_malla1)
+            sensor_values['peso_malla2']  =str(peso_malla2)
+            sensor_values['rainh1']       =str(rainh1)
+            sensor_values['rainh2']       =str(rainh2)
 
             banderaAmb=1
         #             print(f'dht22_tmp: {dht22_tmp}')
@@ -200,85 +193,10 @@ def interpreta_trama(tramaRx):
             Iconsumo1 = '{0:.2f}'.format(Iconsumo1)
             Consumo1  = '{0:.2f}'.format(Consumo1)
 
-            sensor_consumo_values['vdc_bat_comp1']   = Vcarga1
-            sensor_consumo_values['idc_bat_comp1']   = Icarga1
-            sensor_consumo_values['cbat_comp1']      = Carga1
-            sensor_consumo_values['idc_siscomp1']    = Iconsumo1
-            sensor_consumo_values['valcon_siscomp1'] = Consumo1
+            sensor_values['voltaje']   = Vcarga1
+            sensor_values['corriente']   = Icarga1
 
             banderaConsumo=1
-
-
-        elif(tramaRx[0] == "b'N"):
-             print("Llegaron variables Nivel")
-             nivel_lamagua     = tramaRx[1]
-             nivel_compadm     = tramaRx[2]
-             nivel_compsal     = tramaRx[3]
-             amax_comp1        = tramaRx[4]
-             ctol_comp1        = tramaRx[5]
-             amax_comp2        = tramaRx[6]
-             ctol_comp2        = tramaRx[7]
-             posComp1          = tramaRx[8]
-             posComp2          = tramaRx[9]
-             nivel_compadm_ext = tramaRx[10]
-             nivel_compadm_cau = tramaRx[11]
-             nivel_compsal_cau = tramaRx[12]
-
-             nivel_lamagua     = float(nivel_lamagua)
-             nivel_compadm     = float(nivel_compadm)
-             nivel_compsal     = float(nivel_compsal)
-
-             posComp1          = float(posComp1)
-             posComp2          = float(posComp2)
-             nivel_compadm_ext = float(nivel_compadm_ext)
-             nivel_compadm_cau = float(nivel_compadm_cau)
-             nivel_compsal_cau = float(nivel_compsal_cau)
-
-             if amax_comp1 == '1':
-                 amax_com1='True'
-             else:
-                 amax_comp1 = 'False'
-
-             if ctol_comp1 == '1':
-                 ctol_comp1='True'
-             else:
-                 ctol_comp1 = 'False'
-
-             if amax_comp2 == '1':
-                 amax_comp2='True'
-             else:
-                 amax_comp2 = 'False'
-
-             if ctol_comp2 == '1':
-                 ctol_comp2='True'
-             else:
-                 ctol_comp2 = 'False'
-
-             nivel_lamagua     = '{0:.2f}'.format(nivel_lamagua)
-             nivel_compadm     = '{0:.2f}'.format(nivel_compadm)
-             nivel_compsal     = '{0:.2f}'.format(nivel_compsal)
-
-             posComp1          = '{0:.2f}'.format(posComp1)
-             posComp2          = '{0:.2f}'.format(posComp2)
-             nivel_compadm_ext = '{0:.2f}'.format(nivel_compadm_ext)
-             nivel_compadm_cau = '{0:.2f}'.format(nivel_compadm_cau)
-             nivel_compsal_cau = '{0:.2f}'.format(nivel_compsal_cau)
-
-
-             sensor_nivel_values['niv_lamagua']      = nivel_lamagua
-             sensor_nivel_values['niv_compadm']      = nivel_compadm
-             sensor_nivel_values['niv_compsal']      = nivel_compsal
-             sensor_nivel_values['detec_amax_comp1'] = amax_comp1
-             sensor_nivel_values['detec_ctol_comp1'] = ctol_comp1
-             sensor_nivel_values['detec_amax_comp2'] = amax_comp2
-             sensor_nivel_values['detec_ctol_comp2'] = ctol_comp2
-             sensor_nivel_values['pos_comp1']        = posComp1
-             sensor_nivel_values['pos_comp2']        = posComp2
-             sensor_nivel_values['niv_compadm_ext']  = nivel_compadm_ext
-             sensor_nivel_values['niv_compadm_cau']  = nivel_compadm_cau
-             sensor_nivel_values['niv_compsal_cau']  = nivel_compsal_cau
-
-             banderaNivel=1
             
         elif(tramaRx[0] == "b'G"):
             print("Reenviando datos al ATMEGA2560")
@@ -298,94 +216,14 @@ def interpreta_trama(tramaRx):
     bandera_muestreo = True
     return 0
 
-def enviarGprs():
-    global gprs, bandera_muestreo, CONNECTION_MODE
-    global banderaConsumo, banderaNivel, banderaAmb
-    global consumoIF, nivelIF, ambIF, reiniciarGPRSIF
-    global trama
-
-    tiempo_envio_gprs=3
-    tipo_error=0
-
-    consumoIF, nivelIF, ambIF, reiniciarGPRSIF = 0,0,0,0
-
-    if banderaAmb == 1:
-
-#         try:
-#             gprs.post_var_ambientales(sensor_amb_values,'AWS')
-#         except:
-#             print('Error al Enviar Var AMB con el SERVIDOR: AWS')
-#             ambIF=1
-
-
-        sleep(tiempo_envio_gprs)
-        try:
-            gprs.post_var_ambientales(sensor_amb_values,'THOMASA')
-        except:
-            print('Error al Enviar Var AMB con el SERVIDOR: THOMASA')
-            ambIF=1
-
-        sleep(tiempo_envio_gprs)
-        banderaAmb=0
-
-
-    if banderaConsumo == 1:
-#         try:
-#             gprs.post_var_consumo(sensor_consumo_values,'AWS')
-#         except:
-#             print('Error al Enviar VAR. CONSUMO con el SERVIDOR: AWS')
-#             consumoIF = 1
-
-
-        sleep(tiempo_envio_gprs)
-
-        try:
-            gprs.post_var_consumo(sensor_consumo_values,'THOMASA')
-        except:
-            print('Error al Enviar VAR. CONSUMO con el SERVIDOR: THOMASA')
-            consumoIF=1
-
-        banderaConsumo=0
-        sleep(tiempo_envio_gprs)
-
-    if banderaNivel == 1:
-#         try:
-#             gprs.post_var_nivel(sensor_nivel_values,'AWS')
-#         except:
-#             print('Error al Enviar VAR. NIVEL con el SERVIDOR: AWS')
-#             nivelIF=1
-
-
-        sleep(tiempo_envio_gprs)
-
-        try:
-            gprs.post_var_nivel(sensor_nivel_values,'THOMASA')
-        except:
-            print('Error al Enviar VAR. NIVEL con el SERVIDOR: THOMASA')
-            nivelIF=1
-
-
-        banderaNivel=0
-        sleep(tiempo_envio_gprs)
-
-    if nivelIF == 1 or consumoIF == 1 or ambIF == 1:
-        reiniciarGPRSIF=1
-
-    return tipo_error
-
 def enviarWifi():
     global gprs, bandera_muestreo, modemwifi, CONNECTION_MODE
     global banderaConsumo, banderaNivel, banderaAmb
     try:
-        if banderaAmb == 1:
-            modemwifi.post_var_ambientales(sensor_amb_values,"THOMASA")
+        if banderaAmb == 1 and banderaConsumo == 1:
+            modemwifi.post_var_ambientales(sensor_values,"THOMASA")
             #modemwifi.post_var_ambientales(sensor_amb_values,"AWS")
             #banderaAmb=0
-
-        if banderaConsumo == 1:
-            modemwifi.post_var_consumo(sensor_consumo_values,"THOMASA")
-            #modemwifi.post_var_consumo(sensor_consumo_values,"AWS")
-            #banderaConsumo=0
 
         if banderaNivel == 1:
             modemwifi.post_var_nivel(sensor_nivel_values,"THOMASA")
@@ -395,17 +233,17 @@ def enviarWifi():
         if banderaAmb == 1:
             banderaAmb=0
             #modemwifi.post_var_ambientales(sensor_amb_values,"THOMASA")
-            modemwifi.post_var_ambientales(sensor_amb_values,"AWS")
+            #modemwifi.post_var_ambientales(sensor_amb_values,"AWS")
 
         if banderaConsumo == 1:
             banderaConsumo=0
             #modemwifi.post_var_consumo(sensor_consumo_values,"THOMASA")
-            modemwifi.post_var_consumo(sensor_consumo_values,"AWS")
+            #modemwifi.post_var_consumo(sensor_consumo_values,"AWS")
 
         if banderaNivel == 1:
             banderaNivel=0
             #modemwifi.post_var_nivel(sensor_nivel_values,"THOMASA")
-            modemwifi.post_var_nivel(sensor_nivel_values,"AWS")
+            #modemwifi.post_var_nivel(sensor_nivel_values,"AWS")
     except:
         print('Error en la comunicacion enviar')
         return 1
@@ -416,30 +254,7 @@ def sta_connection(connectionMode):
     global  SSID, PASSWORD
     global modemwifi, gprs
 
-    if connectionMode == "GPRS":
-        print("CONECTADO POR GPRS")
-        condiciones_red = True
-        while condiciones_red:
-            intentos = 20
-            try:
-                gprs=system_gprs()
-                gprs.config()
-                gprs.initialize()
-                condiciones_red = False
-            except:
-                print("Error al tratar de conectar a la red")
-                condiciones_red = True
-                
-            if condiciones_red == True:
-                for i in range(intentos,1,-1):
-                    print("Esperando "+str(i)+" segundos para volver a intentar")
-                    sleep(1)
-                intentos = 20
-                
-        print("EL SISTEMA CONECTO CORRECTAMENTE AL GPRS")
-        sleep(2)
-
-    elif connectionMode == "WIFI":
+    if connectionMode == "WIFI":
         print("CONECTADO POR WIFI A LA RED ")
         print("SSID: "+SSID);
         condiciones_red = True
@@ -620,7 +435,7 @@ def run():
             contador_envio = 30
 
         if bandera_muestreo:
-            print(sensor_amb_values)
+            print(sensor_values)
             bandera_muestreo = False
 
         if ( uart.any() > 0 ):
@@ -647,16 +462,15 @@ def run():
         '''
         
         sleep(1)
-        contador_reinicio -= 1
         
-        if contador_reinicio > 0:
-          #  wdt.feed()
-          pass
+        wdt.feed()
         
-#         contador_envio -= 1  
-#         if contador_envio == 0:
-#             contador_envio = 120
-#             get_ServerVALUES()
+        contador_envio -= 1  
+        if contador_envio == 0:
+            contador_envio = 30
+            enviarWifi()
+            banderaAmb = 1
+            banderaConsumo = 1
 
 
 

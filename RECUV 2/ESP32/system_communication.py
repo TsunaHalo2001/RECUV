@@ -11,7 +11,7 @@ import ujson
 
 
 NUEVO_SERVER   = 'http://3.234.78.150:80/sigla/php/post.php'
-SERVER_THOMASA = 'http://45.5.164.43:80/2022/sigla/php/post.php'
+SERVER_THOMASA = 'http://45.5.164.43:80/arduino/estacion_K18/post_k18.php'
 
 
 URL_GET_COMPUERTAS = 'http://44.207.50.4/sigla/PHP/controlCompuertas.php'
@@ -63,7 +63,9 @@ class system_wifi():
         print("")
                
         data = json.dumps(value_data)
+        print(data)
         r = requests.post(self.URL_POST, data=data)
+        print(r)
         print(" ");
         print (r.text)
         print("Codigo Respuesta: "+ str(r.status_code))

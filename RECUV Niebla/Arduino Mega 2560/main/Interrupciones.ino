@@ -9,11 +9,3 @@ void rainCounterInterrupt1() {
 void rainCounterInterrupt2() {
   estacion.comunicador.trampa.rainCounterInterrupt2();
 }
-
-void rainCounterInterrupt3() {
-  estacion.comunicador.trampa.rainCounterInterrupt3();
-}
-
-void rainCounterInterrupt4() {
-  estacion.comunicador.trampa.rainCounterInterrupt4();
-}

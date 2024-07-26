@@ -17,6 +17,18 @@ void Estacion::contarTiempo() {
   cont_M++;
 }
 
+void Estacion::celdabegin1(uint8_t dt, uint8_t sck, long offset, float scale) {
+  comunicador.trampa.celda1.begin(dt, sck);
+  comunicador.trampa.celda1.set_offset(offset);
+  comunicador.trampa.celda1.set_scale(scale);
+}
+
+void Estacion::celdabegin2(uint8_t dt, uint8_t sck, long offset, float scale) {
+  comunicador.trampa.celda2.begin(dt, sck);
+  comunicador.trampa.celda2.set_offset(offset);
+  comunicador.trampa.celda2.set_scale(scale);
+}
+
 long int Estacion::gettEnvio() {
   return comunicador.tEnvio;
 }

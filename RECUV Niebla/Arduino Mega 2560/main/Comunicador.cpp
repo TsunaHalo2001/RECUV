@@ -20,14 +20,16 @@ Comunicador::~Comunicador() {
 void Comunicador::enviarTrampa() {
   trampa.preci_actual1 = trampa.preci_actual1 / trampa.cont_prom;
   trampa.preci_actual2 = trampa.preci_actual2 / trampa.cont_prom;
-  trampa.preci_actual3 = trampa.preci_actual3 / trampa.cont_prom;
-  trampa.preci_actual4 = trampa.preci_actual4 / trampa.cont_prom;
+  trampa.peso1 = trampa.peso1 / trampa.cont_prom;
+  trampa.peso2 = trampa.peso2 / trampa.cont_prom;
+  trampa.visibilidad = trampa.visibilidad / trampa.cont_prom;
   
   buffer_tx = "";
   buffer_tx = "A/" + String(trampa.preci_actual1, DEC) +
                "/" + String(trampa.preci_actual2, DEC) +
-               "/" + String(trampa.preci_actual3, DEC) +
-               "/" + String(trampa.preci_actual4, DEC) +
+               "/" + String(trampa.peso1, DEC) +
+               "/" + String(trampa.peso2, DEC) +
+               "/" + String(trampa.visibilidad, DEC) +
                "/F";
 
   Serial1.println(buffer_tx);

@@ -4,10 +4,11 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
 
+  estacion.celdabegin1(celda1DTPin, celda1SCKPin, offset1, scale1);
+  estacion.celdabegin2(celda2DTPin, celda2SCKPin, offset2, scale2);
+
   attachInterrupt(digitalPinToInterrupt(rainPulsePin1), rainCounterInterrupt1, FALLING);
   attachInterrupt(digitalPinToInterrupt(rainPulsePin2), rainCounterInterrupt2, FALLING);
-  attachInterrupt(digitalPinToInterrupt(rainPulsePin3), rainCounterInterrupt3, FALLING);
-  attachInterrupt(digitalPinToInterrupt(rainPulsePin4), rainCounterInterrupt4, FALLING);
 }
 
 void loop() {

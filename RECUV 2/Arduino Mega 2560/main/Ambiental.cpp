@@ -92,7 +92,6 @@ void Ambiental::actualizarTempSuelo() {
   ds18b20.requestTemperatures();
 
   temp_suelo = ds18b20.getTempCByIndex(0);
-  Serial.println(temp_suelo);
   temp_suelo_prom += temp_suelo;
 }
 

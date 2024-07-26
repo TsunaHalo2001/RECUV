@@ -3,12 +3,15 @@
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
+  wdt_disable();
 
   estacion.celdabegin1(celda1DTPin, celda1SCKPin, offset1, scale1);
   estacion.celdabegin2(celda2DTPin, celda2SCKPin, offset2, scale2);
 
   attachInterrupt(digitalPinToInterrupt(rainPulsePin1), rainCounterInterrupt1, FALLING);
   attachInterrupt(digitalPinToInterrupt(rainPulsePin2), rainCounterInterrupt2, FALLING);
+
+  wdt_enable(WDTO_8S); //WATCHDOG HABILITACIÓN
 }
 
 void loop() {
@@ -23,6 +26,7 @@ void loop() {
     if(estacion.cont_E > estacion.gettEnvio() || estacion.geterrorenvio() == 1) {
       estacion.enviarTodo();
       estacion.cont_E = 0;
+      delay(1000);
     }
 
     delay(100);
@@ -30,4 +34,6 @@ void loop() {
     estacion.contarTiempo();
     estacion.reciboRX();
   }
+
+  wdt_reset();
 }

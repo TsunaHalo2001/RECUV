@@ -215,6 +215,7 @@ void Comunicador::reciboArd() {
   char delimitadores[] = "/";
   if(banderaARDRX == 1) {
     Serial2.println("K/0/X");
+    Serial.println("retorno");
 
     contadorFRAMEARDRX = 0;
 

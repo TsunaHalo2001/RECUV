@@ -68,6 +68,7 @@ void Comunicador::reciboEstacion() {
 
   if (banderaRX) {
     contadorFRAMERX = 0;
+    Serial.println(errorenvio);
 
     ptr = strtok(RXString, "X");
     ptr = strtok(RXString, "/");
@@ -79,6 +80,7 @@ void Comunicador::reciboEstacion() {
       ptr = strtok(NULL, delimitadores);
       contadorFRAMERX++;
     }
+    Serial.println(errorenvio);
     banderaRX = false;
   }
 }

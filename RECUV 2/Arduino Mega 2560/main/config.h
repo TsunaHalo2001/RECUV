@@ -3,7 +3,7 @@
 #include <Wire.h>
 #include <avr/wdt.h>
 
-#include "Estacion.h"
+#include "Estacion.h"-
 // Constantes
 // Valor alerta de preciptiacion
 #define valor_Alerta 0.5

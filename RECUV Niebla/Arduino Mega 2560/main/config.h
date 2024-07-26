@@ -25,14 +25,17 @@
 
 //Creacion de objetos
 //Pluviometro
-SEN15901 p1(1, rainPulsePin1, 1);
-SEN15901 p2(1, rainPulsePin2, 1);
+SEN15901 p1(1, rainPulsePin1);
+SEN15901 p2(1, rainPulsePin2);
 
 //Celdas de carga
 HX711 celda1;
 HX711 celda2;
 
-Trampa trampa(p1, p2, celda1, celda2);
+//IR
+Adafruit_TSL2591 tsl;
+
+Trampa trampa(p1, p2, celda1, celda2, tsl);
 
 Comunicador comunicador(trampa);
 

@@ -59,6 +59,11 @@ void Comunicador::enviarAmbiental() {
                "/" + String(ambiental.preci_actual, DEC) +
                "/" + String(ambiental.P_prom, DEC) +
                "/" + String(ambiental.dirviento, DEC) +
+               "/" + String(ambiental.preci_actual1, DEC) +
+               "/" + String(ambiental.preci_actual2, DEC) +
+               "/" + String(ambiental.peso1, DEC) +
+               "/" + String(ambiental.peso2, DEC) +
+               "/" + String(ambiental.visibilidad, DEC) +
                "/F";
 
   Serial1.println(buffer_tx);
@@ -140,7 +145,7 @@ void Comunicador::serialEvent2() {
       ARDString[indiceARDRX] = inChar;
       if (inChar == '/') contadorseparador2++;
       if (inChar == 'F') {
-        if(contadorseparador2 == 5) {
+        if(contadorseparador2 == 6) {
           banderaARDRX = 1;
           indiceARDRX = 0;
           banderaL = 0;
@@ -220,8 +225,9 @@ void Comunicador::reciboArd() {
       switch(contadorFRAMEARDRX) {
         case 1: ambiental.preci_actual1 = atof(ptr); break;
         case 2: ambiental.preci_actual2 = atof(ptr); break;
-        case 3: ambiental.preci_actual3 = atof(ptr); break;
-        case 4: ambiental.preci_actual4 = atof(ptr); break;
+        case 3: ambiental.peso1 = atof(ptr); break;
+        case 4: ambiental.peso2 = atof(ptr); break;
+        case 5: ambiental.visibilidad = atof(ptr); break;
       }
       ptr = strtok(NULL, delimitadores);
       contadorFRAMEARDRX++;

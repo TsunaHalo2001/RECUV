@@ -19,7 +19,6 @@ void Energia::actualizarEnergia() {
   vdc_bat_comp += auxV;
   idc_bat_comp += sens_consumoC; //m                    //b
   cbat_comp += (sens_consumoV + 150) * 6;
-  Serial.println("(sens_consumoV + 150) * 6 = " + String((sens_consumoV + 150) * 6));
   idc_siscomp += sens_consumoC;
   valcon_siscomp += auxV * sens_consumoC;
 }

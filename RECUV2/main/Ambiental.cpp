@@ -44,8 +44,9 @@ Ambiental::Ambiental(DHT dht, DAVIS6450 davis6450, FC28 fc28, DallasTemperature 
   //Trampa
   preci_actual1 = 0;
   preci_actual2 = 0;
-  preci_actual3 = 0;
-  preci_actual4 = 0;
+  peso1 = 0;
+  peso2 = 0;
+  visibilidad = 0;
 }
 
 Ambiental::~Ambiental() {
@@ -91,6 +92,7 @@ void Ambiental::actualizarTempSuelo() {
   ds18b20.requestTemperatures();
 
   temp_suelo = ds18b20.getTempCByIndex(0);
+  Serial.println(temp_suelo);
   temp_suelo_prom += temp_suelo;
 }
 

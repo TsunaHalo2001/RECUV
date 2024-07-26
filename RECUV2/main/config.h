@@ -35,13 +35,13 @@
 #define DirVelPin A15
 
 // Radiacion solar
-#define pin_sensor_radiacion A0
+#define pin_sensor_radiacion A1
 
 // Humedad del suelo -- FC28
 #define pin_sensor_humedad_suelo A2
 
 // Temperatura del suelo -- DS18B20
-#define pin_sensor_temp_suelo 5
+#define pin_sensor_temp_suelo 6
 
 // Inicializacion de variables
 #define tMuestreo 5

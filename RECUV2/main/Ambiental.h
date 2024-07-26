@@ -52,8 +52,9 @@ class Ambiental {
     //Trampa
     float preci_actual1;
     float preci_actual2;
-    float preci_actual3;
-    float preci_actual4;
+    float peso1;
+    float peso2;
+    float visibilidad;
 
     //Humedad del aire
     DHT dht;

@@ -15,7 +15,6 @@ Tiempo::~Tiempo() {
 void Tiempo::actTiempo() {
   Time now = rtc.time();
   annio = now.yr;
-  Serial.print(String(annio));
   mes = now.mon;
   dia = now.date;
   hora = now.hr;

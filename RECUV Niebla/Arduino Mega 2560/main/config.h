@@ -25,8 +25,8 @@
 
 //Creacion de objetos
 //Pluviometro
-SEN15901 p1(1, rainPulsePin1);
-SEN15901 p2(1, rainPulsePin2);
+SEN15901 p1(1, rainPulsePin1, 1);
+SEN15901 p2(1, rainPulsePin2, 1);
 
 //Celdas de carga
 HX711 celda1;

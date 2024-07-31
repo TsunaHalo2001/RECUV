@@ -29,6 +29,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  
   if (estacion.recibiendo()) {}
   else {
     //Valor alerta de precipitacion
@@ -50,7 +51,8 @@ void loop() {
       estacion.enviarTodo();
       estacion.cont_E = 0;
     }
-
+  	
+    if(estacion.cont_E % 600 == 0) Serial.println(estacion.cont_E);
     delay(100);
 
     estacion.contarTiempo();

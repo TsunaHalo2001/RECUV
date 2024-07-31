@@ -33,8 +33,8 @@ void Comunicador::enviarTrampa() {
                "/F";
 
   Serial1.println(buffer_tx);
+  Serial.println(buffer_tx);
 
-  trampa.cont_prom;
   errorenvio = 1;
 }
 

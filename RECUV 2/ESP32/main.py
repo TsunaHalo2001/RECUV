@@ -4,6 +4,14 @@ from machine import *
 import json
 from time import *
 import network
+from bmp180 import BMP180
+
+i2c = SoftI2C(scl=Pin(22), sda=Pin(21), freq = 100000)
+i2c.scan()
+
+bmp180 = BMP180(i2c)
+bmp180.oversample_sett = 3
+bmp180.baseline = 101325
 
 wdt = WDT(timeout=60000)
 
@@ -48,9 +56,10 @@ uart = UART(1, 9600)
 
 #CREAMOS UN DICCIONARIO DONDE GUARDAREMOS LAS VARIABLES DE CONSUMO
 
-sensor_values={
-    "fecha":"2022-05-25",
-    "hora":"10:00:00",
+sensor_values = {
+    "fecha":"2022-05-25 10:00:00",
+    "hora":"2022-05-25 10:00:00",
+    "fecha_servidor":"2022-05-25 10:00:00",
     "voltaje":"26.8",
     "corriente":"5.5",
     "temperatura_ambiente":"45",
@@ -70,7 +79,7 @@ sensor_values={
 }
 
 def interpreta_trama(tramaRx):
-    global gprs, bandera_muestreo, modemwifi, CONNECTION_MODE
+    global gprs, bandera_muestreo, modemwifi, CONNECTION_MODE, sensor_values
     global banderaConsumo, banderaNivel, banderaAmb
     global trama
     try:
@@ -95,11 +104,11 @@ def interpreta_trama(tramaRx):
            minn = '{0:02d}'.format(minn)
            seg  = '{0:02d}'.format(seg)
 
-           fechaTemporal = anio+'-'+mes+'-'+dia
-           horaTemporal = hora+':'+minn+':'+seg
+           fechaTemporal = anio+'-'+mes+'-'+dia+' '+hora+':'+minn+':'+seg
             
            sensor_values['fecha']    = fechaTemporal
-           sensor_values['hora']    = horaTemporal
+           sensor_values['hora']    = fechaTemporal
+           sensor_values['fecha_servidor']    = fechaTemporal
 
         elif (tramaRx[0] == "b'A"):
 
@@ -111,7 +120,12 @@ def interpreta_trama(tramaRx):
             ds18b     = tramaRx[5]
             anemo     = tramaRx[6]
             pluvi     = tramaRx[7]
-            bmp       = tramaRx[8]
+            #bmp       = tramaRx[8]
+            try:
+                p = bmp180.pressure
+            except:
+                p = 0
+            bmp = p / 100
             dirviento = tramaRx[9]
             extin_visual = tramaRx[10]
             peso_malla1 = tramaRx[11]
@@ -152,7 +166,7 @@ def interpreta_trama(tramaRx):
             sensor_values['rain']=str(pluvi)
             sensor_values['rad_solar']    =str(rad_solar)
             sensor_values['humedad_ambiente']     =str(dht22_hum)
-            sensor_values['tempertura_ambiente']    =str(dht22_tmp)
+            sensor_values['temperatura_ambiente']    =str(dht22_tmp)
             sensor_values['vel_viento']   =str(anemo)
             sensor_values['presion_atmos']     =str(bmp)
             sensor_values['temperatura_suelo']   =str(ds18b)
@@ -398,7 +412,7 @@ def run():
     recibiendoDATOS = True
     banderaConsumo, banderaNivel, banderaAmb, reiniciarGPRSIF = 0,0,0,0
 
-    contador_envio = 30
+    contador_envio = 10
     contador_reinicio = 1800
 
     bandera_muestreo = True
@@ -432,10 +446,13 @@ def run():
             sta_connection(CONNECTION_MODE)
             reiniciarGPRSIF = 0
             #Volver a solicitar datos al servidor
-            contador_envio = 30
+            contador_envio = 10
 
         if bandera_muestreo:
             print(sensor_values)
+            #temp = bmp180.temperature
+            #altitude = bmp180.altitude
+            #print(temp, p, altitude)
             bandera_muestreo = False
 
         if ( uart.any() > 0 ):
@@ -464,15 +481,6 @@ def run():
         sleep(1)
         
         wdt.feed()
-        
-        contador_envio -= 1  
-        if contador_envio == 0:
-            contador_envio = 30
-            enviarWifi()
-            banderaAmb = 1
-            banderaConsumo = 1
-
-
 
 
 if __name__=='__main__':

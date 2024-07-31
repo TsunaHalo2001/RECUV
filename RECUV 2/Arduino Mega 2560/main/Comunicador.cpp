@@ -20,7 +20,7 @@ Comunicador::Comunicador(Tiempo tiempo, Ambiental ambiental, Energia energia) : 
   ARDString[100] = "";
   errorrecibo = 0;
 
-  tEnvio = 3000;
+  tEnvio = 600;
 }
 
 Comunicador::~Comunicador() {

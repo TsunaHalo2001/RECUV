@@ -11,13 +11,13 @@
 // Pines
 
 // RTC
-#define pinRST 12
+#define pinRST 8
 #define pinCLK 11
 #define pinDAT 10
 
 // Humedad del aire
-#define dhtpin 7
-#define dhttype DHT22
+#define dhtpin 9
+#define dhttype DHT11
 
 // Potencia
 #define pin_ConsV1 A4

@@ -29,6 +29,8 @@ void loop() {
       delay(1000);
     }
 
+    if(estacion.cont_E % 600 == 0) Serial.println(estacion.cont_E);
+
     delay(100);
 
     estacion.contarTiempo();

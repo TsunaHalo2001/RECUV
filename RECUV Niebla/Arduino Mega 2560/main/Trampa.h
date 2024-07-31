@@ -25,7 +25,7 @@ class Trampa {
     HX711 celda1, celda2;
 
     //Extincion visual
-    uint16_t visibilidad;
+    float visibilidad;
     Adafruit_TSL2591 tsl;
 
     Trampa(SEN15901, SEN15901, HX711, HX711, Adafruit_TSL2591);
@@ -36,5 +36,4 @@ class Trampa {
     void actTrampa();
     void rainCounterInterrupt1();
     void rainCounterInterrupt2();
-    void actIR();
 };

@@ -26,12 +26,11 @@ global modemwifi
 
 CONNECTION_MODE  = "WIFI"
 
-SSID     = "univalle"
-PASSWORD = "Univalle"
+#SSID     = "univalle"
+#PASSWORD = "Univalle"
 
-#SSID     = "GISMODEL"
-#PASSWORD = "GISMODEL23"
-
+SSID     = "GISMODEL02"
+PASSWORD = "GISMODEL24"
 
 global tramaRx, sensor_values, gprs, modemwifi, bandera_muestreo
 global textoCompuerta,textoLamina, textoMuestreo, textoHora, t_envio, contador_envio

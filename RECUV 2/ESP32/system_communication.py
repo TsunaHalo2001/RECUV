@@ -5,6 +5,7 @@ import network
 import socket
 from time import sleep
 import os
+import ubinascii
 
 import urequests as requests
 import ujson
@@ -26,6 +27,7 @@ class system_wifi():
 
     def __init__(self,SSID,PASSWORD):
         self.sta_if = network.WLAN(network.STA_IF)     # instancia el objeto -sta_if- para controlar la interfaz STA
+        print(ubinascii.hexlify(self.sta_if.config('mac')).decode())
         self.URL_POST=" "
         self.config(SSID,PASSWORD)
         self.sp_adm=0

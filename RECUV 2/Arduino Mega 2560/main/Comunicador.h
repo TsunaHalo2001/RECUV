@@ -48,4 +48,7 @@ class Comunicador {
     void serialEvent2();
     void reciboEsp();
     void reciboArd();
+
+    //Interfaz
+    void mostrarTrama();
 };

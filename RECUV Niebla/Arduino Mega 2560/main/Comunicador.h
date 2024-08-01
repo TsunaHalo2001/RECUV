@@ -30,4 +30,6 @@ class Comunicador {
     //Recepcion
     void serialEvent1();
     void reciboEstacion();
+    //Interfaz
+    void mostrarTrama();
 };

@@ -29,7 +29,7 @@ void loop() {
       delay(1000);
     }
 
-    if(estacion.cont_E % 600 == 0) Serial.println(estacion.cont_E);
+    if(estacion.cont_E % 100 == 0) estacion.comunicador.mostrarTrama();
 
     delay(100);
 

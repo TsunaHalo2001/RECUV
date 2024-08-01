@@ -236,3 +236,34 @@ void Comunicador::reciboArd() {
     banderaARDRX = 0;
   }
 }
+
+void Comunicador::mostrarTrama() {
+  buffer_tx = "";
+  buffer_tx = "A/" + String(ambiental.radiacion_valor_prom / ambiental.cont_prom, DEC) +
+               "/" + String(ambiental.humedad_valor_prom / ambiental.cont_prom, DEC) + 
+               "/" + String(ambiental.t_prom / ambiental.cont_prom, DEC) +
+               "/" + String(ambiental.h_prom / ambiental.cont_prom, DEC) +
+               "/" + String(ambiental.temp_suelo_prom / ambiental.cont_prom, DEC) +
+               "/" + String(ambiental.wind_Speed_Prom / ambiental.cont_prom, DEC) +
+               "/" + String(ambiental.preci_actual / ambiental.cont_prom, DEC) +
+               "/" + String(ambiental.P_prom / ambiental.cont_prom, DEC) +
+               "/" + String(ambiental.dirviento / ambiental.cont_prom, DEC) +
+               "/" + String(ambiental.preci_actual1 / ambiental.cont_prom, DEC) +
+               "/" + String(ambiental.preci_actual2 / ambiental.cont_prom, DEC) +
+               "/" + String(ambiental.peso1 / ambiental.cont_prom, DEC) +
+               "/" + String(ambiental.peso2 / ambiental.cont_prom, DEC) +
+               "/" + String(ambiental.visibilidad / ambiental.cont_prom, DEC) +
+               "/F";
+
+  Serial.println(buffer_tx);
+
+  buffer_tx = "";
+  buffer_tx = "C/"+String(energia.vdc_bat_comp / ambiental.cont_prom, DEC) +
+               "/"+String(energia.idc_bat_comp / ambiental.cont_prom, DEC) +
+               "/"+String(energia.cbat_comp / ambiental.cont_prom, DEC) +
+               "/"+String(energia.idc_siscomp / ambiental.cont_prom, DEC) +
+               "/"+String(energia.valcon_siscomp / ambiental.cont_prom, DEC) +
+               "/F";
+
+  Serial1.println(buffer_tx);
+}

@@ -126,11 +126,11 @@ def interpreta_trama(tramaRx):
                 p = 0
             bmp = p / 100
             dirviento = tramaRx[9]
-            extin_visual = tramaRx[10]
-            peso_malla1 = tramaRx[11]
-            peso_malla2 = tramaRx[12]
-            rainh1      = tramaRx[13]
-            rainh2      = tramaRx[14]
+            extin_visual = tramaRx[14]
+            peso_malla1 = tramaRx[12]
+            peso_malla2 = tramaRx[13]
+            rainh1      = tramaRx[10]
+            rainh2      = tramaRx[11]
 
             rad_solar = float(rad_solar)
             fc28      = float(fc28)
@@ -326,7 +326,7 @@ def get_ServerVALUES():
     
     condicion1 = "error" in textoCompuerta or "error" in textoLamina or "error" in textoMuestreo or "error" in textoHora
     condicion2 = textoCompuerta=='' or textoLamina=='' or textoMuestreo=='' or textoHora==''
-    
+
     if  condicion1 or condicion2:
         reiniciarGPRSIF=1
         print("Error en la Recepcion de datos")

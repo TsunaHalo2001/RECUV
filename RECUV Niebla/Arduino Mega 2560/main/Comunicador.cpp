@@ -11,7 +11,7 @@ Comunicador::Comunicador(Trampa trampa) : trampa(trampa) {
   RXString[100] = "";
   errorenvio = 0;
 
-  tEnvio = 1800;
+  tEnvio = 900;
 }
 
 Comunicador::~Comunicador() {
@@ -83,4 +83,16 @@ void Comunicador::reciboEstacion() {
     Serial.println(errorenvio);
     banderaRX = false;
   }
+}
+
+void Comunicador::mostrarTrama() {
+  buffer_tx = "";
+  buffer_tx = "A/" + String(trampa.preci_actual1 / trampa.cont_prom, DEC) +
+               "/" + String(trampa.preci_actual2 / trampa.cont_prom, DEC) +
+               "/" + String(trampa.peso1 / trampa.cont_prom, DEC) +
+               "/" + String(trampa.peso2 / trampa.cont_prom, DEC) +
+               "/" + String(trampa.visibilidad / trampa.cont_prom, DEC) +
+               "/F";
+
+  Serial.println(buffer_tx);
 }

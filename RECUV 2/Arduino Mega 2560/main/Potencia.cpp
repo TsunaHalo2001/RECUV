@@ -12,13 +12,16 @@ Potencia::~Potencia() {
 float Potencia::getConsumoV() {
   int consumoV = analogRead(pinVoltaje);
   float vol_bat = (consumoV * m) - b;
+
+  Serial.println(vol_bat);
   return vol_bat;
 }
 
 float Potencia::getConsumoC() {
   float i_bat = 0.0;
   float consumoC = analogRead(pinCorriente) * (5.0 / 1023.0);
-  i_bat = -((consumoC - 2.5) / sensibilidad);
+  i_bat = ((consumoC - 2.5) / sensibilidad);
 
+  Serial.println(i_bat);
   return i_bat;
 }

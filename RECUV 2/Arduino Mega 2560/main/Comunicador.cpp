@@ -265,5 +265,5 @@ void Comunicador::mostrarTrama() {
                "/"+String(energia.valcon_siscomp / ambiental.cont_prom, DEC) +
                "/F";
 
-  Serial1.println(buffer_tx);
+  Serial.println(buffer_tx);
 }

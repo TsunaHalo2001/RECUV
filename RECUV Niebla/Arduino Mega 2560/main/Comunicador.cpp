@@ -11,7 +11,7 @@ Comunicador::Comunicador(Trampa trampa) : trampa(trampa) {
   RXString[100] = "";
   errorenvio = 0;
 
-  tEnvio = 900;
+  tEnvio = 600;
 }
 
 Comunicador::~Comunicador() {
@@ -34,6 +34,8 @@ void Comunicador::enviarTrampa() {
 
   Serial1.println(buffer_tx);
   Serial.println(buffer_tx);
+
+  trampa.cont_prom = 1;
 
   errorenvio = 1;
 }

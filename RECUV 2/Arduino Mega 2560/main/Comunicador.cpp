@@ -20,7 +20,7 @@ Comunicador::Comunicador(Tiempo tiempo, Ambiental ambiental, Energia energia) : 
   ARDString[100] = "";
   errorrecibo = 0;
 
-  tEnvio = 6000;
+  tEnvio = 600;
 }
 
 Comunicador::~Comunicador() {
@@ -215,7 +215,7 @@ void Comunicador::reciboArd() {
   char delimitadores[] = "/";
   if(banderaARDRX == 1) {
     Serial2.println("K/0/X");
-    Serial.println("retorno");
+    Serial.println(ARDString);
 
     contadorFRAMEARDRX = 0;
 

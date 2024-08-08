@@ -42,16 +42,16 @@
 #define rainPulsePin1 18
 #define rainPulsePin2 19
 
-//Celdas
+//Celdas Larga
 #define celda1DTPin 8
 #define celda1SCKPin 9
-#define offset1 21469
-#define scale1 -409.057128
-
+#define offset1 506369
+#define scale1 -431.630065
+ //Corta
 #define celda2DTPin 10
 #define celda2SCKPin 11
-#define offset2 194414
-#define scale2 -413.962249
+#define offset2 4294539100
+#define scale2 -419.598388
 
 // Inicializacion de variables
 #define tMuestreo 50

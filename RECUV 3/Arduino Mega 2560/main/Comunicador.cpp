@@ -1,7 +1,6 @@
 #include "Comunicador.h"
 
 Comunicador::Comunicador(Tiempo tiempo, Ambiental ambiental, Trampa trampa) : tiempo(tiempo), ambiental(ambiental), trampa(trampa) {
-  Serial1.begin(9600);
   Serial2.begin(9600);
 
   buffer_tx = "";
@@ -35,7 +34,7 @@ void Comunicador::enviarTiempo() {
                "/" + String(tiempo.seg, DEC) +
                "/F";
   
-  Serial1.println(buffer_tx);
+  Serial2.println(buffer_tx);
 }
 
 void Comunicador::enviarAmbiental() {
@@ -65,7 +64,7 @@ void Comunicador::enviarAmbiental() {
                "/" + String(ambiental.visibilidad, DEC) +
                "/F";
 
-  Serial1.println(buffer_tx);
+  Serial2.println(buffer_tx);
   Serial.println(buffer_tx);
 }
 
@@ -84,7 +83,7 @@ void Comunicador::enviarTrampa() {
                "/" + String(trampa.visibilidad, DEC) +
                "/F";
 
-  Serial1.println(buffer_tx);
+  Serial2.println(buffer_tx);
   Serial.println(buffer_tx);
 
   trampa.cont_prom = 1;
@@ -94,14 +93,14 @@ void Comunicador::enviarTodo() {
   enviarTiempo();
   enviarAmbiental();
   enviarTrampa();
-  Serial1.println("E/enviar/F");
+  Serial2.println("E/enviar/F");
   ambiental.cont_prom = 1;
   errorrecibo = 0;
 }
 
 void Comunicador::serialEvent1() {
-  if (Serial1.available()) {
-    char inChar = (char)Serial1.read();
+  if (Serial2.available()) {
+    char inChar = (char)Serial2.read();
     if (inChar == 'V') banderaL2 = 1;
     if (inChar == 'S') banderaL3 = 1;
     if (banderaL3 == 1) {
@@ -128,7 +127,7 @@ void Comunicador::serialEvent1() {
           banderaESPRx = 0;
           indiceESPRX = 0;
           banderaL2 = 0;
-          Serial1.print("G/enviar/F");
+          Serial2.print("G/enviar/F");
         }
       }
       else {

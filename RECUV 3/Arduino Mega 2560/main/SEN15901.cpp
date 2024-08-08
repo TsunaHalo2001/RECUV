@@ -6,7 +6,7 @@ SEN15901::SEN15901(uint8_t pinViento, uint8_t pinLluvia, uint8_t pinVientoDir) :
   pinMode(pinLluvia, INPUT_PULLUP); //Inicialización del pin para Pluviometro
   windCont = 0;
   rainCont = 0;
-  timeWindSpeed = 100;
+  timeWindSpeed = 5;
 }
 
 SEN15901::~SEN15901() {
@@ -26,8 +26,10 @@ float SEN15901::getVelViento() {
 
 float SEN15901::getDirViento() {
   int adc_value = analogRead(pinVientoDir);
+  Serial.println(adc_value);
 
   float v_dir = adc_value * 0.0048876;
+  Serial.println(v_dir);
 
   if (v_dir >= (V_ANGLE_0_0 - V_RESOLUTION) && v_dir < (V_ANGLE_0_0 + V_RESOLUTION)) return 0;
   if (v_dir >= (V_ANGLE_22_5 - V_RESOLUTION) && v_dir < (V_ANGLE_0_0 + V_RESOLUTION)) return 22.5;

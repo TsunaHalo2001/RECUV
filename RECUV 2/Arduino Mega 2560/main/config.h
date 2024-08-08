@@ -20,10 +20,10 @@
 #define dhttype DHT11
 
 // Potencia
-#define pin_ConsV1 A4
-#define pin_ConsV2 A6
-#define pin_ConsC1 A8
-#define pin_ConsC2 A10
+#define pin_ConsV1 A5
+#define pin_ConsV2 A7
+#define pin_ConsC1 A9
+#define pin_ConsC2 A11
 
 // Anemometro
 #define windPulsePin 3
@@ -44,7 +44,7 @@
 #define pin_sensor_temp_suelo 6
 
 // Inicializacion de variables
-#define tMuestreo 5
+#define tMuestreo 100
 
 // Creacion de objetos
 // Humedad del aire 

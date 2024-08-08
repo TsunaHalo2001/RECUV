@@ -13,8 +13,6 @@ bmp180 = BMP180(i2c)
 bmp180.oversample_sett = 3
 bmp180.baseline = 101325
 
-pluviometro = Pin(12, mode = Pin.IN, pull = Pin.PULL_UP)
-
 wdt = WDT(timeout=60000)
 
 import urequests as requests
@@ -78,10 +76,6 @@ sensor_values = {
     "rainh1":"90",
     "rainh2":"95"
 }
-
-def interruptrain(pin):
-    print(time())
-    print(time_ns())
 
 def interpreta_trama(tramaRx):
     global gprs, bandera_muestreo, modemwifi, CONNECTION_MODE, sensor_values
@@ -418,14 +412,12 @@ def run():
     banderaConsumo, banderaNivel, banderaAmb, reiniciarGPRSIF = 0,0,0,0
 
     contador_envio = 10
-    contador_reinicio = 1200
+    contador_reinicio = 1800
 
     bandera_muestreo = True
     uart.init(9600, bits=8, parity=None, stop=1, tx=18, rx=19)
 
     sta_connection(CONNECTION_MODE)
-    
-    pluviometro.irq(trigger = Pin.IRQ_FALLING, handler = interruptrain)
 
     consumoIF, nivelIF, ambIF, reiniciarGPRSIF = 0,0,0,0
 
@@ -461,6 +453,7 @@ def run():
             #altitude = bmp180.altitude
             #print(temp, p, altitude)
             bandera_muestreo = False
+            enviarWifi()
 
         if ( uart.any() > 0 ):
             recibiendoDATOS = True
@@ -487,10 +480,7 @@ def run():
         
         sleep(1)
         
-        contador_reinicio -= 1
-        
-        if contador_reinicio > 0:
-            wdt.feed()
+        wdt.feed()
 
 
 if __name__=='__main__':

@@ -3,7 +3,6 @@
 Estacion::Estacion(Comunicador comunicador) : comunicador(comunicador) {
   cont_A = 0;
   cont_E = 0;
-  eenable = false;
 }
 
 Estacion::~Estacion() {
@@ -15,6 +14,7 @@ bool Estacion::recibiendo() {
 }
 
 void Estacion::contarTiempo() {
+  cont_E++;
   cont_M++;
 }
 
@@ -48,10 +48,6 @@ long int Estacion::gettEnvio() {
 
 int Estacion::geterrorrecibo() {
   return comunicador.errorrecibo;
-}
-
-int Estacion::getmin() {
-  return comunicador.tiempo.minn;
 }
 
 void Estacion::actTiempo() {

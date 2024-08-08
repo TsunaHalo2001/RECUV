@@ -35,7 +35,7 @@ void loop() {
     //Valor alerta de precipitacion
     if(estacion.cont_A >= 12) {
        estacion.cont_A = 0;
-       if((estacion.getpreci_actual() - estacion.getpreci_min()) > valor_Alerta) estacion.cont_E = 1;
+       if((estacion.getpreci_actual() - estacion.getpreci_min()) > valor_Alerta) estacion.cont_E = estacion.gettEnvio();
        else estacion.setpreci_min(estacion.getpreci_actual());
     }
 
@@ -47,21 +47,11 @@ void loop() {
       estacion.cont_M = 0;
     }
 
-    if(estacion.cont_E == 1 || estacion.geterrorrecibo() == 1) {
+    if(estacion.cont_E > estacion.gettEnvio() || estacion.geterrorrecibo() == 1) {
       estacion.enviarTodo();
-      estacion.comunicador.errorrecibo = 0;
       estacion.cont_E = 0;
-      estacion.eenable = false;
     }
   	
-    if(estacion.getmin() % 10== 0 && estacion.eenable) {
-      estacion.cont_E = 1;
-    }
-
-    if(estacion.getmin() % 5== 0) {
-      estacion.eenable = true;
-    }
-
     if(estacion.cont_E % 100 == 0) estacion.comunicador.mostrarTrama();
     delay(100);
 

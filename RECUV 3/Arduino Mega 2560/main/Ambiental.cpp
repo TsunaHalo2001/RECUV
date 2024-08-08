@@ -74,7 +74,7 @@ void Ambiental::actualizarDirViento(){
 }
 
 void Ambiental::actualizarPreci() {
-  preci_actual += sen15901.getPrecipitacion();
+  preci_actual = sen15901.getPrecipitacion();
   sen15901.rainCont = 0;
 }
 

@@ -10,7 +10,6 @@ class Estacion {
     long int cont_A;
     long int cont_E;
     long int cont_M;
-    bool eenable;
 
     Estacion(Comunicador);
     ~Estacion();
@@ -26,7 +25,6 @@ class Estacion {
     void setpreci_min(double);
     long int gettEnvio();
     int geterrorrecibo();
-    int getmin();
 
     void actTiempo();
     void actualizarAmbiental();

@@ -3,28 +3,36 @@
 #include <Wire.h>
 #include <avr/wdt.h>
 
-#include "Estacion.h"
-
+#include "Estacion.h"-
 // Constantes
 // Valor alerta de preciptiacion
 #define valor_Alerta 0.5
 
 // Pines
+
+// RTC
+#define pinRST 8
+#define pinCLK 11
+#define pinDAT 10
+
 // Humedad del aire
-#define dhtpin 7
+#define dhtpin 12
 #define dhttype DHT22
 
 // Potencia
-#define pin_ConsV1 A4
-#define pin_ConsV2 A6
-#define pin_ConsC1 A8
-#define pin_ConsC2 A10
+#define pin_ConsV1 A5
+#define pin_ConsV2 A7
+#define pin_ConsC1 A9
+#define pin_ConsC2 A11
 
 // Anemometro
 #define windPulsePin 3
 
 // Pluviometro
 #define rainPulsePin 2
+
+// Veleta, Dirección del viento
+#define DirVelPin A1
 
 // Radiacion solar
 #define pin_sensor_radiacion A0
@@ -33,10 +41,10 @@
 #define pin_sensor_humedad_suelo A2
 
 // Temperatura del suelo -- DS18B20
-#define pin_sensor_temp_suelo 5
+#define pin_sensor_temp_suelo 1
 
 // Inicializacion de variables
-#define tMuestreo 50
+#define tMuestreo 5
 
 // Creacion de objetos
 // Humedad del aire 
@@ -48,8 +56,8 @@ Potencia pot2(pin_ConsV2, pin_ConsC2);
 //
 Energia energia(pot1, pot2);
 
-// Anemometro y Pluviometro
-SEN15901 sen15901(windPulsePin, rainPulsePin);
+// Anemometro, Pluviometro y dirección de la veleta del viento
+SEN15901 sen15901(windPulsePin, rainPulsePin, DirVelPin);
 
 // Radiacion solar
 DAVIS6450 davis6450(pin_sensor_radiacion);
@@ -67,8 +75,7 @@ SFE_BMP180 bmp180;
 Ambiental ambiental(dht, davis6450, fc28, sensorDS18B20, bmp180, sen15901);
 
 // Reloj en tiempo real
-RTC_DS3231 rtc;
-//
+DS1302 rtc(pinRST,pinDAT,pinCLK);
 Tiempo tiempo(rtc);
 
 // Comunicador

@@ -20,7 +20,7 @@ Comunicador::Comunicador(Tiempo tiempo, Ambiental ambiental, Energia energia) : 
   ARDString[100] = "";
   errorrecibo = 0;
 
-  tEnvio = 6000;
+  tEnvio = 600;
 }
 
 Comunicador::~Comunicador() {
@@ -37,8 +37,6 @@ void Comunicador::enviarTiempo() {
                "/F";
   
   Serial1.println(buffer_tx);
-  Serial1.println(" ");
-  delay(50);
 }
 
 void Comunicador::enviarAmbiental() {
@@ -50,7 +48,6 @@ void Comunicador::enviarAmbiental() {
   ambiental.P_prom = ambiental.P_prom / ambiental.cont_prom;
   ambiental.wind_Speed_Prom = ambiental.wind_Speed_Temp / ambiental.cont_prom;
   ambiental.wind_Speed_Temp = ambiental.wind_Speed_Prom;
-  ambiental.preci_actual= ambiental.preci_actual / ambiental.cont_prom;
 
   buffer_tx = "";
   buffer_tx = "A/" + String(ambiental.radiacion_valor_prom, DEC) +
@@ -70,8 +67,6 @@ void Comunicador::enviarAmbiental() {
                "/F";
 
   Serial1.println(buffer_tx);
-  Serial1.println(" ");
-  delay(50);
   Serial.println(buffer_tx);
 }
 
@@ -91,8 +86,6 @@ void Comunicador::enviarEnergia() {
                "/F";
 
   Serial1.println(buffer_tx);
-  Serial1.println(" ");
-  delay(50);
 }
 
 void Comunicador::enviarTodo() {
@@ -270,6 +263,17 @@ void Comunicador::mostrarTrama() {
                "/"+String(energia.cbat_comp / ambiental.cont_prom, DEC) +
                "/"+String(energia.idc_siscomp / ambiental.cont_prom, DEC) +
                "/"+String(energia.valcon_siscomp / ambiental.cont_prom, DEC) +
+               "/F";
+
+  Serial.println(buffer_tx);
+
+  buffer_tx = "";
+  buffer_tx = "T/" + String(tiempo.annio, DEC) +
+               "/" + String(tiempo.mes, DEC) +
+               "/" + String(tiempo.dia, DEC) +
+               "/" + String(tiempo.hora, DEC) +
+               "/" + String(tiempo.minn, DEC) +
+               "/" + String(tiempo.seg, DEC) +
                "/F";
 
   Serial.println(buffer_tx);

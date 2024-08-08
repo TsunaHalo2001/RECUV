@@ -11,12 +11,12 @@
 // Pines
 
 // RTC
-#define pinRST 8
-#define pinCLK 11
-#define pinDAT 10
+#define pinRST 24
+#define pinCLK 22
+#define pinDAT 23
 
 // Humedad del aire
-#define dhtpin 12
+#define dhtpin 7
 #define dhttype DHT22
 
 // Anemometro
@@ -35,21 +35,21 @@
 #define pin_sensor_humedad_suelo A2
 
 // Temperatura del suelo -- DS18B20
-#define pin_sensor_temp_suelo 1
+#define pin_sensor_temp_suelo 8
 
 //Trampa
 //Pluviometro
-#define rainPulsePin1 1
-#define rainPulsePin2 1
+#define rainPulsePin1 18
+#define rainPulsePin2 19
 
 //Celdas
-#define celda1DTPin 1
-#define celda1SCKPin 1
+#define celda1DTPin 8
+#define celda1SCKPin 9
 #define offset1 21469
 #define scale1 -409.057128
 
-#define celda2DTPin 1
-#define celda2SCKPin 1
+#define celda2DTPin 10
+#define celda2SCKPin 11
 #define offset2 194414
 #define scale2 -413.962249
 

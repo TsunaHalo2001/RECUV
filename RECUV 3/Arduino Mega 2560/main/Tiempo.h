@@ -3,8 +3,6 @@
 
 #include <DS1302.h>
 
-
-
 class Tiempo {
   public:
     int annio;

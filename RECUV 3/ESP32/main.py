@@ -4,14 +4,6 @@ from machine import *
 import json
 from time import *
 import network
-from bmp180 import BMP180
-
-i2c = SoftI2C(scl=Pin(22), sda=Pin(21), freq = 100000)
-i2c.scan()
-
-bmp180 = BMP180(i2c)
-bmp180.oversample_sett = 3
-bmp180.baseline = 101325
 
 wdt = WDT(timeout=60000)
 
@@ -26,11 +18,14 @@ global modemwifi
 
 CONNECTION_MODE  = "WIFI"
 
-SSID     = "univalle"
-PASSWORD = "Univalle"
+#SSID     = "univalle"
+#PASSWORD = "Univalle"
 
 #SSID     = "GISMODEL02"
 #PASSWORD = "GISMODEL24"
+
+SSID     = "Mateguadua"
+PASSWORD = "3006201783"
 
 global tramaRx, sensor_values, gprs, modemwifi, bandera_muestreo
 global textoCompuerta,textoLamina, textoMuestreo, textoHora, t_envio, contador_envio
@@ -119,12 +114,7 @@ def interpreta_trama(tramaRx):
             ds18b     = tramaRx[5]
             anemo     = tramaRx[6]
             pluvi     = tramaRx[7]
-            #bmp       = tramaRx[8]
-            try:
-                p = bmp180.pressure
-            except:
-                p = 0
-            bmp = p / 100
+            bmp       = tramaRx[8]
             dirviento = tramaRx[9]
             extin_visual = tramaRx[14]
             peso_malla1 = tramaRx[12]
@@ -412,7 +402,7 @@ def run():
     banderaConsumo, banderaNivel, banderaAmb, reiniciarGPRSIF = 0,0,0,0
 
     contador_envio = 10
-    contador_reinicio = 1800
+    contador_reinicio = 1200
 
     bandera_muestreo = True
     uart.init(9600, bits=8, parity=None, stop=1, tx=18, rx=19)
@@ -453,7 +443,6 @@ def run():
             #altitude = bmp180.altitude
             #print(temp, p, altitude)
             bandera_muestreo = False
-            enviarWifi()
 
         if ( uart.any() > 0 ):
             recibiendoDATOS = True
@@ -479,8 +468,12 @@ def run():
         '''
         
         sleep(1)
+        enviarWifi()
         
-        wdt.feed()
+        contador_reinicio -= 1
+        
+        if contador_reinicio > 0:
+            wdt.feed()
 
 
 if __name__=='__main__':

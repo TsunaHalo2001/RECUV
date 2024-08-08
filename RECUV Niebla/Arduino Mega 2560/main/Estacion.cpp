@@ -35,7 +35,6 @@ void Estacion::irbegin(){
   if (comunicador.trampa.tsl.begin()) 
   {
     Serial.println(F("Found a TSL2591 sensor"));
-    ConfigureIRSensor();
   } 
   else 
   {

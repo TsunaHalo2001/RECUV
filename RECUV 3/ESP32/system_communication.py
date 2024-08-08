@@ -12,7 +12,7 @@ import ujson
 
 
 NUEVO_SERVER   = 'http://3.234.78.150:80/sigla/php/post.php'
-SERVER_THOMASA = 'http://45.5.164.43:80/2022/sigla/php/post_k18.php'
+SERVER_THOMASA = 'http://45.5.164.43:80/2022/sigla/php/post_tocota.php'
 
 
 URL_GET_COMPUERTAS = 'http://44.207.50.4/sigla/PHP/controlCompuertas.php'

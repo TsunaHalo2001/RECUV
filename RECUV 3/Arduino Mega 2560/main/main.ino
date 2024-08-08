@@ -14,7 +14,11 @@ void setup() {
   //Se inicializa el metodo de temperatura del suelo
   estacion.ds18b20begin();
 
-  //Se inicializa el reloj en tiempo real
+  estacion.celdabegin1(celda1DTPin, celda1SCKPin, offset1, scale1);
+  estacion.celdabegin2(celda2DTPin, celda2SCKPin, offset2, scale2);
+
+  attachInterrupt(digitalPinToInterrupt(rainPulsePin1), rainCounterInterrupt1, FALLING);
+  attachInterrupt(digitalPinToInterrupt(rainPulsePin2), rainCounterInterrupt2, FALLING);
 
   //Se inicializa la interrupcion del anemometro
   attachInterrupt(digitalPinToInterrupt(windPulsePin), windCounterInterrupt, FALLING);
@@ -42,7 +46,7 @@ void loop() {
     if(estacion.cont_M > tMuestreo) {
       estacion.actTiempo();
       estacion.actualizarAmbiental();
-      estacion.actualizarEnergia();
+      estacion.actTrampa();
       estacion.cont_A++;
       estacion.cont_M = 0;
     }
@@ -58,7 +62,6 @@ void loop() {
     estacion.contarTiempo();
 
     estacion.reciboEsp();
-    estacion.reciboArd();
 
     estacion.actTiempo();
   }

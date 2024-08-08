@@ -19,6 +19,9 @@ class Estacion {
     void bmp180begin();
     void dhtbegin();
     void ds18b20begin();
+    void celdabegin1(uint8_t, uint8_t, long, float);
+    void celdabegin2(uint8_t, uint8_t, long, float);
+    void irbegin();
 
     double getpreci_actual();
     double getpreci_min();
@@ -28,8 +31,7 @@ class Estacion {
 
     void actTiempo();
     void actualizarAmbiental();
-    void actualizarEnergia();
+    void actTrampa();
     void enviarTodo();
     void reciboEsp();
-    void reciboArd();
 };

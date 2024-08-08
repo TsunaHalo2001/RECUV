@@ -3,7 +3,7 @@
 
 #include "Tiempo.h"
 #include "Ambiental.h"
-#include "Energia.h"
+#include "Trampa.h"
 
 char *strtok(char *str1, const char *str2);
 
@@ -13,7 +13,7 @@ class Comunicador {
 
     Tiempo tiempo;
     Ambiental ambiental;
-    Energia energia;
+    Trampa trampa;
 
     long int tEnvio;
 
@@ -30,24 +30,21 @@ class Comunicador {
     char contadorFRAMEESPRX;
     char contadorFRAMEARDRX;
     char ESPString[100];
-    char ARDString[100];
     int errorrecibo;
 
     char *ptr = NULL;
 
-    Comunicador(Tiempo, Ambiental, Energia);
+    Comunicador(Tiempo, Ambiental, Trampa);
     ~Comunicador();
     //Envio
     void enviarTiempo();
     void enviarAmbiental();
-    void enviarEnergia();
+    void enviarTrampa();
     void enviarTodo();
 
     //Recepcion
     void serialEvent1();
-    void serialEvent2();
     void reciboEsp();
-    void reciboArd();
 
     //Interfaz
     void mostrarTrama();

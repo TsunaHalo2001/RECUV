@@ -7,7 +7,7 @@ void windCounterInterrupt() {
 }
 
 void rainCounterInterrupt() {
-  //estacion.comunicador.ambiental.rainCounterInterrupt();
+  estacion.comunicador.ambiental.rainCounterInterrupt();
 }
 
 void rainCounterInterrupt1() {

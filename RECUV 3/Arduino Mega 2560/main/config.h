@@ -26,7 +26,7 @@
 #define rainPulsePin 2
 
 // Veleta, Dirección del viento
-#define DirVelPin A1
+#define DirVelPin A15
 
 // Radiacion solar
 #define pin_sensor_radiacion A0
@@ -35,7 +35,7 @@
 #define pin_sensor_humedad_suelo A2
 
 // Temperatura del suelo -- DS18B20
-#define pin_sensor_temp_suelo 8
+#define pin_sensor_temp_suelo 6
 
 //Trampa
 //Pluviometro

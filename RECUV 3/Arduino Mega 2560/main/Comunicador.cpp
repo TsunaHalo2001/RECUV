@@ -46,6 +46,13 @@ void Comunicador::enviarAmbiental() {
   ambiental.P_prom = ambiental.P_prom / ambiental.cont_prom;
   ambiental.wind_Speed_Prom = ambiental.wind_Speed_Temp / ambiental.cont_prom;
   ambiental.wind_Speed_Temp = ambiental.wind_Speed_Prom;
+  trampa.preci_actual1 = trampa.preci_actual1 / trampa.cont_prom;
+  trampa.preci_actual2 = trampa.preci_actual2 / trampa.cont_prom;
+  trampa.peso1 = trampa.peso1 / trampa.cont_prom;
+  trampa.peso2 = trampa.peso2 / trampa.cont_prom;
+  trampa.visibilidad = trampa.visibilidad / trampa.cont_prom;
+
+  trampa.cont_prom = 1;
 
   buffer_tx = "";
   buffer_tx = "A/" + String(ambiental.radiacion_valor_prom, DEC) +
@@ -57,26 +64,7 @@ void Comunicador::enviarAmbiental() {
                "/" + String(ambiental.preci_actual, DEC) +
                "/" + String(ambiental.P_prom, DEC) +
                "/" + String(ambiental.dirviento, DEC) +
-               "/" + String(ambiental.preci_actual1, DEC) +
-               "/" + String(ambiental.preci_actual2, DEC) +
-               "/" + String(ambiental.peso1, DEC) +
-               "/" + String(ambiental.peso2, DEC) +
-               "/" + String(ambiental.visibilidad, DEC) +
-               "/F";
-
-  Serial2.println(buffer_tx);
-  Serial.println(buffer_tx);
-}
-
-void Comunicador::enviarTrampa() {
-  trampa.preci_actual1 = trampa.preci_actual1 / trampa.cont_prom;
-  trampa.preci_actual2 = trampa.preci_actual2 / trampa.cont_prom;
-  trampa.peso1 = trampa.peso1 / trampa.cont_prom;
-  trampa.peso2 = trampa.peso2 / trampa.cont_prom;
-  trampa.visibilidad = trampa.visibilidad / trampa.cont_prom;
-  
-  buffer_tx = "";
-  buffer_tx = "K/" + String(trampa.preci_actual1, DEC) +
+               "/" + String(trampa.preci_actual1, DEC) +
                "/" + String(trampa.preci_actual2, DEC) +
                "/" + String(trampa.peso1, DEC) +
                "/" + String(trampa.peso2, DEC) +
@@ -85,8 +73,18 @@ void Comunicador::enviarTrampa() {
 
   Serial2.println(buffer_tx);
   Serial.println(buffer_tx);
+}
 
-  trampa.cont_prom = 1;
+void Comunicador::enviarTrampa() {
+  buffer_tx = "";
+  buffer_tx = "K/" + String(trampa.preci_actual1, DEC) +
+               "/" + String(trampa.preci_actual2, DEC) +
+               "/" + String(trampa.peso1, DEC) +
+               "/" + String(trampa.peso2, DEC) +
+               "/" + String(trampa.visibilidad, DEC) +
+               "/F";
+
+  Serial.println(buffer_tx);
 }
 
 void Comunicador::enviarTodo() {

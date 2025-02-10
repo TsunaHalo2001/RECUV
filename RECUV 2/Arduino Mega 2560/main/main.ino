@@ -37,6 +37,10 @@ void loop() {
        estacion.cont_A = 0;
        if((estacion.getpreci_actual() - estacion.getpreci_min()) > valor_Alerta) estacion.cont_E = 1;
        else estacion.setpreci_min(estacion.getpreci_actual());
+       if((estacion.getpreci_actual1() - estacion.getpreci_min1()) > 0.1) estacion.cont_E = 1;
+       else estacion.setpreci_min1(estacion.getpreci_actual1());
+       if((estacion.getpreci_actual2() - estacion.getpreci_min2()) > 0.1) estacion.cont_E = 1;
+       else estacion.setpreci_min2(estacion.getpreci_actual2());
     }
 
     if(estacion.cont_M > tMuestreo) {

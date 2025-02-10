@@ -18,7 +18,7 @@ Comunicador::Comunicador(Tiempo tiempo, Ambiental ambiental, Trampa trampa) : ti
   ESPString[100] = "";
   errorrecibo = 0;
 
-  tEnvio = 600;
+  tEnvio = 3000;
 }
 
 Comunicador::~Comunicador() {
@@ -92,6 +92,7 @@ void Comunicador::enviarTodo() {
   enviarAmbiental();
   enviarTrampa();
   Serial2.println("E/enviar/F");
+  Serial.println("Enviao");
   ambiental.cont_prom = 1;
   errorrecibo = 0;
 }

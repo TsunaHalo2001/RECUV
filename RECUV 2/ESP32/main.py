@@ -28,11 +28,11 @@ global modemwifi
 
 CONNECTION_MODE  = "WIFI"
 
-SSID     = "univalle"
-PASSWORD = "Univalle"
+#SSID     = "univalle"
+#PASSWORD = "Univalle"
 
-#SSID     = "GISMODEL02"
-#PASSWORD = "GISMODEL24"
+SSID     = "GISMODEL02"
+PASSWORD = "GISMODEL24"
 
 global tramaRx, sensor_values, gprs, modemwifi, bandera_muestreo
 global textoCompuerta,textoLamina, textoMuestreo, textoHora, t_envio, contador_envio
@@ -240,12 +240,16 @@ def enviarWifi():
     global banderaConsumo, banderaNivel, banderaAmb
     try:
         if banderaAmb == 1 and banderaConsumo == 1:
-            modemwifi.post_var_ambientales(sensor_values,"THOMASA")
+            modemwifi.post_var_ambientales(sensor_values,"THOMASA1")
+            modemwifi.post_var_ambientales(sensor_values,"THOMASA2")
+            modemwifi.post_var_ambientales(sensor_values,"CLIMATE")
             #modemwifi.post_var_ambientales(sensor_amb_values,"AWS")
             #banderaAmb=0
 
         if banderaNivel == 1:
-            modemwifi.post_var_nivel(sensor_nivel_values,"THOMASA")
+            modemwifi.post_var_nivel(sensor_nivel_values,"THOMASA1")
+            modemwifi.post_var_nivel(sensor_nivel_values,"THOMASA2")
+            modemwifi.post_var_nivel(sensor_nivel_values,"CLIMATE")
             #modemwifi.post_var_nivel(sensor_nivel_values,"AWS")
             #banderaNivel=0
             

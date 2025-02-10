@@ -85,12 +85,36 @@ double Estacion::getpreci_actual() {
   return comunicador.ambiental.preci_actual;
 }
 
+double Estacion::getpreci_actual1() {
+  return comunicador.ambiental.preci_actual1;
+}
+
+double Estacion::getpreci_actual2() {
+  return comunicador.ambiental.preci_actual2;
+}
+
 double Estacion::getpreci_min() {
   return comunicador.ambiental.preci_min;
 }
 
+double Estacion::getpreci_min1() {
+  return comunicador.ambiental.preci_min1;
+}
+
+double Estacion::getpreci_min2() {
+  return comunicador.ambiental.preci_min2;
+}
+
 void Estacion::setpreci_min(double a) {
   comunicador.ambiental.preci_min = a;
+}
+
+void Estacion::setpreci_min1(double a) {
+  comunicador.ambiental.preci_min1 = a;
+}
+
+void Estacion::setpreci_min2(double a) {
+  comunicador.ambiental.preci_min2 = a;
 }
 
 long int Estacion::gettEnvio() {

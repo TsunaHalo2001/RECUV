@@ -22,8 +22,14 @@ class Estacion {
     void ds18b20begin();
 
     double getpreci_actual();
+    double getpreci_actual1();
+    double getpreci_actual2();
     double getpreci_min();
+    double getpreci_min1();
+    double getpreci_min2();
     void setpreci_min(double);
+    void setpreci_min1(double);
+    void setpreci_min2(double);
     long int gettEnvio();
     int geterrorrecibo();
     int getmin();

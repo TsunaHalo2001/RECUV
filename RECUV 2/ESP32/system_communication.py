@@ -12,7 +12,9 @@ import ujson
 
 
 NUEVO_SERVER   = 'http://3.234.78.150:80/sigla/php/post.php'
-SERVER_THOMASA = 'http://45.5.164.43:80/2022/sigla/php/post_k18.php'
+SERVER_THOMASA1 = 'http://45.5.164.43:80/2022/sigla/php/post_k18.php'
+SERVER_THOMASA2 = 'http://45.5.164.43:80/2022/sigla/php/post_k18.php'
+CLIMATE = 'http://climate.gismodel.click/2022/sigla/php/post_k18.php'
 
 
 URL_GET_COMPUERTAS = 'http://44.207.50.4/sigla/PHP/controlCompuertas.php'
@@ -56,9 +58,12 @@ class system_wifi():
         
         if server=='AWS':
             self.URL_POST=NUEVO_SERVER
-        elif server=='THOMASA':
-            self.URL_POST=SERVER_THOMASA
-            
+        elif server=='THOMASA1':
+            self.URL_POST=SERVER_THOMASA1
+        elif server=='THOMASA2':
+            self.URL_POST=SERVER_THOMASA2
+        elif server=='CLIMATE':
+            self.URL_POST=CLIMATE
         print(" ")
         print("Se enviaran datos al servidor: ")
         print(self.URL_POST)

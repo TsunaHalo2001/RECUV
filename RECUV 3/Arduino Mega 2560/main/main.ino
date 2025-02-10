@@ -41,6 +41,10 @@ void loop() {
        estacion.cont_A = 0;
        if((estacion.getpreci_actual() - estacion.getpreci_min()) > valor_Alerta) estacion.cont_E = estacion.gettEnvio();
        else estacion.setpreci_min(estacion.getpreci_actual());
+       if((estacion.getpreci_actual1() - estacion.getpreci_min1()) > valor_Alerta) estacion.cont_E = estacion.gettEnvio();
+       else estacion.setpreci_min1(estacion.getpreci_actual1());
+       if((estacion.getpreci_actual2() - estacion.getpreci_min2()) > valor_Alerta) estacion.cont_E = estacion.gettEnvio();
+       else estacion.setpreci_min2(estacion.getpreci_actual2());
     }
 
     if(estacion.cont_M > tMuestreo) {
@@ -56,7 +60,10 @@ void loop() {
       estacion.cont_E = 0;
     }
   	
-    if(estacion.cont_E % 100 == 0) estacion.comunicador.mostrarTrama();
+    if(estacion.cont_E % 100 == 0) {
+      estacion.comunicador.mostrarTrama();
+      Serial.println(estacion.cont_E);
+    }
     delay(100);
 
     estacion.contarTiempo();

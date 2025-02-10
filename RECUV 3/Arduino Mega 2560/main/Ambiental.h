@@ -52,6 +52,8 @@ class Ambiental {
     //Trampa
     float preci_actual1;
     float preci_actual2;
+    float preci_min1;
+    float preci_min2;
     float peso1;
     float peso2;
     float visibilidad;

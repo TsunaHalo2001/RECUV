@@ -5,7 +5,7 @@ import json
 from time import *
 import network
 
-#wdt = WDT(timeout=60000)
+wdt = WDT(timeout=60000)
 
 import urequests as requests
 import ujson
@@ -376,38 +376,50 @@ def enviarGprs():
 def enviarWifi():
     global gprs, bandera_muestreo, modemwifi, CONNECTION_MODE
     global banderaConsumo, banderaNivel, banderaAmb
-    try:
-        if banderaAmb == 1:
-            modemwifi.post_var_ambientales(sensor_amb_values,"THOMASA")
-            #modemwifi.post_var_ambientales(sensor_amb_values,"AWS")
-            #banderaAmb=0
+    banderaerrorenv = 0
+    if banderaAmb == 1:
+        try:
+            modemwifi.post_var_ambientales(sensor_amb_values,"THOMASA1")
+        except:
+            print("Error en la comunicacion enviar")
+            banderaerrorenv = 1
+        try:
+            modemwifi.post_var_ambientales(sensor_amb_values,"THOMASA2")
+        except:
+            print("Error en la comunicacion enviar")
+            banderaerrorenv = 1
+        try:
+            modemwifi.post_var_ambientales(sensor_amb_values,"CLIMATE")
+        except:
+            print("Error en la comunicacion enviar")
+            banderaerrorenv = 1
+        #modemwifi.post_var_ambientales(sensor_amb_values,"AWS")
+        banderaAmb=0
 
-        if banderaConsumo == 1:
-            modemwifi.post_var_consumo(sensor_consumo_values,"THOMASA")
-            #modemwifi.post_var_consumo(sensor_consumo_values,"AWS")
-            #banderaConsumo=0
+    if banderaConsumo == 1:
+        try:
+            modemwifi.post_var_consumo(sensor_consumo_values,"THOMASA1")
+        except:
+            print('Error en la comunicacion enviar')
+            banderaerrorenv = 1
+        try:
+            modemwifi.post_var_consumo(sensor_consumo_values,"THOMASA2")
+        except:
+            print('Error en la comunicacion enviar')
+            banderaerrorenv = 1
+        try:
+            modemwifi.post_var_consumo(sensor_consumo_values,"CLIMATE")
+        except:
+            print('Error en la comunicacion enviar')
+            banderaerrorenv = 1
+        #modemwifi.post_var_consumo(sensor_consumo_values,"AWS")
+        banderaConsumo=0
 
-        if banderaNivel == 1:
-            modemwifi.post_var_nivel(sensor_nivel_values,"THOMASA")
-            #modemwifi.post_var_nivel(sensor_nivel_values,"AWS")
-            #banderaNivel=0
-            
-        if banderaAmb == 1:
-            banderaAmb=0
-            #modemwifi.post_var_ambientales(sensor_amb_values,"THOMASA")
-            modemwifi.post_var_ambientales(sensor_amb_values,"AWS")
-
-        if banderaConsumo == 1:
-            banderaConsumo=0
-            #modemwifi.post_var_consumo(sensor_consumo_values,"THOMASA")
-            modemwifi.post_var_consumo(sensor_consumo_values,"AWS")
-
-        if banderaNivel == 1:
-            banderaNivel=0
-            #modemwifi.post_var_nivel(sensor_nivel_values,"THOMASA")
-            modemwifi.post_var_nivel(sensor_nivel_values,"AWS")
-    except:
-        print('Error en la comunicacion enviar')
+    if banderaNivel == 1:
+        modemwifi.post_var_nivel(sensor_nivel_values,"THOMASA")
+        #modemwifi.post_var_nivel(sensor_nivel_values,"AWS")
+        banderaNivel=0
+    if banderaerrorenv == 1:
         return 1
     return 0
 
@@ -584,7 +596,7 @@ def run():
     banderaConsumo, banderaNivel, banderaAmb, reiniciarGPRSIF = 0,0,0,0
 
     contador_envio = 30
-    contador_reinicio = 1800
+    contador_reinicio = 600
 
     bandera_muestreo = True
     uart.init(9600, bits=8, parity=None, stop=1, tx=18, rx=19)
@@ -650,7 +662,7 @@ def run():
         contador_reinicio -= 1
         
         if contador_reinicio > 0:
-          #  wdt.feed()
+          wdt.feed()
           pass
         
 #         contador_envio -= 1  

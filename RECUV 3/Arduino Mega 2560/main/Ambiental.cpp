@@ -44,6 +44,8 @@ Ambiental::Ambiental(DHT dht, DAVIS6450 davis6450, FC28 fc28, DallasTemperature 
   //Trampa
   preci_actual1 = 0;
   preci_actual2 = 0;
+  preci_min1 = 0;
+  preci_min2 = 0;
   peso1 = 0;
   peso2 = 0;
   visibilidad = 0;

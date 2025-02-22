@@ -1,0 +1,17 @@
+name: Restrict Push Method to SSH
+on:
+  push:
+    branches:
+      - main  # Replace with your branch name
+
+jobs:
+  check-push-method:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check remote URL
+        run: |
+          REMOTE_URL=$(git remote get-url origin)
+          if [[ ! $REMOTE_URL =~ ^git@github\.com: ]]; then
+            echo "Error: Pushes must be done via SSH. Detected non-SSH remote URL: $REMOTE_URL"
+            exit 1
+          fi

@@ -23,7 +23,7 @@ CONNECTION_MODE  = "WIFI"
 #PASSWORD = "Univalle"
 
 SSID     = "GISMODEL"
-PASSWORD = "GISMODEL23"
+PASSWORD = "GISMODEL2023"
 
 
 global tramaRx, sensor_amb_values, gprs, modemwifi, bandera_muestreo
@@ -142,7 +142,7 @@ def interpreta_trama(tramaRx):
             pluvi     = tramaRx[7]
             bmp       = tramaRx[8]
 
-            rad_solar = float(rad_solar)
+            rad_solar = float(rad_solar) - 355
             fc28      = float(fc28)
             dht22_tmp = float(dht22_tmp)
             dht22_hum = float(dht22_hum)
@@ -376,50 +376,59 @@ def enviarGprs():
 def enviarWifi():
     global gprs, bandera_muestreo, modemwifi, CONNECTION_MODE
     global banderaConsumo, banderaNivel, banderaAmb
-    banderaerrorenv = 0
+    errorenv = 0
     if banderaAmb == 1:
         try:
             modemwifi.post_var_ambientales(sensor_amb_values,"THOMASA1")
         except:
-            print("Error en la comunicacion enviar")
-            banderaerrorenv = 1
+            errorenv = 1
         try:
             modemwifi.post_var_ambientales(sensor_amb_values,"THOMASA2")
         except:
-            print("Error en la comunicacion enviar")
-            banderaerrorenv = 1
+            errorenv = 1
         try:
             modemwifi.post_var_ambientales(sensor_amb_values,"CLIMATE")
         except:
-            print("Error en la comunicacion enviar")
-            banderaerrorenv = 1
+            errorenv = 1
         #modemwifi.post_var_ambientales(sensor_amb_values,"AWS")
-        banderaAmb=0
+        #banderaAmb=0
 
     if banderaConsumo == 1:
         try:
             modemwifi.post_var_consumo(sensor_consumo_values,"THOMASA1")
         except:
-            print('Error en la comunicacion enviar')
-            banderaerrorenv = 1
+            errorenv = 1
         try:
             modemwifi.post_var_consumo(sensor_consumo_values,"THOMASA2")
         except:
-            print('Error en la comunicacion enviar')
-            banderaerrorenv = 1
+            errorenv = 1
         try:
             modemwifi.post_var_consumo(sensor_consumo_values,"CLIMATE")
         except:
-            print('Error en la comunicacion enviar')
-            banderaerrorenv = 1
+            errorenv = 1
         #modemwifi.post_var_consumo(sensor_consumo_values,"AWS")
-        banderaConsumo=0
+        #banderaConsumo=0
 
-    if banderaNivel == 1:
-        modemwifi.post_var_nivel(sensor_nivel_values,"THOMASA")
-        #modemwifi.post_var_nivel(sensor_nivel_values,"AWS")
-        banderaNivel=0
-    if banderaerrorenv == 1:
+        if banderaNivel == 1:
+            modemwifi.post_var_nivel(sensor_nivel_values,"THOMASA1")
+            modemwifi.post_var_nivel(sensor_nivel_values,"THOMASA2")
+            modemwifi.post_var_nivel(sensor_nivel_values,"CLIMATE")
+            #modemwifi.post_var_nivel(sensor_nivel_values,"AWS")
+            #banderaNivel=0
+            
+        if banderaAmb == 1:
+            banderaAmb=0
+            #modemwifi.post_var_ambientales(sensor_amb_values,"THOMASA")
+
+        if banderaConsumo == 1:
+            banderaConsumo=0
+            #modemwifi.post_var_consumo(sensor_consumo_values,"THOMASA")
+
+        if banderaNivel == 1:
+            banderaNivel=0
+            #modemwifi.post_var_nivel(sensor_nivel_values,"THOMASA")
+    if errorenv == 1:
+        print('Error en la comunicacion enviar')
         return 1
     return 0
 
@@ -596,7 +605,7 @@ def run():
     banderaConsumo, banderaNivel, banderaAmb, reiniciarGPRSIF = 0,0,0,0
 
     contador_envio = 30
-    contador_reinicio = 600
+    contador_reinicio = 1800
 
     bandera_muestreo = True
     uart.init(9600, bits=8, parity=None, stop=1, tx=18, rx=19)

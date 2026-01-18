@@ -7,6 +7,7 @@ Tiempo::Tiempo(RTC_DS3231 rtc) : rtc(rtc) {
   hora = 0;
   minn = 0;
   seg = 0;
+  //rtc.adjust(DateTime(2026, 1, 16, 14, 38, 0));
 }
 
 Tiempo::~Tiempo() {

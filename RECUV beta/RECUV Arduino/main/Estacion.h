@@ -13,6 +13,7 @@
 #include "SEN15901.h"
 #include "DAVIS6450.h"
 #include <DHT_U.h>
+#include "DS18B20.h"
 
 class Estacion {
   protected:
@@ -20,6 +21,7 @@ class Estacion {
     SEN15901& sensor_sen15901;
     DAVIS6450& sensor_davis6450;
     DHT_Unified& sensor_dht;
+    DS18B20& sensor_ds18b20;
 
     std::map<String, String> medidas;
     std::vector<std::map<String, String>> internet;
@@ -28,13 +30,18 @@ class Estacion {
     int minuto_actual;
 
   public:
-    explicit Estacion(SEN15901&, DAVIS6450&, DHT_Unified&);
+    explicit Estacion(SEN15901&, 
+                      DAVIS6450&, 
+                      DHT_Unified&,
+                      DS18B20&
+                      );
     ~Estacion();
 
     Reloj& obtener_sensor_reloj();
     SEN15901& obtener_sensor_sen15901();
     DAVIS6450& obtener_sensor_davis6450();
     DHT_Unified& obtener_sensor_dht();
+    DS18B20& obtener_sensor_ds18b20();
     std::map<String, String>              obtener_medidas()        const;
     std::vector<std::map<String, String>> obtener_internet()       const;
     int obtener_iterador_internet() const;
@@ -45,6 +52,7 @@ class Estacion {
     void definir_sensor_sen15901 (const SEN15901&);
     void definir_sensor_davis6450 (const DAVIS6450&);
     void definir_sensor_dht(const DHT_Unified&);
+    void definir_sensor_ds18b20(const DS18B20&);
     void definir_medidas       (const std::map<String, String>&);
     void definir_internet      (const std::vector<std::map<String, String>>&);
     void definir_iterador_internet(const int);
@@ -72,9 +80,11 @@ class Estacion {
     void pedir_direccion_viento();
     void pedir_velocidad_viento_s();
     void pedir_velocidad_viento_m();
+    void pedir_temperatura_suelo();
 
     void realizar_medidas_ms();
     void realizar_medidas_s();
+    void realizar_medidas_10s();
     void realizar_medidas_m();
     void enviar_medidas();
     void enviar_muestra();

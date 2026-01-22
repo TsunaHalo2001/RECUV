@@ -2,6 +2,7 @@
 #define CONFIG_H
 
 #define VALOR_S 1000
+#define VALOR_10S 10
 #define VALOR_M 60
 
 //Estacion
@@ -97,5 +98,8 @@
 //DHT
 #define PIN_DHT 17
 #define TIPO_DHT DHT22
+
+//DS18B20
+#define PIN_DS18B20 15
 
 #endif

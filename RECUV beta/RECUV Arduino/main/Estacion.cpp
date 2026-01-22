@@ -2,10 +2,12 @@
 
 Estacion::Estacion(SEN15901& _sensor_sen15901,
                    DAVIS6450& _sensor_davis6450,
-                   DHT_Unified& _sensor_dht
+                   DHT_Unified& _sensor_dht,
+                   DS18B20& _sensor_ds18b20
     ) : sensor_sen15901(_sensor_sen15901),
         sensor_davis6450(_sensor_davis6450),
         sensor_dht(_sensor_dht),
+        sensor_ds18b20(_sensor_ds18b20),
         iterador_internet(0), 
         bandera_wifi(false) {
 
@@ -18,6 +20,7 @@ Estacion::Estacion(SEN15901& _sensor_sen15901,
   this->medidas["rad_solar"] = "None";
   this->medidas["dir_viento"] = "None";
   this->medidas["vel_viento"] = "None";
+  this->medidas["temperatura_suelo"] = "None";
 
   this->internet.push_back({{"SSID", "Tsuna's Infinix Note 40 Pro"}, {"PASSWORD", "joanisa21"}});
   this->internet.push_back({{"SSID", "Univalle"}, {"PASSWORD", "Univalle"}});
@@ -35,6 +38,7 @@ Estacion::~Estacion() = default;
 [[nodiscard]] SEN15901& Estacion::obtener_sensor_sen15901() { return this->sensor_sen15901; }
 [[nodiscard]] DAVIS6450& Estacion::obtener_sensor_davis6450() { return this->sensor_davis6450; }
 [[nodiscard]] DHT_Unified& Estacion::obtener_sensor_dht() { return this->sensor_dht; }
+[[nodiscard]] DS18B20& Estacion::obtener_sensor_ds18b20() { return this->sensor_ds18b20; }
 [[nodiscard]] std::map<String, String> Estacion::obtener_medidas() const { return this->medidas; }
 [[nodiscard]] std::vector<std::map<String, String>> Estacion::obtener_internet() const { return this->internet; }
 [[nodiscard]] int Estacion::obtener_iterador_internet() const { return this->iterador_internet; };
@@ -45,6 +49,7 @@ void Estacion::definir_sensor_reloj(const Reloj& _sensor_reloj) { this->sensor_r
 void Estacion::definir_sensor_sen15901(const SEN15901& _sensor_sen15901) { this->sensor_sen15901 = _sensor_sen15901; }
 void Estacion::definir_sensor_davis6450(const DAVIS6450& _sensor_davis6450) { this->sensor_davis6450 = _sensor_davis6450; }
 void Estacion::definir_sensor_dht(const DHT_Unified& _sensor_dht) { this->sensor_dht = _sensor_dht; }
+void Estacion::definir_sensor_ds18b20(const DS18B20& _sensor_ds18b20) { this->sensor_ds18b20 = _sensor_ds18b20; }
 void Estacion::definir_medidas(const std::map<String, String>& _medidas) { this->medidas = _medidas; }
 void Estacion::definir_internet(const std::vector<std::map<String, String>>& _internet) { this->internet = _internet; }
 void Estacion::definir_iterador_internet(const int _iterador_internet) { this->iterador_internet = _iterador_internet; }
@@ -121,8 +126,16 @@ void Estacion::pedir_velocidad_viento_m() {
   this->medidas["vel_viento"] = String(this->sensor_sen15901.pedir_velocidad_viento_m());
 }
 
+void Estacion::pedir_temperatura_suelo() {
+  float valor = this->sensor_ds18b20.pedir_temperatura();
+  if (valor < -120) return;
+  this->medidas["temperatura_suelo"] = String(valor);
+}
+
 void Estacion::realizar_medidas_ms() {
-  
+  if (!this->sensor_ds18b20.obtener_bandera_exito()) {
+    pedir_temperatura_suelo();
+  }
 }
 
 void Estacion::realizar_medidas_s() {
@@ -133,6 +146,10 @@ void Estacion::realizar_medidas_s() {
   pedir_radiacion_solar();
   pedir_direccion_viento();
   pedir_velocidad_viento_s();
+  pedir_temperatura_suelo();
+}
+
+void Estacion::realizar_medidas_10s() {
 }
 
 void Estacion::realizar_medidas_m() {
@@ -150,6 +167,7 @@ void Estacion::enviar_muestra() {
   LOG_INFO("Radiacion solar: " + this->medidas["rad_solar"]);
   LOG_INFO("Direccion del viento: " + this->medidas["dir_viento"]);
   LOG_INFO("Velocidad del viento: " + this->medidas["vel_viento"]);
+  LOG_INFO("Temperatura del suelo: " + this->medidas["temperatura_suelo"]);
 }
 
 void Estacion::inicializar_wifi() {

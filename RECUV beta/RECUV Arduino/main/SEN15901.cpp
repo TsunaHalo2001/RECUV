@@ -1,6 +1,6 @@
 #include "SEN15901.h"
 
-SEN15901* SEN15901::instance = nullptr;
+SEN15901* SEN15901::instancia = nullptr;
 
 // Inicialización del equipo SEN15901
 SEN15901::SEN15901(uint8_t _pin_viento, uint8_t _pin_lluvia, uint8_t _pin_veleta) : 
@@ -11,37 +11,51 @@ SEN15901::SEN15901(uint8_t _pin_viento, uint8_t _pin_lluvia, uint8_t _pin_veleta
     contador_lluvia(0),
     tiempo_viento(0),
     tiempo_lluvia(0) {
+  instancia = this;
+
+  pinMode(this->pin_veleta, INPUT);
   pinMode(this->pin_viento, INPUT_PULLUP); //Inicialización del pin para Anemometro
   pinMode(this->pin_lluvia, INPUT_PULLUP); //Inicialización del pin para Pluviometro
-  instance = this;
-  attachInterrupt(digitalPinToInterrupt(this->pin_viento), contador_viento_interrupcion, FALLING);
-  attachInterrupt(digitalPinToInterrupt(this->pin_lluvia), contador_lluvia_interrupcion, FALLING);
+
+  habilitar_interrupcion_viento();
+  habilitar_interrupcion_lluvia();
 }
 
 SEN15901::~SEN15901() = default;
 
+[[nodiscard]] uint8_t SEN15901::obtener_pin_viento() const { return this->pin_viento; }
+[[nodiscard]] uint8_t SEN15901::obtener_pin_lluvia() const { return this->pin_lluvia; }
+
+void SEN15901::definir_pin_viento(const uint8_t _pin_viento) { this->pin_viento = _pin_viento; }
+void SEN15901::definir_pin_lluvia(const uint8_t _pin_lluvia) { this->pin_lluvia = _pin_lluvia; }
+
 //Precipitación
-float SEN15901::pedir_precipitacion() {
+float SEN15901::pedir_precipitacion_s() {
   double precipitacion = this->contador_lluvia * SEN15901_MS_FACTOR_LLUVIA; // Conversión para precipitación
+  this->contador_lluvia = 0;
   return precipitacion;
 }
 
 //Velocidad del viento
 float SEN15901::pedir_velocidad_viento_s() {
   float velocidad_viento = this->contador_viento * SEN15901_MS_FACTOR_VIENTO;  // Conversión para velocidad del viento
+  this->contador_viento = 0;
   return velocidad_viento;
 }
 
 float SEN15901::pedir_velocidad_viento_m() {
   float velocidad_viento = this->contador_viento * SEN15901_MS_FACTOR_VIENTO / 60;  // Conversión para velocidad del viento
+  this->contador_viento = 0;
   return velocidad_viento;
 }
 
 float SEN15901::pedir_direccion_viento() {
-  int adc_value = analogRead(this->pin_veleta);
+  int valor_adc = analogRead(this->pin_veleta);
 
-  float v_dir = adc_value * SEN15901_ADC_FACTOR;
+  float v_dir = valor_adc * SEN15901_ADC_FACTOR;
 
+  delay(100);
+  
   if (v_dir >= (V_0_0_BOT ) && v_dir < (V_0_0_TOP)) return 0;
   else if (v_dir >= (V_22_5_BOT ) && v_dir < (V_22_5_TOP)) return 22.5;
   else if (v_dir >= (V_45_0_BOT ) && v_dir < (V_45_0_TOP)) return 45;
@@ -61,20 +75,34 @@ float SEN15901::pedir_direccion_viento() {
   else return 404;
 }
 
+void SEN15901::habilitar_interrupcion_viento() {
+  attachInterrupt(digitalPinToInterrupt(this->pin_viento), contador_viento_interrupcion, FALLING);
+}
+
+void SEN15901::habilitar_interrupcion_lluvia() {
+  attachInterrupt(digitalPinToInterrupt(this->pin_lluvia), contador_lluvia_interrupcion, FALLING);
+}
+
+void SEN15901::deshabilitar_interrupcion_viento() {
+  detachInterrupt(digitalPinToInterrupt(this->pin_viento));
+}
+
+void SEN15901::deshabilitar_interrupcion_lluvia() {
+  detachInterrupt(digitalPinToInterrupt(this->pin_lluvia));
+}
+
 void SEN15901::contador_lluvia_interrupcion() {
-  Serial.println("Lluvia");
-  if (!instance) return;
-  if (millis() - instance->tiempo_lluvia > 150) {
-    instance->contador_lluvia++;
-    instance->tiempo_lluvia = millis();
+  if (!instancia) return;
+  if (millis() - instancia->tiempo_lluvia > 150) {
+    instancia->contador_lluvia++;
+    instancia->tiempo_lluvia = millis();
   }
 }
 
 void SEN15901::contador_viento_interrupcion() {
-  Serial.println("Viento");
-  if (!instance) return;
-  if (millis() - instance->tiempo_viento > 150) {
-    instance->contador_viento++;
-    instance->tiempo_viento = millis();
+  if (!instancia) return;
+  if (millis() - instancia->tiempo_viento > 150) {
+    instancia->contador_viento++;
+    instancia->tiempo_viento = millis();
   }
 }

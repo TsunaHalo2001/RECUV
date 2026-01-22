@@ -2,6 +2,9 @@
 
 #include "Estacion.h"
 
+SEN15901* sen15901 = nullptr;
+DAVIS6450* davis6450 = nullptr;
+DHT_Unified* dht = nullptr;
 Estacion* estacion = nullptr;
 unsigned long tiempo_base_envio;
 unsigned long tiempo_base_internet;
@@ -47,6 +50,7 @@ void chequear_utc() {
 
 void setup() {
   Serial.begin(115200);
+  delay(2000);
 
   unsigned long tiempo_base = millis();
   tiempo_base_envio = tiempo_base;
@@ -57,9 +61,13 @@ void setup() {
   tiempo_base_muestra = tiempo_base;
   tiempo_actual = tiempo_base;
 
-  SEN15901 sen15901(4, 6, 5);
+  sen15901 = new SEN15901(PIN_VIENTO, PIN_PRECIPITACION, PIN_VELETA);
+  davis6450 = new DAVIS6450(PIN_RADIACION_SOLAR);
+  dht = new DHT_Unified(PIN_DHT, TIPO_DHT);
   estacion = new Estacion(
-    sen15901
+    *sen15901,
+    *davis6450,
+    *dht
   );
 }
 

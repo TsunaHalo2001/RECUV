@@ -10,6 +10,11 @@
 #define TIEMPO_SINCRONIZAR_UTC 600
 #define TIEMPO_MUESTRA 1
 
+#define PIN_VIENTO 4
+#define PIN_PRECIPITACION 6
+#define PIN_VELETA 5
+#define PIN_RADIACION_SOLAR 16
+
 //Reloj
 #define DESFASE_RTC 0
 #define UTC_Bogota 18000
@@ -85,5 +90,12 @@
 #define V_337_5_TOP V_0_0_BOT
 #define V_337_5 2.2
 #define V_337_5_BOT V_225_0_TOP
+
+//DAVIS6450
+#define DAVIS6450_ADC_FACTOR 2.93255132
+
+//DHT
+#define PIN_DHT 17
+#define TIPO_DHT DHT22
 
 #endif

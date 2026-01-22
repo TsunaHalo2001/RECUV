@@ -11,11 +11,15 @@
 
 #include "Reloj.h"
 #include "SEN15901.h"
+#include "DAVIS6450.h"
+#include <DHT_U.h>
 
 class Estacion {
   protected:
     Reloj sensor_reloj;
-    SEN15901 sensor_sen15901;
+    SEN15901& sensor_sen15901;
+    DAVIS6450& sensor_davis6450;
+    DHT_Unified& sensor_dht;
 
     std::map<String, String> medidas;
     std::vector<std::map<String, String>> internet;
@@ -24,11 +28,13 @@ class Estacion {
     int minuto_actual;
 
   public:
-    explicit Estacion(SEN15901);
+    explicit Estacion(SEN15901&, DAVIS6450&, DHT_Unified&);
     ~Estacion();
 
     Reloj& obtener_sensor_reloj();
     SEN15901& obtener_sensor_sen15901();
+    DAVIS6450& obtener_sensor_davis6450();
+    DHT_Unified& obtener_sensor_dht();
     std::map<String, String>              obtener_medidas()        const;
     std::vector<std::map<String, String>> obtener_internet()       const;
     int obtener_iterador_internet() const;
@@ -37,6 +43,8 @@ class Estacion {
 
     void definir_sensor_reloj  (const Reloj&);
     void definir_sensor_sen15901 (const SEN15901&);
+    void definir_sensor_davis6450 (const DAVIS6450&);
+    void definir_sensor_dht(const DHT_Unified&);
     void definir_medidas       (const std::map<String, String>&);
     void definir_internet      (const std::vector<std::map<String, String>>&);
     void definir_iterador_internet(const int);
@@ -50,7 +58,17 @@ class Estacion {
     bool obtener_bandera_tiempo_correcto() const;
     void definir_bandera_tiempo_correcto(const bool);
 
+    //SEN15901
+    void habilitar_interrupcion_viento();
+    void habilitar_interrupcion_lluvia();
+    void deshabilitar_interrupcion_viento();
+    void deshabilitar_interrupcion_lluvia();
+
     void pedir_tiempo();
+    void pedir_temperatura_ambiente();
+    void pedir_precipitacion();
+    void pedir_humedad_ambiente();
+    void pedir_radiacion_solar();
     void pedir_direccion_viento();
     void pedir_velocidad_viento_s();
     void pedir_velocidad_viento_m();

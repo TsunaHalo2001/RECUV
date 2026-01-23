@@ -85,6 +85,8 @@ void pedir_variables() {
     if (error) {
       LOG_ERROR("JSON parseado fallido: " + String(error.c_str()));
       http.end();
+      estacion->habilitar_interrupcion_viento();
+      estacion->habilitar_interrupcion_lluvia();
       return;
     }
 
@@ -92,6 +94,8 @@ void pedir_variables() {
     if (version == version_json) {
       LOG_JSON("La version de las variables es la misma: " + String(version));
       http.end();
+      estacion->habilitar_interrupcion_viento();
+      estacion->habilitar_interrupcion_lluvia();
       return;
     }
 
@@ -101,6 +105,9 @@ void pedir_variables() {
     tiempo_sincronizar_utc = doc["variables"]["tiempo_sincronizar_utc"];
 
     JsonArray urls = doc["post_urls"];
+
+    direcciones.clear();
+    banderas_envio.clear();
 
     for (int i = 0; i < urls.size(); i++) {
       direcciones.push_back(urls[i]);

@@ -102,6 +102,7 @@ void SEN15901::contador_lluvia_interrupcion() {
 void SEN15901::contador_viento_interrupcion() {
   if (!instancia) return;
   if (millis() - instancia->tiempo_viento > 150) {
+    Serial.println("Eo");
     instancia->contador_viento++;
     instancia->tiempo_viento = millis();
   }

@@ -68,7 +68,7 @@ Estacion::Estacion(SEN15901& _sensor_sen15901,
   this->sensor_dht.begin();
 
   this->sensor_bmp280.begin(BMP280_I2C_ALT_ADDR);
-  this->sensor_bmp280.setTimeStandby(TIME_STANDBY_500MS);
+  this->sensor_bmp280.setTimeStandby(TIME_STANDBY_125MS);
   this->sensor_bmp280.startNormalConversion();
 
   inicializar_wifi();
@@ -144,33 +144,33 @@ void Estacion::pedir_tiempo() {
 
 void Estacion::pedir_temperatura_ambiente() {
   sensors_event_t event;
-  if(isnan(event.temperature)) return;
+  this->sensor_dht.temperature().getEvent(&event);
   this->medidas["temperatura_ambiente"] += event.temperature;
   this->contador["temperatura_ambiente"]++;
 }
 
 void Estacion::pedir_precipitacion() {
-  this->medidas["rain"] = this->sensor_sen15901.pedir_precipitacion_s();
+  this->medidas["rain"] += this->sensor_sen15901.pedir_precipitacion_s();
   this->contador["rain"]++;
 }
 
 void Estacion::pedir_presion() {
   float temperatura, presion, altitud;
   if(!this->sensor_bmp280.getMeasurements(temperatura, presion, altitud)) return;
-  this->medidas["presion_atmos"] = presion;
+  this->medidas["presion_atmos"] += presion;
   this->contador["presion_atmos"]++;
 }
 
 void Estacion::pedir_humedad_ambiente() {
   sensors_event_t event;
   this->sensor_dht.humidity().getEvent(&event);
-  this->medidas["humedad_ambiente"] = event.relative_humidity;
+  this->medidas["humedad_ambiente"] += event.relative_humidity;
   this->contador["humedad_ambiente"]++;
 }
 
 void Estacion::pedir_radiacion_solar() {
   if (this->sensor_davis6450.obtener_bandera_espera()) return;
-  this->medidas["rad_solar"] = this->sensor_davis6450.pedir_radiacion_solar();
+  this->medidas["rad_solar"] += this->sensor_davis6450.pedir_radiacion_solar();
   this->contador["rad_solar"]++;
 }
 
@@ -179,25 +179,25 @@ void Estacion::pedir_direccion_viento() {
 }
 
 void Estacion::pedir_velocidad_viento_s() {
-  this->medidas["vel_viento"] = this->sensor_sen15901.pedir_velocidad_viento_s();
+  this->medidas["vel_viento"] += this->sensor_sen15901.pedir_velocidad_viento_s();
   this->contador["vel_viento"]++;
 }
 
 void Estacion::pedir_velocidad_viento_m() {
-  this->medidas["vel_viento"] = this->sensor_sen15901.pedir_velocidad_viento_m();
+  this->medidas["vel_viento"] += this->sensor_sen15901.pedir_velocidad_viento_m();
   this->contador["vel_viento"]++;
 }
 
 void Estacion::pedir_temperatura_suelo() {
   float valor = this->sensor_ds18b20.pedir_temperatura();
   if (valor < -120) return;
-  this->medidas["temperatura_suelo"] = valor;
+  this->medidas["temperatura_suelo"] += valor;
   this->contador["temperatura_suelo"]++;
 }
 
 void Estacion::pedir_humedad_suelo() {
   float valor = this->sensor_fc28.pedir_humedad();
-  this->medidas["humedad_suelo"] = valor;
+  this->medidas["humedad_suelo"] += valor;
   this->contador["humedad_suelo"]++;
 }
 

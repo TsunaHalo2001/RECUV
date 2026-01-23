@@ -4,7 +4,10 @@
     "http://45.5.164.26:80/2022/sigla/php/post_k18.php",
     "http://climate.gismodel.click/2022/sigla/php/post_k18.php",
     "http://192.168.46.4:80/2022/sigla/php/post_k18.php",
-    "http://192.168.46.6:80/2022/sigla/php/post_k18.php"
+    "http://192.168.46.6:80/2022/sigla/php/post_k18.php",
+
+"http://52.205.209.251:80/2022/sigla/php/post_k18.php"
+
   ],
 
   "variables": {
@@ -12,5 +15,5 @@
     "tiempo_sincronizar_utc" : 600
   },
 
-  "version": 1
+  "version": 2
 }

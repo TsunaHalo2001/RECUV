@@ -5,11 +5,15 @@
 #define VALOR_10S 10
 #define VALOR_M 60
 
+//I2C
+#define SDA_1 36
+#define SCL_1 37
+
 //Estacion
 #define TIEMPO_ENVIO_S 600
 #define TIEMPO_ESPERA_WIFI 5
 #define TIEMPO_SINCRONIZAR_UTC 600
-#define TIEMPO_MUESTRA 1
+#define TIEMPO_MUESTRA 10
 
 #define PIN_VIENTO 4
 #define PIN_PRECIPITACION 6
@@ -101,5 +105,9 @@
 
 //DS18B20
 #define PIN_DS18B20 15
+
+//FC28
+#define PIN_FC28 7
+#define FC28_FACTOR -0.02442002442002
 
 #endif

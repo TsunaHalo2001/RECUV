@@ -4,7 +4,6 @@
 #include "config.h"
 
 #include <Arduino.h>
-#include <stdint.h>
 #include "driver/adc.h"
 #include <esp_adc_cal.h>
 
@@ -12,23 +11,23 @@ class SEN15901 {
   protected:
     static SEN15901* instancia;
 
-    uint8_t pin_viento;
-    uint8_t pin_lluvia;
-    uint8_t pin_veleta;
+    int pin_viento;
+    int pin_lluvia;
+    int pin_veleta;
     volatile int contador_viento;
     volatile int contador_lluvia;
     unsigned long tiempo_viento;
     unsigned long tiempo_lluvia;
 
   public:
-    explicit SEN15901(uint8_t, uint8_t, uint8_t);//Inicialización
+    explicit SEN15901(int, int, int);//Inicialización
     ~SEN15901(); //LLamador de funciones de colección
 
-    uint8_t obtener_pin_viento() const;
-    uint8_t obtener_pin_lluvia() const;
+    int obtener_pin_viento() const;
+    int obtener_pin_lluvia() const;
 
-    void definir_pin_viento(const uint8_t);
-    void definir_pin_lluvia(const uint8_t);
+    void definir_pin_viento(const int);
+    void definir_pin_lluvia(const int);
 
     //Data collection
     float pedir_precipitacion_s();

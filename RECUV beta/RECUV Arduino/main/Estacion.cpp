@@ -3,24 +3,49 @@
 Estacion::Estacion(SEN15901& _sensor_sen15901,
                    DAVIS6450& _sensor_davis6450,
                    DHT_Unified& _sensor_dht,
-                   DS18B20& _sensor_ds18b20
+                   DS18B20& _sensor_ds18b20,
+                   BMP280_DEV& _sensor_bmp280,
+                   FC28& _sensor_fc28
     ) : sensor_sen15901(_sensor_sen15901),
         sensor_davis6450(_sensor_davis6450),
         sensor_dht(_sensor_dht),
         sensor_ds18b20(_sensor_ds18b20),
+        sensor_bmp280(_sensor_bmp280),
+        sensor_fc28(_sensor_fc28),
         iterador_internet(0), 
         bandera_wifi(false) {
 
-  this->medidas["fecha"] = "None";
-  this->medidas["hora"] = "None";
-  this->medidas["fecha_servidor"] = "None";
-  this->medidas["temperatura_ambiente"] = "None";
-  this->medidas["rain"] = "None";
-  this->medidas["humedad_ambiente"] = "None";
-  this->medidas["rad_solar"] = "None";
-  this->medidas["dir_viento"] = "None";
-  this->medidas["vel_viento"] = "None";
-  this->medidas["temperatura_suelo"] = "None";
+  this->medidas["temperatura_ambiente"] = 0.0;
+  this->medidas["rain"] = 0.0;
+  this->medidas["presion_atmos"] = 0.0;
+  this->medidas["humedad_ambiente"] = 0.0;
+  this->medidas["rad_solar"] = 0.0;
+  this->medidas["dir_viento"] = 0.0;
+  this->medidas["vel_viento"] = 0.0;
+  this->medidas["temperatura_suelo"] = 0.0;
+  this->medidas["humedad_suelo"] = 0.0;
+
+  this->contador["temperatura_ambiente"] = 0;
+  this->contador["rain"] = 0;
+  this->contador["presion_atmos"] = 0;
+  this->contador["humedad_ambiente"] = 0;
+  this->contador["rad_solar"] = 0;
+  this->contador["vel_viento"] = 0;
+  this->contador["temperatura_suelo"] = 0;
+  this->contador["humedad_suelo"] = 0;
+
+  this->trama["fecha"] = "None";
+  this->trama["hora"] = "None";
+  this->trama["fecha_servidor"] = "None";
+  this->trama["temperatura_ambiente"] = "None";
+  this->trama["rain"] = "None";
+  this->trama["presion_atmos"] = "None";
+  this->trama["humedad_ambiente"] = "None";
+  this->trama["rad_solar"] = "None";
+  this->trama["dir_viento"] = "None";
+  this->trama["vel_viento"] = "None";
+  this->trama["temperatura_suelo"] = "None";
+  this->trama["humedad_suelo"] = "None";
 
   this->internet.push_back({{"SSID", "Tsuna's Infinix Note 40 Pro"}, {"PASSWORD", "joanisa21"}});
   this->internet.push_back({{"SSID", "Univalle"}, {"PASSWORD", "Univalle"}});
@@ -28,6 +53,10 @@ Estacion::Estacion(SEN15901& _sensor_sen15901,
   this->internet.push_back({{"SSID", "WirelessNet"}, {"PASSWORD", "eeeeeeee"}});
 
   this->sensor_dht.begin();
+
+  this->sensor_bmp280.begin(BMP280_I2C_ALT_ADDR);
+  this->sensor_bmp280.setTimeStandby(TIME_STANDBY_500MS);
+  this->sensor_bmp280.startNormalConversion();
 
   inicializar_wifi();
 }
@@ -39,7 +68,11 @@ Estacion::~Estacion() = default;
 [[nodiscard]] DAVIS6450& Estacion::obtener_sensor_davis6450() { return this->sensor_davis6450; }
 [[nodiscard]] DHT_Unified& Estacion::obtener_sensor_dht() { return this->sensor_dht; }
 [[nodiscard]] DS18B20& Estacion::obtener_sensor_ds18b20() { return this->sensor_ds18b20; }
-[[nodiscard]] std::map<String, String> Estacion::obtener_medidas() const { return this->medidas; }
+[[nodiscard]] BMP280_DEV& Estacion::obtener_sensor_bmp280() { return this->sensor_bmp280; }
+[[nodiscard]] FC28& Estacion::obtener_sensor_fc28() { return this->sensor_fc28; }
+[[nodiscard]] std::map<String, float> Estacion::obtener_medidas() const { return this->medidas; }
+[[nodiscard]] std::map<String, int> Estacion::obtener_contador() const { return this->contador; }
+[[nodiscard]] std::map<String, String> Estacion::obtener_trama() const { return this->trama; }
 [[nodiscard]] std::vector<std::map<String, String>> Estacion::obtener_internet() const { return this->internet; }
 [[nodiscard]] int Estacion::obtener_iterador_internet() const { return this->iterador_internet; };
 [[nodiscard]] bool Estacion::obtener_bandera_wifi() const { return this->bandera_wifi; }
@@ -50,7 +83,10 @@ void Estacion::definir_sensor_sen15901(const SEN15901& _sensor_sen15901) { this-
 void Estacion::definir_sensor_davis6450(const DAVIS6450& _sensor_davis6450) { this->sensor_davis6450 = _sensor_davis6450; }
 void Estacion::definir_sensor_dht(const DHT_Unified& _sensor_dht) { this->sensor_dht = _sensor_dht; }
 void Estacion::definir_sensor_ds18b20(const DS18B20& _sensor_ds18b20) { this->sensor_ds18b20 = _sensor_ds18b20; }
-void Estacion::definir_medidas(const std::map<String, String>& _medidas) { this->medidas = _medidas; }
+void Estacion::definir_sensor_fc28(const FC28& _sensor_fc28) { this->sensor_fc28 = _sensor_fc28; }
+void Estacion::definir_medidas(const std::map<String, float>& _medidas) { this->medidas = _medidas; }
+void Estacion::definir_contador(const std::map<String, int>& _contador) { this->contador = _contador; }
+void Estacion::definir_trama(const std::map<String, String>& _trama) { this->trama = _trama; }
 void Estacion::definir_internet(const std::vector<std::map<String, String>>& _internet) { this->internet = _internet; }
 void Estacion::definir_iterador_internet(const int _iterador_internet) { this->iterador_internet = _iterador_internet; }
 void Estacion::definir_bandera_wifi(const bool _bandera_wifi) { this->bandera_wifi = _bandera_wifi; }
@@ -88,48 +124,59 @@ void Estacion::deshabilitar_interrupcion_lluvia() {
 
 void Estacion::pedir_tiempo() {
   this->minuto_actual = this->sensor_reloj.obtener_minuto();
-  this->medidas["fecha"] = this->sensor_reloj.obtener_tiempo();
-  this->medidas["hora"] = this->medidas["fecha"];
-  this->medidas["fecha_servidor"] = this->medidas["fecha"];
+  this->trama["fecha"] = this->sensor_reloj.obtener_tiempo();
+  this->trama["hora"] = this->trama["fecha"];
+  this->trama["fecha_servidor"] = this->trama["fecha"];
 }
 
 void Estacion::pedir_temperatura_ambiente() {
   sensors_event_t event;
   this->sensor_dht.temperature().getEvent(&event);
-  this->medidas["temperatura_ambiente"] = String(event.temperature);
+  this->medidas["temperatura_ambiente"] = event.temperature;
 }
 
 void Estacion::pedir_precipitacion() {
-  this->medidas["rain"] = String(this->sensor_sen15901.pedir_precipitacion_s());
+  this->medidas["rain"] = this->sensor_sen15901.pedir_precipitacion_s();
+}
+
+void Estacion::pedir_presion() {
+  float temperatura, presion, altitud;
+  if(!this->sensor_bmp280.getMeasurements(temperatura, presion, altitud)) return;
+  this->medidas["presion_atmos"] = presion;
 }
 
 void Estacion::pedir_humedad_ambiente() {
   sensors_event_t event;
   this->sensor_dht.humidity().getEvent(&event);
-  this->medidas["humedad_ambiente"] = String(event.relative_humidity);
+  this->medidas["humedad_ambiente"] = event.relative_humidity;
 }
 
 void Estacion::pedir_radiacion_solar() {
   if (this->sensor_davis6450.obtener_bandera_espera()) return;
-  this->medidas["rad_solar"] = String(this->sensor_davis6450.pedir_radiacion_solar());
+  this->medidas["rad_solar"] = this->sensor_davis6450.pedir_radiacion_solar();
 }
 
 void Estacion::pedir_direccion_viento() {
-  this->medidas["dir_viento"] = String(this->sensor_sen15901.pedir_direccion_viento());
+  this->medidas["dir_viento"] = this->sensor_sen15901.pedir_direccion_viento();
 }
 
 void Estacion::pedir_velocidad_viento_s() {
-  this->medidas["vel_viento"] = String(this->sensor_sen15901.pedir_velocidad_viento_s());
+  this->medidas["vel_viento"] = this->sensor_sen15901.pedir_velocidad_viento_s();
 }
 
 void Estacion::pedir_velocidad_viento_m() {
-  this->medidas["vel_viento"] = String(this->sensor_sen15901.pedir_velocidad_viento_m());
+  this->medidas["vel_viento"] = this->sensor_sen15901.pedir_velocidad_viento_m();
 }
 
 void Estacion::pedir_temperatura_suelo() {
   float valor = this->sensor_ds18b20.pedir_temperatura();
   if (valor < -120) return;
-  this->medidas["temperatura_suelo"] = String(valor);
+  this->medidas["temperatura_suelo"] = valor;
+}
+
+void Estacion::pedir_humedad_suelo() {
+  float valor = this->sensor_fc28.pedir_humedad();
+  this->medidas["humedad_suelo"] = valor;
 }
 
 void Estacion::realizar_medidas_ms() {
@@ -142,11 +189,13 @@ void Estacion::realizar_medidas_s() {
   pedir_tiempo();
   pedir_temperatura_ambiente();
   pedir_precipitacion();
+  pedir_presion();
   pedir_humedad_ambiente();
   pedir_radiacion_solar();
   pedir_direccion_viento();
   pedir_velocidad_viento_s();
   pedir_temperatura_suelo();
+  pedir_humedad_suelo();
 }
 
 void Estacion::realizar_medidas_10s() {
@@ -160,14 +209,16 @@ void Estacion::enviar_medidas() {
 }
 
 void Estacion::enviar_muestra() {
-  LOG_INFO("Tiempo: " + this->medidas["fecha"]);
-  LOG_INFO("Temperatura ambiente: " + this->medidas["temperatura_ambiente"]);
-  LOG_INFO("Precipitacion: " + this->medidas["rain"]);
-  LOG_INFO("Humedad ambiente: " + this->medidas["humedad_ambiente"]);
-  LOG_INFO("Radiacion solar: " + this->medidas["rad_solar"]);
-  LOG_INFO("Direccion del viento: " + this->medidas["dir_viento"]);
-  LOG_INFO("Velocidad del viento: " + this->medidas["vel_viento"]);
-  LOG_INFO("Temperatura del suelo: " + this->medidas["temperatura_suelo"]);
+  LOG_INFO("Tiempo: " + this->trama["fecha"]);
+  LOG_INFO("Temperatura ambiente: " + String(this->medidas["temperatura_ambiente"]));
+  LOG_INFO("Precipitacion: " + String(this->medidas["rain"]));
+  LOG_INFO("Presion atmosferica: " + String(this->medidas["presion_atmos"]));
+  LOG_INFO("Humedad ambiente: " + String(this->medidas["humedad_ambiente"]));
+  LOG_INFO("Radiacion solar: " + String(this->medidas["rad_solar"]));
+  LOG_INFO("Direccion del viento: " + String(this->medidas["dir_viento"]));
+  LOG_INFO("Velocidad del viento: " + String(this->medidas["vel_viento"]));
+  LOG_INFO("Temperatura del suelo: " + String(this->medidas["temperatura_suelo"]));
+  LOG_INFO("Humedad del suelo: " + String(this->medidas["humedad_suelo"]));
 }
 
 void Estacion::inicializar_wifi() {

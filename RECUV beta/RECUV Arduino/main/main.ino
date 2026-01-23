@@ -6,6 +6,8 @@ SEN15901* sen15901 = nullptr;
 DAVIS6450* davis6450 = nullptr;
 DHT_Unified* dht = nullptr;
 DS18B20* ds18b20 = nullptr;
+BMP280_DEV* bmp280 = nullptr;
+FC28* fc28 = nullptr;
 Estacion* estacion = nullptr;
 
 unsigned long tiempo_base_envio;
@@ -67,11 +69,15 @@ void setup() {
   davis6450 = new DAVIS6450(PIN_RADIACION_SOLAR);
   dht = new DHT_Unified(PIN_DHT, TIPO_DHT);
   ds18b20 = new DS18B20(PIN_DS18B20);
+  bmp280 = new BMP280_DEV(SDA_1, SCL_1);
+  fc28 = new FC28(PIN_FC28);
   estacion = new Estacion(
     *sen15901,
     *davis6450,
     *dht,
-    *ds18b20
+    *ds18b20,
+    *bmp280,
+    *fc28
   );
 }
 

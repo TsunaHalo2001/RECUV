@@ -3,7 +3,7 @@
 SEN15901* SEN15901::instancia = nullptr;
 
 // Inicialización del equipo SEN15901
-SEN15901::SEN15901(uint8_t _pin_viento, uint8_t _pin_lluvia, uint8_t _pin_veleta) : 
+SEN15901::SEN15901(int _pin_viento, int _pin_lluvia, int _pin_veleta) : 
     pin_viento(_pin_viento), 
     pin_lluvia(_pin_lluvia), 
     pin_veleta(_pin_veleta),
@@ -23,11 +23,11 @@ SEN15901::SEN15901(uint8_t _pin_viento, uint8_t _pin_lluvia, uint8_t _pin_veleta
 
 SEN15901::~SEN15901() = default;
 
-[[nodiscard]] uint8_t SEN15901::obtener_pin_viento() const { return this->pin_viento; }
-[[nodiscard]] uint8_t SEN15901::obtener_pin_lluvia() const { return this->pin_lluvia; }
+[[nodiscard]] int SEN15901::obtener_pin_viento() const { return this->pin_viento; }
+[[nodiscard]] int SEN15901::obtener_pin_lluvia() const { return this->pin_lluvia; }
 
-void SEN15901::definir_pin_viento(const uint8_t _pin_viento) { this->pin_viento = _pin_viento; }
-void SEN15901::definir_pin_lluvia(const uint8_t _pin_lluvia) { this->pin_lluvia = _pin_lluvia; }
+void SEN15901::definir_pin_viento(const int _pin_viento) { this->pin_viento = _pin_viento; }
+void SEN15901::definir_pin_lluvia(const int _pin_lluvia) { this->pin_lluvia = _pin_lluvia; }
 
 //Precipitación
 float SEN15901::pedir_precipitacion_s() {

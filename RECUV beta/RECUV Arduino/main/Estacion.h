@@ -14,6 +14,9 @@
 #include "DAVIS6450.h"
 #include <DHT_U.h>
 #include "DS18B20.h"
+#include <Wire.h>
+#include <BMP280_DEV.h>
+#include "FC28.h"
 
 class Estacion {
   protected:
@@ -22,8 +25,12 @@ class Estacion {
     DAVIS6450& sensor_davis6450;
     DHT_Unified& sensor_dht;
     DS18B20& sensor_ds18b20;
+    BMP280_DEV& sensor_bmp280;
+    FC28& sensor_fc28;
 
-    std::map<String, String> medidas;
+    std::map<String, float> medidas;
+    std::map<String, int> contador;
+    std::map<String, String> trama;
     std::vector<std::map<String, String>> internet;
     int iterador_internet;
     bool bandera_wifi;
@@ -33,7 +40,9 @@ class Estacion {
     explicit Estacion(SEN15901&, 
                       DAVIS6450&, 
                       DHT_Unified&,
-                      DS18B20&
+                      DS18B20&,
+                      BMP280_DEV&,
+                      FC28&
                       );
     ~Estacion();
 
@@ -42,7 +51,11 @@ class Estacion {
     DAVIS6450& obtener_sensor_davis6450();
     DHT_Unified& obtener_sensor_dht();
     DS18B20& obtener_sensor_ds18b20();
-    std::map<String, String>              obtener_medidas()        const;
+    BMP280_DEV& obtener_sensor_bmp280();
+    FC28& obtener_sensor_fc28();
+    std::map<String, float> obtener_medidas() const;
+    std::map<String, int> obtener_contador() const;
+    std::map<String, String>              obtener_trama()        const;
     std::vector<std::map<String, String>> obtener_internet()       const;
     int obtener_iterador_internet() const;
     bool obtener_bandera_wifi() const;
@@ -53,7 +66,10 @@ class Estacion {
     void definir_sensor_davis6450 (const DAVIS6450&);
     void definir_sensor_dht(const DHT_Unified&);
     void definir_sensor_ds18b20(const DS18B20&);
-    void definir_medidas       (const std::map<String, String>&);
+    void definir_sensor_fc28(const FC28&);
+    void definir_medidas (const std::map<String, float>&);
+    void definir_contador (const std::map<String, int>&);
+    void definir_trama       (const std::map<String, String>&);
     void definir_internet      (const std::vector<std::map<String, String>>&);
     void definir_iterador_internet(const int);
     void definir_bandera_wifi(const bool);
@@ -75,12 +91,14 @@ class Estacion {
     void pedir_tiempo();
     void pedir_temperatura_ambiente();
     void pedir_precipitacion();
+    void pedir_presion();
     void pedir_humedad_ambiente();
     void pedir_radiacion_solar();
     void pedir_direccion_viento();
     void pedir_velocidad_viento_s();
     void pedir_velocidad_viento_m();
     void pedir_temperatura_suelo();
+    void pedir_humedad_suelo();
 
     void realizar_medidas_ms();
     void realizar_medidas_s();

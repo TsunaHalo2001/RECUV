@@ -6,7 +6,11 @@
 #define VALOR_M   60
 
 #define VERSION_JSON 1
-#define VARIABLES_API ""
+#define VARIABLES_API "https://raw.githubusercontent.com/TsunaHalo2001/RECUV/refs/heads/main/src/json/k18/variables.json"
+
+//SERIAL
+#define RX_1 3
+#define TX_1 9
 
 //I2C
 #define SDA_1 36
@@ -15,7 +19,7 @@
 //Estacion
 #define TIEMPO_ENVIO_S         600
 #define TIEMPO_ESPERA_WIFI     5
-#define TIEMPO_SINCRONIZAR_UTC 600
+#define TIEMPO_SINCRONIZAR_UTC 1800
 #define TIEMPO_MUESTRA         10
 
 #define PIN_VIENTO          4

@@ -24,6 +24,11 @@ Estacion::Estacion(SEN15901& _sensor_sen15901,
   this->medidas["vel_viento"] = 0.0;
   this->medidas["temperatura_suelo"] = 0.0;
   this->medidas["humedad_suelo"] = 0.0;
+  this->medidas["extin_visual"] = 0.0;
+  this->medidas["peso_malla1"] = 0.0;
+  this->medidas["peso_malla2"] = 0.0;
+  this->medidas["rainh1"] = 0.0;
+  this->medidas["rainh2"] = 0.0;
 
   this->contador["temperatura_ambiente"] = 1;
   this->contador["rain"] = 1;
@@ -33,19 +38,27 @@ Estacion::Estacion(SEN15901& _sensor_sen15901,
   this->contador["vel_viento"] = 1;
   this->contador["temperatura_suelo"] = 1;
   this->contador["humedad_suelo"] = 1;
+  this->contador["arduino"] = 1;
 
-  this->trama["fecha"] = "None";
-  this->trama["hora"] = "None";
-  this->trama["fecha_servidor"] = "None";
-  this->trama["temperatura_ambiente"] = "None";
-  this->trama["rain"] = "None";
-  this->trama["presion_atmos"] = "None";
-  this->trama["humedad_ambiente"] = "None";
-  this->trama["rad_solar"] = "None";
-  this->trama["dir_viento"] = "None";
-  this->trama["vel_viento"] = "None";
-  this->trama["temperatura_suelo"] = "None";
-  this->trama["humedad_suelo"] = "None";
+  this->trama["fecha"] = "0.0";
+  this->trama["hora"] = "0.0";
+  this->trama["fecha_servidor"] = "0.0";
+  this->trama["voltaje"] = "0.0";
+  this->trama["corriente"] = "0.0";
+  this->trama["temperatura_ambiente"] = "0.0";
+  this->trama["rain"] = "0.0";
+  this->trama["presion_atmos"] = "0.0";
+  this->trama["humedad_ambiente"] = "0.0";
+  this->trama["rad_solar"] = "0.0";
+  this->trama["dir_viento"] = "0.0";
+  this->trama["vel_viento"] = "0.0";
+  this->trama["temperatura_suelo"] = "0.0";
+  this->trama["humedad_suelo"] = "0.0";
+  this->trama["extin_visual"] = "0.0";
+  this->trama["peso_malla1"] = "0.0";
+  this->trama["peso_malla2"] = "0.0";
+  this->trama["rainh1"] = "0.0";
+  this->trama["rainh2"] = "0.0";
 
   this->internet.push_back({{"SSID", "Tsuna's Infinix Note 40 Pro"}, {"PASSWORD", "joanisa21"}});
   this->internet.push_back({{"SSID", "Univalle"}, {"PASSWORD", "Univalle"}});
@@ -213,8 +226,93 @@ void Estacion::realizar_medidas_10s() {
 void Estacion::realizar_medidas_m() {
 }
 
-void Estacion::enviar_medidas() {
-  LOG_ADVER("No hay metodo de envio");
+bool Estacion::enviar_medidas(String url) {
+  this->medidas["temperatura_ambiente"] = this->medidas["temperatura_ambiente"] / this->contador["temperatura_ambiente"];
+  this->medidas["rain"] = this->medidas["rain"] / this->contador["rain"];
+  this->medidas["presion_atmos"] = this->medidas["presion_atmos"] / this->contador["presion_atmos"];
+  this->medidas["humedad_ambiente"] = this->medidas["humedad_ambiente"] / this->contador["humedad_ambiente"];
+  this->medidas["rad_solar"] = this->medidas["rad_solar"] / this->contador["rad_solar"];
+  this->medidas["dir_viento"] = this->medidas["dir_viento"];
+  this->medidas["vel_viento"] = this->medidas["vel_viento"] / this->contador["vel_viento"];
+  this->medidas["temperatura_suelo"] = this->medidas["temperatura_suelo"] / this->contador["temperatura_suelo"];
+  this->medidas["humedad_suelo"] = this->medidas["humedad_suelo"] / this->contador["humedad_suelo"];
+  this->medidas["extin_visual"] = this->medidas["extin_visual"] / this->contador["arduino"];
+  this->medidas["peso_malla1"] = this->medidas["peso_malla1"] / this->contador["arduino"];
+  this->medidas["peso_malla2"] = this->medidas["peso_malla2"] / this->contador["arduino"];
+  this->medidas["rainh1"] = this->medidas["rainh1"] / this->contador["arduino"];
+  this->medidas["rainh2"] = this->medidas["rainh2"] / this->contador["arduino"];
+
+  this->contador["temperatura_ambiente"] = 1;
+  this->contador["rain"] = 1;
+  this->contador["presion_atmos"] = 1;
+  this->contador["humedad_ambiente"] = 1;
+  this->contador["rad_solar"] = 1;
+  this->contador["vel_viento"] = 1;
+  this->contador["temperatura_suelo"] = 1;
+  this->contador["humedad_suelo"] = 1;
+  this->contador["arduino"] = 1;
+
+  this->trama["temperatura_ambiente"] = String(this->medidas["temperatura_ambiente"] / this->contador["temperatura_ambiente"]);
+  this->trama["rain"] = String(this->medidas["rain"] / this->contador["rain"]);
+  this->trama["presion_atmos"] = String(this->medidas["presion_atmos"] / this->contador["presion_atmos"]);
+  this->trama["humedad_ambiente"] = String(this->medidas["humedad_ambiente"] / this->contador["humedad_ambiente"]);
+  this->trama["rad_solar"] = String(this->medidas["rad_solar"] / this->contador["rad_solar"]);
+  this->trama["dir_viento"] = String(this->medidas["dir_viento"]);
+  this->trama["vel_viento"] = String(this->medidas["vel_viento"] / this->contador["vel_viento"]);
+  this->trama["temperatura_suelo"] = String(this->medidas["temperatura_suelo"] / this->contador["temperatura_suelo"]);
+  this->trama["humedad_suelo"] = String(this->medidas["humedad_suelo"] / this->contador["humedad_suelo"]);
+  this->trama["extin_visual"] = String(this->medidas["extin_visual"] / this->contador["arduino"]);
+  this->trama["peso_malla1"] = String(this->medidas["peso_malla1"] / this->contador["arduino"]);
+  this->trama["peso_malla2"] = String(this->medidas["peso_malla2"] / this->contador["arduino"]);
+  this->trama["rainh1"] = String(this->medidas["rainh1"] / this->contador["arduino"]);
+  this->trama["rainh2"] = String(this->medidas["rainh2"] / this->contador["arduino"]);
+
+  JsonDocument doc;
+
+  doc["fecha"] = this->trama["fecha"];
+  doc["hora"] = this->trama["hora"];
+  doc["fecha_servidor"] = this->trama["fecha_servidor"];
+  doc["voltaje"] = this->trama["voltaje"];
+  doc["corriente"] = this->trama["corriente"];
+  doc["temperatura_ambiente"] = this->trama["temperatura_ambiente"];
+  doc["rain"] = this->trama["rain"];
+  doc["presion_atmos"] = this->trama["presion_atmos"];
+  doc["humedad_ambiente"] = this->trama["humedad_ambiente"];
+  doc["rad_solar"] = this->trama["rad_solar"];
+  doc["dir_viento"] = this->trama["dir_viento"];
+  doc["vel_viento"] = this->trama["vel_viento"];
+  doc["temperatura_suelo"] = this->trama["temperatura_suelo"];
+  doc["humedad_suelo"] = this->trama["humedad_suelo"];
+  doc["extin_visual"] = this->trama["extin_visual"];
+  doc["peso_malla1"] = this->trama["peso_malla1"];
+  doc["peso_malla2"] = this->trama["peso_malla2"];
+  doc["rainh1"] = this->trama["rainh1"];
+  doc["rainh2"] = this->trama["rainh2"];
+
+  String jsonString;
+  serializeJson(doc, jsonString);
+
+  HTTPClient http;
+  http.begin(url);
+
+  int code = http.POST(jsonString);
+
+  bool retornable;
+
+  if (code > 0) {
+      String response = http.getString();
+      Serial.println("HTTP Response code: " + String(code));
+      Serial.println("Response: " + response);
+      if (code == 200) retornable = false;
+      else retornable = true;
+    } else {
+      Serial.print("Error on sending POST: ");
+      Serial.println(code);
+      retornable = true;
+    }
+
+    http.end();  // Free resources
+    return retornable;
 }
 
 void Estacion::enviar_muestra() {
@@ -230,6 +328,11 @@ void Estacion::enviar_muestra() {
   muestra["vel_viento"] = String(this->medidas["vel_viento"] / this->contador["vel_viento"]);
   muestra["temperatura_suelo"] = String(this->medidas["temperatura_suelo"] / this->contador["temperatura_suelo"]);
   muestra["humedad_suelo"] = String(this->medidas["humedad_suelo"] / this->contador["humedad_suelo"]);
+  muestra["extin_visual"] = String(this->medidas["extin_visual"] / this->contador["arduino"]);
+  muestra["peso_malla1"] = String(this->medidas["peso_malla1"] / this->contador["arduino"]);
+  muestra["peso_malla2"] = String(this->medidas["peso_malla2"] / this->contador["arduino"]);
+  muestra["rainh1"] = String(this->medidas["rainh1"] / this->contador["arduino"]);
+  muestra["rainh2"] = String(this->medidas["rainh2"] / this->contador["arduino"]);
 
   LOG_INFO("Tiempo: " + muestra["fecha"]);
   LOG_INFO("Temperatura ambiente: " + muestra["temperatura_ambiente"]);
@@ -241,6 +344,11 @@ void Estacion::enviar_muestra() {
   LOG_INFO("Velocidad del viento: " + muestra["vel_viento"]);
   LOG_INFO("Temperatura del suelo: " + muestra["temperatura_suelo"]);
   LOG_INFO("Humedad del suelo: " + muestra["humedad_suelo"]);
+  LOG_INFO("Extincion visual: " + muestra["extin_visual"]);
+  LOG_INFO("Peso Malla 1: " + muestra["peso_malla1"]);
+  LOG_INFO("Peso Malla 2: " + muestra["peso_malla2"]);
+  LOG_INFO("Pluviometro 1: " + muestra["rainh1"]);
+  LOG_INFO("Pluviometro 2: " + muestra["rainh2"]);
 }
 
 void Estacion::inicializar_wifi() {

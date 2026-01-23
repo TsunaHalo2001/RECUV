@@ -41,8 +41,7 @@ void Reloj::pedir_utc() {
     this->bandera_tiempo_correcto = true;
     WiFiClient *client = http.getStreamPtr();
 
-    const size_t capacity = JSON_OBJECT_SIZE(15) + 300;
-    DynamicJsonDocument doc(capacity);
+    JsonDocument doc;
 
     DeserializationError error = deserializeJson(doc, *client);
 

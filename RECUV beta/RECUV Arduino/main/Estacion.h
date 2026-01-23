@@ -104,7 +104,7 @@ class Estacion {
     void realizar_medidas_s();
     void realizar_medidas_10s();
     void realizar_medidas_m();
-    void enviar_medidas();
+    bool enviar_medidas(String);
     void enviar_muestra();
 
     void inicializar_wifi();

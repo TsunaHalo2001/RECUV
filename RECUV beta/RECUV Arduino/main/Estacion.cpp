@@ -25,14 +25,14 @@ Estacion::Estacion(SEN15901& _sensor_sen15901,
   this->medidas["temperatura_suelo"] = 0.0;
   this->medidas["humedad_suelo"] = 0.0;
 
-  this->contador["temperatura_ambiente"] = 0;
-  this->contador["rain"] = 0;
-  this->contador["presion_atmos"] = 0;
-  this->contador["humedad_ambiente"] = 0;
-  this->contador["rad_solar"] = 0;
-  this->contador["vel_viento"] = 0;
-  this->contador["temperatura_suelo"] = 0;
-  this->contador["humedad_suelo"] = 0;
+  this->contador["temperatura_ambiente"] = 1;
+  this->contador["rain"] = 1;
+  this->contador["presion_atmos"] = 1;
+  this->contador["humedad_ambiente"] = 1;
+  this->contador["rad_solar"] = 1;
+  this->contador["vel_viento"] = 1;
+  this->contador["temperatura_suelo"] = 1;
+  this->contador["humedad_suelo"] = 1;
 
   this->trama["fecha"] = "None";
   this->trama["hora"] = "None";
@@ -131,29 +131,34 @@ void Estacion::pedir_tiempo() {
 
 void Estacion::pedir_temperatura_ambiente() {
   sensors_event_t event;
-  this->sensor_dht.temperature().getEvent(&event);
-  this->medidas["temperatura_ambiente"] = event.temperature;
+  if(isnan(event.temperature)) return;
+  this->medidas["temperatura_ambiente"] += event.temperature;
+  this->contador["temperatura_ambiente"]++;
 }
 
 void Estacion::pedir_precipitacion() {
   this->medidas["rain"] = this->sensor_sen15901.pedir_precipitacion_s();
+  this->contador["rain"]++;
 }
 
 void Estacion::pedir_presion() {
   float temperatura, presion, altitud;
   if(!this->sensor_bmp280.getMeasurements(temperatura, presion, altitud)) return;
   this->medidas["presion_atmos"] = presion;
+  this->contador["presion_atmos"]++;
 }
 
 void Estacion::pedir_humedad_ambiente() {
   sensors_event_t event;
   this->sensor_dht.humidity().getEvent(&event);
   this->medidas["humedad_ambiente"] = event.relative_humidity;
+  this->contador["humedad_ambiente"]++;
 }
 
 void Estacion::pedir_radiacion_solar() {
   if (this->sensor_davis6450.obtener_bandera_espera()) return;
   this->medidas["rad_solar"] = this->sensor_davis6450.pedir_radiacion_solar();
+  this->contador["rad_solar"]++;
 }
 
 void Estacion::pedir_direccion_viento() {
@@ -162,21 +167,25 @@ void Estacion::pedir_direccion_viento() {
 
 void Estacion::pedir_velocidad_viento_s() {
   this->medidas["vel_viento"] = this->sensor_sen15901.pedir_velocidad_viento_s();
+  this->contador["vel_viento"]++;
 }
 
 void Estacion::pedir_velocidad_viento_m() {
   this->medidas["vel_viento"] = this->sensor_sen15901.pedir_velocidad_viento_m();
+  this->contador["vel_viento"]++;
 }
 
 void Estacion::pedir_temperatura_suelo() {
   float valor = this->sensor_ds18b20.pedir_temperatura();
   if (valor < -120) return;
   this->medidas["temperatura_suelo"] = valor;
+  this->contador["temperatura_suelo"]++;
 }
 
 void Estacion::pedir_humedad_suelo() {
   float valor = this->sensor_fc28.pedir_humedad();
   this->medidas["humedad_suelo"] = valor;
+  this->contador["humedad_suelo"]++;
 }
 
 void Estacion::realizar_medidas_ms() {
@@ -209,16 +218,29 @@ void Estacion::enviar_medidas() {
 }
 
 void Estacion::enviar_muestra() {
-  LOG_INFO("Tiempo: " + this->trama["fecha"]);
-  LOG_INFO("Temperatura ambiente: " + String(this->medidas["temperatura_ambiente"]));
-  LOG_INFO("Precipitacion: " + String(this->medidas["rain"]));
-  LOG_INFO("Presion atmosferica: " + String(this->medidas["presion_atmos"]));
-  LOG_INFO("Humedad ambiente: " + String(this->medidas["humedad_ambiente"]));
-  LOG_INFO("Radiacion solar: " + String(this->medidas["rad_solar"]));
-  LOG_INFO("Direccion del viento: " + String(this->medidas["dir_viento"]));
-  LOG_INFO("Velocidad del viento: " + String(this->medidas["vel_viento"]));
-  LOG_INFO("Temperatura del suelo: " + String(this->medidas["temperatura_suelo"]));
-  LOG_INFO("Humedad del suelo: " + String(this->medidas["humedad_suelo"]));
+  std::map<String, String> muestra;
+
+  muestra["fecha"] = this->trama["fecha"];
+  muestra["temperatura_ambiente"] = String(this->medidas["temperatura_ambiente"] / this->contador["temperatura_ambiente"]);
+  muestra["rain"] = String(this->medidas["rain"] / this->contador["rain"]);
+  muestra["presion_atmos"] = String(this->medidas["presion_atmos"] / this->contador["presion_atmos"]);
+  muestra["humedad_ambiente"] = String(this->medidas["humedad_ambiente"] / this->contador["humedad_ambiente"]);
+  muestra["rad_solar"] = String(this->medidas["rad_solar"] / this->contador["rad_solar"]);
+  muestra["dir_viento"] = String(this->medidas["dir_viento"]);
+  muestra["vel_viento"] = String(this->medidas["vel_viento"] / this->contador["vel_viento"]);
+  muestra["temperatura_suelo"] = String(this->medidas["temperatura_suelo"] / this->contador["temperatura_suelo"]);
+  muestra["humedad_suelo"] = String(this->medidas["humedad_suelo"] / this->contador["humedad_suelo"]);
+
+  LOG_INFO("Tiempo: " + muestra["fecha"]);
+  LOG_INFO("Temperatura ambiente: " + muestra["temperatura_ambiente"]);
+  LOG_INFO("Precipitacion: " + muestra["rain"]);
+  LOG_INFO("Presion atmosferica: " + muestra["presion_atmos"]);
+  LOG_INFO("Humedad ambiente: " + muestra["humedad_ambiente"]);
+  LOG_INFO("Radiacion solar: " + muestra["rad_solar"]);
+  LOG_INFO("Direccion del viento: " + muestra["dir_viento"]);
+  LOG_INFO("Velocidad del viento: " + muestra["vel_viento"]);
+  LOG_INFO("Temperatura del suelo: " + muestra["temperatura_suelo"]);
+  LOG_INFO("Humedad del suelo: " + muestra["humedad_suelo"]);
 }
 
 void Estacion::inicializar_wifi() {

@@ -11,9 +11,9 @@
   ],
 
   "variables": {
-    "tiempo_envio_s" : 60,
+    "tiempo_envio_s" : 600,
     "tiempo_sincronizar_utc" : 600
   },
 
-  "version": 3
+  "version": 4
 }

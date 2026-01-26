@@ -17,6 +17,7 @@
 #include <Wire.h>
 #include <BMP280_DEV.h>
 #include "FC28.h"
+#include "ACS712.h"
 
 class Estacion {
   protected:
@@ -27,6 +28,7 @@ class Estacion {
     DS18B20&     sensor_ds18b20;
     BMP280_DEV&  sensor_bmp280;
     FC28&        sensor_fc28;
+    ACS712&      sensor_acs712;
 
     std::map<String, float>               medidas;
     std::map<String, int>                 contador;
@@ -42,7 +44,8 @@ class Estacion {
                       DHT_Unified&,
                       DS18B20&,
                       BMP280_DEV&,
-                      FC28&);
+                      FC28&,
+                      ACS712&);
     ~Estacion();
 
     Reloj&                                obtener_sensor_reloj();
@@ -52,7 +55,8 @@ class Estacion {
     DS18B20&                              obtener_sensor_ds18b20();
     BMP280_DEV&                           obtener_sensor_bmp280();
     FC28&                                 obtener_sensor_fc28();
-    std::map<String, float>               obtener_medidas()           const;
+    ACS712&                               obtener_sensor_acs712();
+    std::map<String, float>&              obtener_medidas();
     std::map<String, int>                 obtener_contador()          const;
     std::map<String, String>              obtener_trama()             const;
     std::vector<std::map<String, String>> obtener_internet()          const;
@@ -66,6 +70,7 @@ class Estacion {
     void definir_sensor_dht       (const DHT_Unified&);
     void definir_sensor_ds18b20   (const DS18B20&);
     void definir_sensor_fc28      (const FC28&);
+    void definir_sensor_acs712    (const ACS712&);
     void definir_medidas          (const std::map<String, float>&);
     void definir_contador         (const std::map<String, int>&);
     void definir_trama            (const std::map<String, String>&);
@@ -89,6 +94,7 @@ class Estacion {
 
     //Estacion
     void pedir_tiempo();
+    void pedir_corriente();
     void pedir_temperatura_ambiente();
     void pedir_precipitacion();
     void pedir_presion();

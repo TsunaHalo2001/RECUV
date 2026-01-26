@@ -8,6 +8,7 @@ DHT_Unified* dht     = nullptr;
 DS18B20* ds18b20     = nullptr;
 BMP280_DEV* bmp280   = nullptr;
 FC28* fc28           = nullptr;
+ACS712* acs712       = nullptr;
 Estacion* estacion   = nullptr;
 
 unsigned long tiempo_base_envio;
@@ -35,6 +36,9 @@ char ARDString[100] = "";
 bool banderaARDRX = false;
 int contadorFRAMEARDRX = 0;
 char *ptr = NULL;
+bool banderaL;
+int indiceARDRX = 0;
+int contadorseparador2 = 0;
 
 void chequear_conexion() {
   unsigned long tiempo_transcurrido_internet = millis() - tiempo_base_internet;
@@ -203,6 +207,35 @@ void enviar() {
   }
 }
 
+void serialEvent1() {
+  if (Serial1.available()) {
+    char inChar = (char)Serial1.read();
+    if (inChar == 'A') banderaL = true;
+    if (banderaL) {
+      ARDString[indiceARDRX] = inChar;
+      if (inChar == '/') contadorseparador2++;
+      if (inChar == 'F') {
+        if(contadorseparador2 == 6) {
+          banderaARDRX = 1;
+          indiceARDRX = 0;
+          banderaL = false;
+          contadorseparador2 = 0;
+        }
+        else {
+          contadorseparador2 = 0;
+          banderaARDRX = 0;
+          indiceARDRX = 0;
+          banderaL = false;
+        }
+      }
+      else {
+        indiceARDRX++;
+        banderaARDRX = 0;
+      }
+    }
+  }
+}
+
 void recibo_arduino() {
   char delimitadores[] = "/";
   if(banderaARDRX) {
@@ -262,13 +295,15 @@ void setup() {
   ds18b20   = new DS18B20(PIN_DS18B20);
   bmp280    = new BMP280_DEV(SDA_1, SCL_1);
   fc28      = new FC28(PIN_FC28);
+  acs712    = new ACS712(PIN_ACS712);
   estacion  = new Estacion(
     *sen15901,
     *davis6450,
     *dht,
     *ds18b20,
     *bmp280,
-    *fc28
+    *fc28,
+    *acs712
   );
 }
 

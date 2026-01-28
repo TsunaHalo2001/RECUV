@@ -69,6 +69,7 @@ Estacion::Estacion(SEN15901& _sensor_sen15901,
   this->internet.push_back({{"SSID", "univalle"}, {"PASSWORD", "Univalle"}});
   this->internet.push_back({{"SSID", "WirelessNet"}, {"PASSWORD", "eeeeeeee"}});
   this->internet.push_back({{"SSID", "GISMODEL"}, {"PASSWORD", "GISMODEL2023"}});
+  this->internet.push_back({{"SSID", "GISMODEL02"}, {"PASSWORD", "GISMODEL24"}});
 
   this->sensor_dht.begin();
 

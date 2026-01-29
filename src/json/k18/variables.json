@@ -10,8 +10,8 @@
 
   "variables": {
     "tiempo_envio_s" : 600,
-    "tiempo_sincronizar_utc" : 600
+    "tiempo_sincronizar_utc" : 6000
   },
 
-  "version": 5
+  "version": 6
 }

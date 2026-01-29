@@ -6,7 +6,8 @@ Estacion::Estacion(SEN15901& _sensor_sen15901,
                    DS18B20& _sensor_ds18b20,
                    BMP280_DEV& _sensor_bmp280,
                    FC28& _sensor_fc28,
-                   ACS712& _sensor_acs712
+                   ACS712& _sensor_acs712,
+                   Trampa& _sensor_trampa
     ) : sensor_sen15901(_sensor_sen15901),
         sensor_davis6450(_sensor_davis6450),
         sensor_dht(_sensor_dht),
@@ -14,6 +15,7 @@ Estacion::Estacion(SEN15901& _sensor_sen15901,
         sensor_bmp280(_sensor_bmp280),
         sensor_fc28(_sensor_fc28),
         sensor_acs712(_sensor_acs712),
+        sensor_trampa(_sensor_trampa),
         iterador_internet(0), 
         bandera_wifi(false) {
 
@@ -42,7 +44,11 @@ Estacion::Estacion(SEN15901& _sensor_sen15901,
   this->contador["vel_viento"] = 1;
   this->contador["temperatura_suelo"] = 1;
   this->contador["humedad_suelo"] = 1;
-  this->contador["arduino"] = 1;
+  this->contador["extin_visual"] = 1;
+  this->contador["peso_malla1"] = 1;
+  this->contador["peso_malla2"] = 1;
+  this->contador["rainh1"] = 1;
+  this->contador["rainh2"] = 1;
 
   this->trama["fecha"] = "0.0";
   this->trama["hora"] = "0.0";
@@ -117,10 +123,12 @@ void Estacion::definir_minuto_actual(const int _minuto_actual) { this->minuto_ac
 void Estacion::pedir_utc() {
   deshabilitar_interrupcion_viento();
   deshabilitar_interrupcion_lluvia();
+  deshabilitar_interrupcion_trampa();
   this->sensor_davis6450.definir_bandera_espera(true);
   this->sensor_reloj.pedir_utc();
   habilitar_interrupcion_viento();
   habilitar_interrupcion_lluvia();
+  habilitar_interrupcion_trampa();
   this->sensor_davis6450.definir_bandera_espera(false);
 }
 
@@ -141,6 +149,17 @@ void Estacion::deshabilitar_interrupcion_viento() {
 }
 void Estacion::deshabilitar_interrupcion_lluvia() {
   this->sensor_sen15901.deshabilitar_interrupcion_lluvia();
+}
+
+//Trampa
+void Estacion::habilitar_interrupcion_trampa() {
+  this->sensor_trampa.habilitar_interrupcion_lluvia_1();
+  this->sensor_trampa.habilitar_interrupcion_lluvia_2();
+}
+
+void Estacion::deshabilitar_interrupcion_trampa() {
+  this->sensor_trampa.deshabilitar_interrupcion_lluvia_1();
+  this->sensor_trampa.deshabilitar_interrupcion_lluvia_2();
 }
 
 void Estacion::pedir_tiempo() {
@@ -222,6 +241,17 @@ void Estacion::pedir_humedad_suelo() {
   this->contador["humedad_suelo"]++;
 }
 
+void Estacion::pedir_trampa() {
+  this->medidas["rainh1"] += this->sensor_trampa.pedir_precipitacion_1_s();
+  this->contador["rainh1"]++;
+  this->medidas["rainh2"] += this->sensor_trampa.pedir_precipitacion_2_s();
+  this->contador["rainh2"]++;
+  this->medidas["peso_malla1"] += this->sensor_trampa.pedir_peso_1();
+  this->contador["peso_malla1"]++;
+  this->medidas["peso_malla2"] += this->sensor_trampa.pedir_peso_2();
+  this->contador["peso_malla2"]++;
+}
+
 void Estacion::realizar_medidas_ms() {
   if (!this->sensor_ds18b20.obtener_bandera_exito()) {
     pedir_temperatura_suelo();
@@ -240,6 +270,7 @@ void Estacion::realizar_medidas_s() {
   pedir_velocidad_viento_s();
   pedir_temperatura_suelo();
   pedir_humedad_suelo();
+  pedir_trampa();
 }
 
 void Estacion::realizar_medidas_10s() {
@@ -258,11 +289,11 @@ bool Estacion::enviar_medidas(String url) {
   this->medidas["vel_viento"] = this->medidas["vel_viento"] / this->contador["vel_viento"];
   this->medidas["temperatura_suelo"] = this->medidas["temperatura_suelo"] / this->contador["temperatura_suelo"];
   this->medidas["humedad_suelo"] = this->medidas["humedad_suelo"] / this->contador["humedad_suelo"];
-  this->medidas["extin_visual"] = this->medidas["extin_visual"] / this->contador["arduino"];
-  this->medidas["peso_malla1"] = this->medidas["peso_malla1"] / this->contador["arduino"];
-  this->medidas["peso_malla2"] = this->medidas["peso_malla2"] / this->contador["arduino"];
-  this->medidas["rainh1"] = this->medidas["rainh1"] / this->contador["arduino"];
-  this->medidas["rainh2"] = this->medidas["rainh2"] / this->contador["arduino"];
+  this->medidas["extin_visual"] = this->medidas["extin_visual"] / this->contador["extin_visual"];
+  this->medidas["peso_malla1"] = this->medidas["peso_malla1"] / this->contador["peso_malla1"];
+  this->medidas["peso_malla2"] = this->medidas["peso_malla2"] / this->contador["peso_malla2"];
+  this->medidas["rainh1"] = this->medidas["rainh1"] / this->contador["rainh1"];
+  this->medidas["rainh2"] = this->medidas["rainh2"] / this->contador["rainh2"];
 
   this->contador["corriente"] = 1;
   this->contador["temperatura_ambiente"] = 1;
@@ -352,11 +383,11 @@ void Estacion::enviar_muestra() {
   muestra["vel_viento"] = String(this->medidas["vel_viento"] / this->contador["vel_viento"]);
   muestra["temperatura_suelo"] = String(this->medidas["temperatura_suelo"] / this->contador["temperatura_suelo"]);
   muestra["humedad_suelo"] = String(this->medidas["humedad_suelo"] / this->contador["humedad_suelo"]);
-  muestra["extin_visual"] = String(this->medidas["extin_visual"] / this->contador["arduino"]);
-  muestra["peso_malla1"] = String(this->medidas["peso_malla1"] / this->contador["arduino"]);
-  muestra["peso_malla2"] = String(this->medidas["peso_malla2"] / this->contador["arduino"]);
-  muestra["rainh1"] = String(this->medidas["rainh1"] / this->contador["arduino"]);
-  muestra["rainh2"] = String(this->medidas["rainh2"] / this->contador["arduino"]);
+  muestra["extin_visual"] = String(this->medidas["extin_visual"] / this->contador["extin_visual"]);
+  muestra["peso_malla1"] = String(this->medidas["peso_malla1"] / this->contador["peso_malla1"]);
+  muestra["peso_malla2"] = String(this->medidas["peso_malla2"] / this->contador["peso_malla2"]);
+  muestra["rainh1"] = String(this->medidas["rainh1"] / this->contador["rainh1"]);
+  muestra["rainh2"] = String(this->medidas["rainh2"] / this->contador["rainh2"]);
 
   LOG_INFO("Tiempo: " + muestra["fecha"]);
   LOG_INFO("Corriente: " + muestra["corriente"]);

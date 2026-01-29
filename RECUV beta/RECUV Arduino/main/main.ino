@@ -9,6 +9,7 @@ DS18B20* ds18b20     = nullptr;
 BMP280_DEV* bmp280   = nullptr;
 FC28* fc28           = nullptr;
 ACS712* acs712       = nullptr;
+Trampa* trampa       = nullptr;
 Estacion* estacion   = nullptr;
 
 unsigned long tiempo_base_envio;
@@ -30,15 +31,6 @@ bool bandera_envio        = false;
 std::vector<String> direcciones;
 std::vector<bool> banderas_envio;
 int version_json = VERSION_JSON;
-
-String buffer_tx = "";
-char ARDString[100] = "";
-bool banderaARDRX = false;
-int contadorFRAMEARDRX = 0;
-char *ptr = NULL;
-bool banderaL;
-int indiceARDRX = 0;
-int contadorseparador2 = 0;
 
 void chequear_conexion() {
   unsigned long tiempo_transcurrido_internet = millis() - tiempo_base_internet;
@@ -68,6 +60,7 @@ void pedir_variables() {
 
   estacion->deshabilitar_interrupcion_viento();
   estacion->deshabilitar_interrupcion_lluvia();
+  estacion->deshabilitar_interrupcion_trampa();
   
   HTTPClient http;
   http.begin(VARIABLES_API); // Uses WiFiClient internally
@@ -91,6 +84,7 @@ void pedir_variables() {
       http.end();
       estacion->habilitar_interrupcion_viento();
       estacion->habilitar_interrupcion_lluvia();
+      estacion->habilitar_interrupcion_trampa();
       return;
     }
 
@@ -100,6 +94,7 @@ void pedir_variables() {
       http.end();
       estacion->habilitar_interrupcion_viento();
       estacion->habilitar_interrupcion_lluvia();
+      estacion->habilitar_interrupcion_trampa();
       return;
     }
 
@@ -127,6 +122,7 @@ void pedir_variables() {
 
   estacion->habilitar_interrupcion_viento();
   estacion->habilitar_interrupcion_lluvia();
+  estacion->habilitar_interrupcion_trampa();
 }
 
 void chequear_variables() {
@@ -220,11 +216,11 @@ void setup() {
   tiempo_base_medida_m   = tiempo_base;
   tiempo_base_muestra    = tiempo_base;
 
-  direcciones.push_back("http://45.5.164.43:80/2022/sigla/php/post_k18.php");
-  direcciones.push_back("http://45.5.164.26:80/2022/sigla/php/post_k18.php");
-  direcciones.push_back("http://climate.gismodel.click/2022/sigla/php/post_k18.php");
-  direcciones.push_back("http://192.168.46.4:80/2022/sigla/php/post_k18.php");
-  direcciones.push_back("http://192.168.46.6:80/2022/sigla/php/post_k18.php");
+  direcciones.push_back("http://45.5.164.43:80/2022/sigla/php/post_farallones.php");
+  direcciones.push_back("http://45.5.164.26:80/2022/sigla/php/post_farallones.php");
+  direcciones.push_back("http://climate.gismodel.click/2022/sigla/php/post_farallones.php");
+  direcciones.push_back("http://192.168.46.4:80/2022/sigla/php/post_farallones.php");
+  direcciones.push_back("http://192.168.46.6:80/2022/sigla/php/post_farallones.php");
 
   banderas_envio.push_back(false);
   banderas_envio.push_back(false);
@@ -239,6 +235,7 @@ void setup() {
   bmp280    = new BMP280_DEV(SDA_1, SCL_1);
   fc28      = new FC28(PIN_FC28);
   acs712    = new ACS712(PIN_ACS712);
+  trampa    = new Trampa(PIN_LLUVIA_1, PIN_LLUVIA_2, PIN_DATO_PESO_1, PIN_DATO_PESO_2, PIN_RELOJ_PESO_1, PIN_RELOJ_PESO_2);
   estacion  = new Estacion(
     *sen15901,
     *davis6450,
@@ -246,7 +243,8 @@ void setup() {
     *ds18b20,
     *bmp280,
     *fc28,
-    *acs712
+    *acs712,
+    *trampa
   );
 }
 

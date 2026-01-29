@@ -124,4 +124,16 @@
 #define ACS712_SENSIBILIDAD 0.185
 #define ACS712_VCC 3.3
 
+//Trampa
+#define PIN_LLUVIA_1 18
+#define PIN_LLUVIA_2 8
+#define PIN_DATO_PESO_1 9
+#define PIN_DATO_PESO_2 11
+#define PIN_RELOJ_PESO_1 3
+#define PIN_RELOJ_PESO_2 10
+#define PESO_1_OFFSET 0
+#define PESO_2_OFFSET 0
+#define PESO_1_SCALE 1
+#define PESO_2_SCALE 1
+
 #endif

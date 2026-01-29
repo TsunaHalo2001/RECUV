@@ -18,6 +18,7 @@
 #include <BMP280_DEV.h>
 #include "FC28.h"
 #include "ACS712.h"
+#include "Trampa.h"
 
 class Estacion {
   protected:
@@ -29,6 +30,7 @@ class Estacion {
     BMP280_DEV&  sensor_bmp280;
     FC28&        sensor_fc28;
     ACS712&      sensor_acs712;
+    Trampa&      sensor_trampa;
 
     std::map<String, float>               medidas;
     std::map<String, int>                 contador;
@@ -45,7 +47,8 @@ class Estacion {
                       DS18B20&,
                       BMP280_DEV&,
                       FC28&,
-                      ACS712&);
+                      ACS712&,
+                      Trampa&);
     ~Estacion();
 
     Reloj&                                obtener_sensor_reloj();
@@ -92,6 +95,10 @@ class Estacion {
     void deshabilitar_interrupcion_viento();
     void deshabilitar_interrupcion_lluvia();
 
+    //Trampa
+    void habilitar_interrupcion_trampa();
+    void deshabilitar_interrupcion_trampa();
+
     //Estacion
     void pedir_tiempo();
     void pedir_corriente();
@@ -105,6 +112,7 @@ class Estacion {
     void pedir_velocidad_viento_m();
     void pedir_temperatura_suelo();
     void pedir_humedad_suelo();
+    void pedir_trampa();
 
     void realizar_medidas_ms();
     void realizar_medidas_s();

@@ -207,65 +207,8 @@ void enviar() {
   }
 }
 
-void serialEvent1() {
-  if (Serial1.available()) {
-    char inChar = (char)Serial1.read();
-    if (inChar == 'A') banderaL = true;
-    if (banderaL) {
-      ARDString[indiceARDRX] = inChar;
-      if (inChar == '/') contadorseparador2++;
-      if (inChar == 'F') {
-        if(contadorseparador2 == 6) {
-          banderaARDRX = 1;
-          indiceARDRX = 0;
-          banderaL = false;
-          contadorseparador2 = 0;
-        }
-        else {
-          contadorseparador2 = 0;
-          banderaARDRX = 0;
-          indiceARDRX = 0;
-          banderaL = false;
-        }
-      }
-      else {
-        indiceARDRX++;
-        banderaARDRX = 0;
-      }
-    }
-  }
-}
-
-void recibo_arduino() {
-  char delimitadores[] = "/";
-  if(banderaARDRX) {
-    Serial1.println("K/0/X");
-    Serial.println(ARDString);
-
-    contadorFRAMEARDRX = 0;
-
-    ptr = strtok(ARDString, "F");
-    ptr = strtok(ARDString, "/");
-
-    while(ptr != NULL) {
-      switch(contadorFRAMEARDRX) {
-        case 1: estacion->obtener_medidas()["rainh1"] = atof(ptr); break;
-        case 2: estacion->obtener_medidas()["rainh2"] = atof(ptr); break;
-        case 3: estacion->obtener_medidas()["peso_malla1"] = atof(ptr); break;
-        case 4: estacion->obtener_medidas()["peso_malla2"] = atof(ptr); break;
-        case 5: estacion->obtener_medidas()["extin_visual"] = atof(ptr); break;
-      }
-      ptr = strtok(NULL, delimitadores);
-      contadorFRAMEARDRX++;
-    }
-    estacion->obtener_contador()["arduino"]++;
-    banderaARDRX = false;
-  }
-}
-
 void setup() {
   Serial.begin(115200);
-  Serial1.begin(9600, SERIAL_8N1, RX_1, TX_1);
   delay(2000);
 
   unsigned long tiempo_base = millis();
@@ -320,8 +263,6 @@ void loop() {
     muestra();
 
     enviar();
-
-    recibo_arduino();
 
     delay(100);
   }

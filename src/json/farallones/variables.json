@@ -1,0 +1,16 @@
+{
+  "post_urls": [
+    "http://45.5.164.43:80/2022/sigla/php/post_farallones.php",
+    "http://45.5.164.26:80/2022/sigla/php/post_farallones.php",
+   
+"http://52.205.209.251:80/2022/sigla/php/post_farallones.php"
+
+  ],
+
+  "variables": {
+    "tiempo_envio_s" : 600,
+    "tiempo_sincronizar_utc" : 600
+  },
+
+  "version": 1
+}

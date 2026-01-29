@@ -6,7 +6,7 @@
 #define VALOR_M   60
 
 #define VERSION_JSON 1
-#define VARIABLES_API "https://raw.githubusercontent.com/TsunaHalo2001/RECUV/refs/heads/main/src/json/k18/variables.json"
+#define VARIABLES_API "https://raw.githubusercontent.com/TsunaHalo2001/RECUV/refs/heads/main/src/json/farallones/variables.json"
 
 //SERIAL
 #define RX_1 3
@@ -108,7 +108,7 @@
 
 //DHT
 #define PIN_DHT  17
-#define TIPO_DHT DHT22
+#define TIPO_DHT DHT11
 
 //DS18B20
 #define PIN_DS18B20 15

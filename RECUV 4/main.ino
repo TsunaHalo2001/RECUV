@@ -2,6 +2,7 @@
 
 #include "Estacion.h"
 
+// Punteros a sensores y estación
 SEN15901* sen15901   = nullptr;
 DAVIS6450* davis6450 = nullptr;
 DHT_Unified* dht     = nullptr;
@@ -12,6 +13,7 @@ ACS712* acs712       = nullptr;
 Trampa* trampa       = nullptr;
 Estacion* estacion   = nullptr;
 
+// Definición de variables de tiempo y banderas
 unsigned long tiempo_base_envio;
 unsigned long tiempo_base_internet;
 unsigned long tiempo_base_utc;
@@ -28,10 +30,12 @@ bool bandera_tiempo_envio = true;
 bool bandera_variables    = true;
 bool bandera_envio        = false;
 
+// Definición de variables para manejo de URLs y versión JSON
 std::vector<String> direcciones;
 std::vector<bool> banderas_envio;
 int version_json = VERSION_JSON;
 
+// Funcion de chequear la conexión WiFi e inicializar si es necesario
 void chequear_conexion() {
   unsigned long tiempo_transcurrido_internet = millis() - tiempo_base_internet;
 
@@ -55,6 +59,7 @@ void chequear_conexion() {
   }
 }
 
+// Función para pedir las variables de configuración desde el servidor
 void pedir_variables() {
   if (WiFi.status() != WL_CONNECTED) return;
 
@@ -63,7 +68,7 @@ void pedir_variables() {
   estacion->deshabilitar_interrupcion_trampa();
   
   HTTPClient http;
-  http.begin(VARIABLES_API); // Uses WiFiClient internally
+  http.begin(VARIABLES_API);
   http.addHeader(UTC_HEADER_NAME, UTC_HEADER_VALUE);
   LOG_HTTP("GET: " + String(VARIABLES_API));
   int code = http.GET();
@@ -125,6 +130,7 @@ void pedir_variables() {
   estacion->habilitar_interrupcion_trampa();
 }
 
+// Función para chequear si es momento de sincronizar UTC o pedir variables
 void chequear_variables() {
   unsigned long tiempo_transcurrido_utc = millis() - tiempo_base_utc;
 
@@ -140,6 +146,7 @@ void chequear_variables() {
   }
 }
 
+// Funcion para realizar las mediciones cada segundo
 void medir_s() {
   unsigned long tiempo_transcurrido_medida_s = millis() - tiempo_base_medida_s;
 
@@ -153,7 +160,7 @@ void medir_s() {
     }
   }
 }
-
+// Funcion para realizar las mediciones cada 10 segundos
 void medir_10s() {
   unsigned long tiempo_transcurrido_medida_10s = millis() - tiempo_base_medida_10s;
 
@@ -170,6 +177,7 @@ void medir_10s() {
   }
 }
 
+// Funcion para realizar las mediciones cada minuto
 void medir_m() {
   unsigned long tiempo_transcurrido_medida_m = millis() - tiempo_base_medida_m;
 
@@ -179,6 +187,7 @@ void medir_m() {
   }
 }
 
+// Funcion para enviar la muestra de datos
 void muestra() {
   unsigned long tiempo_transcurrido_muestra = millis() - tiempo_base_muestra;
 
@@ -188,6 +197,7 @@ void muestra() {
   }
 }
 
+// Funcion para enviar los datos al servidor
 void enviar() {
   unsigned long tiempo_transcurrido_envio = millis() - tiempo_base_envio;
 
@@ -203,10 +213,12 @@ void enviar() {
   }
 }
 
+// Configuración inicial del sistema
 void setup() {
   Serial.begin(115200);
   delay(2000);
 
+  // Inicialización de variables de tiempo
   unsigned long tiempo_base = millis();
   tiempo_base_envio      = tiempo_base;
   tiempo_base_internet   = tiempo_base;
@@ -216,6 +228,7 @@ void setup() {
   tiempo_base_medida_m   = tiempo_base;
   tiempo_base_muestra    = tiempo_base;
 
+  // Inicialización de direcciones y banderas de envío
   direcciones.push_back("http://45.5.164.43:80/2022/sigla/php/post_farallones.php");
   direcciones.push_back("http://45.5.164.26:80/2022/sigla/php/post_farallones.php");
   direcciones.push_back("http://climate.gismodel.click/2022/sigla/php/post_farallones.php");
@@ -228,6 +241,7 @@ void setup() {
   banderas_envio.push_back(false);
   banderas_envio.push_back(false);
 
+  // Inicialización de sensores y estación
   sen15901  = new SEN15901(PIN_VIENTO, PIN_PRECIPITACION, PIN_VELETA);
   davis6450 = new DAVIS6450(PIN_RADIACION_SOLAR);
   dht       = new DHT_Unified(PIN_DHT, TIPO_DHT);
@@ -249,6 +263,7 @@ void setup() {
 }
 
 void loop() {
+  // Bucle principal del sistema
   if (estacion) {
     chequear_conexion();
     chequear_variables();

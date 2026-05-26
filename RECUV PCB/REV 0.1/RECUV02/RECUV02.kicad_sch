@@ -3247,10 +3247,22 @@
 			(embedded_fonts no)
 		)
 	)
+	(rectangle
+		(start 12.7 20.32)
+		(end 181.61 72.39)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "2f7037e2-749d-424f-89e9-fcc527da5ecf")
+	)
 	(text_box "USB CONNECTOR"
 		(exclude_from_sim no)
 		(at 12.7 12.7 0)
-		(size 3.81 5.9929)
+		(size 168.91 5.9929)
 		(margins 0.9525 0.9525 0.9525 0.9525)
 		(stroke
 			(width 0)
@@ -3263,7 +3275,6 @@
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left top)
 		)
 		(uuid "200f46f2-2526-4235-b103-f3c6c1758cf5")
 	)

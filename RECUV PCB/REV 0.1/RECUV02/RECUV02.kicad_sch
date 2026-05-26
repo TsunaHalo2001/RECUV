@@ -682,6 +682,160 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "EasyEDA:0805W8J0104T5E"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "0805W8J0104T5E"
+				(at 0 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "EasyEDA:R0805"
+				(at 0 -7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://lcsc.com/product-detail/Chip-Resistor-Surface-Mount-UniOhm_100KR-104-5_C25611.html"
+				(at 0 -10.16 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "100KΩ (104) ±5%"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "UNI-ROYAL(厚声)"
+				(at 0 -12.7 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "0805W8J0104T5E"
+				(at 0 -15.24 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "LCSC Part" "C25611"
+				(at 0 -17.78 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "Resistors"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "0805W8J0104T5E_0_1"
+				(rectangle
+					(start -2.54 1.02)
+					(end 2.54 -1.02)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin input line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 5.08 0 180)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "EasyEDA:0805W8J0512T5E"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -5074,10 +5228,22 @@
 		(uuid "69c78d53-8e66-4811-9235-1f1ba5fae514")
 	)
 	(junction
+		(at 156.21 116.84)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6a9f7337-309e-4a18-9730-3cf5c940f81b")
+	)
+	(junction
 		(at 322.58 29.21)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "79d88fa6-e8d8-43a4-8e46-53faade7d6c7")
+	)
+	(junction
+		(at 156.21 129.54)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7a0f8a6c-e4b6-4976-8c72-31d5dc2fef71")
 	)
 	(junction
 		(at 81.28 30.48)
@@ -5124,6 +5290,16 @@
 			(type default)
 		)
 		(uuid "01e740f6-d87c-4de3-bf38-090ef756f01b")
+	)
+	(wire
+		(pts
+			(xy 160.02 119.38) (xy 158.75 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "02242b5c-3778-4a16-ab11-0166b23388cd")
 	)
 	(wire
 		(pts
@@ -5387,6 +5563,16 @@
 	)
 	(wire
 		(pts
+			(xy 156.21 115.57) (xy 156.21 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1f5c90b5-95dd-4329-83ae-f588824f6b47")
+	)
+	(wire
+		(pts
 			(xy 322.58 39.37) (xy 307.34 39.37)
 		)
 		(stroke
@@ -5504,6 +5690,16 @@
 			(type default)
 		)
 		(uuid "304566fe-f9ed-42df-ada5-d2e8114a956b")
+	)
+	(wire
+		(pts
+			(xy 156.21 116.84) (xy 156.21 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "30556f3c-98d0-4809-8ac0-dd270adb0225")
 	)
 	(wire
 		(pts
@@ -5697,6 +5893,16 @@
 	)
 	(wire
 		(pts
+			(xy 160.02 116.84) (xy 158.75 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4c82cea4-a631-48e8-be62-64942a4f4af8")
+	)
+	(wire
+		(pts
 			(xy 171.45 54.61) (xy 172.72 54.61)
 		)
 		(stroke
@@ -5737,6 +5943,16 @@
 	)
 	(wire
 		(pts
+			(xy 156.21 129.54) (xy 167.64 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "523e3a97-714e-4fcc-83e5-6578f2984208")
+	)
+	(wire
+		(pts
 			(xy 105.41 52.07) (xy 106.68 52.07)
 		)
 		(stroke
@@ -5767,6 +5983,16 @@
 	)
 	(wire
 		(pts
+			(xy 156.21 128.27) (xy 156.21 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5d6d0aef-0763-40be-bd55-6880d1b6259c")
+	)
+	(wire
+		(pts
 			(xy 228.6 54.61) (xy 229.87 54.61)
 		)
 		(stroke
@@ -5784,6 +6010,16 @@
 			(type default)
 		)
 		(uuid "60bdc9b2-39fd-457c-b50d-1a1e275fada3")
+	)
+	(wire
+		(pts
+			(xy 167.64 138.43) (xy 167.64 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "62a3ce59-1791-477b-a545-020e0e748731")
 	)
 	(wire
 		(pts
@@ -6027,6 +6263,16 @@
 	)
 	(wire
 		(pts
+			(xy 160.02 121.92) (xy 158.75 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8825c653-fc65-4f1b-a36a-a1539d67afe2")
+	)
+	(wire
+		(pts
 			(xy 101.6 125.73) (xy 102.87 125.73)
 		)
 		(stroke
@@ -6077,6 +6323,16 @@
 	)
 	(wire
 		(pts
+			(xy 156.21 129.54) (xy 156.21 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "912f91a5-9b99-46e8-a8fa-e7154fbcdf40")
+	)
+	(wire
+		(pts
 			(xy 252.73 66.04) (xy 252.73 67.31)
 		)
 		(stroke
@@ -6114,6 +6370,16 @@
 			(type default)
 		)
 		(uuid "964bf6ad-2801-4546-a722-65ca7627be1b")
+	)
+	(wire
+		(pts
+			(xy 158.75 115.57) (xy 158.75 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "996c6b6a-4b99-4331-a178-7483746286d2")
 	)
 	(wire
 		(pts
@@ -6417,6 +6683,16 @@
 	)
 	(wire
 		(pts
+			(xy 158.75 118.11) (xy 158.75 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d1cbd9f2-b237-4028-ad45-cb97e86c5052")
+	)
+	(wire
+		(pts
 			(xy 322.58 55.88) (xy 323.85 55.88)
 		)
 		(stroke
@@ -6477,6 +6753,26 @@
 	)
 	(wire
 		(pts
+			(xy 154.94 129.54) (xy 156.21 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dcbd2b16-0173-409e-805c-b5277dff2029")
+	)
+	(wire
+		(pts
+			(xy 156.21 140.97) (xy 156.21 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e14dcfea-11f1-4193-80ef-41b8d03e3f68")
+	)
+	(wire
+		(pts
 			(xy 95.25 162.56) (xy 95.25 163.83)
 		)
 		(stroke
@@ -6494,6 +6790,16 @@
 			(type default)
 		)
 		(uuid "e263e889-d787-48fd-a5d6-3f1b0d6be3db")
+	)
+	(wire
+		(pts
+			(xy 167.64 130.81) (xy 167.64 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e289eda0-1d43-4d32-a1ea-fa4001f6b623")
 	)
 	(wire
 		(pts
@@ -6624,6 +6930,16 @@
 			(type default)
 		)
 		(uuid "f3029412-5249-4ef7-a447-aef293fc7da5")
+	)
+	(wire
+		(pts
+			(xy 154.94 116.84) (xy 156.21 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f3e21af4-f784-459b-8c96-9a1409ed6b1a")
 	)
 	(wire
 		(pts
@@ -7847,6 +8163,30 @@
 			)
 		)
 	)
+	(global_label "VBAT"
+		(shape input)
+		(at 154.94 116.84 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a5cac63e-3caf-4adf-a36d-7e708178f9bb")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 147.54 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
 	(global_label "GPIO06"
 		(shape input)
 		(at 57.15 128.27 180)
@@ -7964,6 +8304,30 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+			)
+		)
+	)
+	(global_label "GPIO02"
+		(shape input)
+		(at 154.94 129.54 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "b5637504-4fb4-4f11-a19d-eadba96d0a2d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 145.0605 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 			)
 		)
 	)
@@ -10177,6 +10541,85 @@
 	)
 	(symbol
 		(lib_id "power:GND")
+		(at 160.02 116.84 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3a280ed3-6738-4419-9e4f-216737d1a848")
+		(property "Reference" "#PWR027"
+			(at 166.37 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 163.83 116.8399 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 160.02 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 160.02 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 160.02 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "bc6d7879-ca7d-49b1-81d5-1ba1f1abdb34")
+		)
+		(instances
+			(project "RECUV02"
+				(path "/2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
+					(reference "#PWR027")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
 		(at 39.37 36.83 270)
 		(unit 1)
 		(body_style 1)
@@ -10828,6 +11271,84 @@
 			(project "RECUV02"
 				(path "/2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
 					(reference "U5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 156.21 142.24 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "41896ecf-ba22-4a1f-b85d-97012e59ff7b")
+		(property "Reference" "#PWR026"
+			(at 156.21 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 156.21 147.32 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 156.21 142.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 156.21 142.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 156.21 142.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "b5471c1a-bb96-4a68-9e86-3bb137f4a39c")
+		)
+		(instances
+			(project "RECUV02"
+				(path "/2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
+					(reference "#PWR026")
 					(unit 1)
 				)
 			)
@@ -12132,6 +12653,233 @@
 			(project "RECUV02"
 				(path "/2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
 					(reference "LED1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EasyEDA:CL21B104KBCNNNC")
+		(at 167.64 134.62 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "6516839c-fde1-4f98-9c96-1ec911602161")
+		(property "Reference" "C13"
+			(at 171.45 134.62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100n"
+			(at 163.83 134.62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "EasyEDA:C0805"
+			(at 160.02 134.62 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_SAMSUNG_CL21B104KBCNNNC_100nF-104-10-50V_C1711.html"
+			(at 157.48 134.62 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "100nF (104) ±10% 50V"
+			(at 167.64 134.62 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "SAMSUNG(三星)"
+			(at 154.94 134.62 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "CL21B104KBCNNNC"
+			(at 152.4 134.62 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C1711"
+			(at 149.86 134.62 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "eab60bb8-c4c7-4390-87ed-38ae135588d3")
+		)
+		(pin "2"
+			(uuid "1099da66-ac2f-4ffa-af45-0e8d88331de4")
+		)
+		(instances
+			(project "RECUV02"
+				(path "/2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
+					(reference "C13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EasyEDA:0805W8F1002T5E")
+		(at 156.21 135.89 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "67aee17f-c4d7-48e1-bc15-b63726e0fe3b")
+		(property "Reference" "R11"
+			(at 158.75 134.6199 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10k"
+			(at 158.75 137.1599 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "EasyEDA:R0805"
+			(at 148.59 135.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Chip-Resistor-Surface-Mount-UniOhm_10KR-1002-1_C17414.html"
+			(at 146.05 135.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "10KΩ (1002) ±1%"
+			(at 156.21 135.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "UNI-ROYAL(厚声)"
+			(at 143.51 135.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "0805W8F1002T5E"
+			(at 140.97 135.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C17414"
+			(at 138.43 135.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "533dce80-f849-43fb-a9fc-63501cc51ca5")
+		)
+		(pin "1"
+			(uuid "d1efd836-d462-4ad7-9eb9-de37c304a20c")
+		)
+		(instances
+			(project "RECUV02"
+				(path "/2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
+					(reference "R11")
 					(unit 1)
 				)
 			)
@@ -13604,6 +14352,84 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 167.64 142.24 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "96a02a81-93f8-4bc9-9fad-743ca7cbbbe6")
+		(property "Reference" "#PWR028"
+			(at 167.64 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 167.64 147.32 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 167.64 142.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 167.64 142.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 167.64 142.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "27e96727-0cc0-494f-ae1e-afa7f630d277")
+		)
+		(instances
+			(project "RECUV02"
+				(path "/2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
+					(reference "#PWR028")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "EasyEDA:CL21B104KBCNNNC")
 		(at 322.58 60.96 270)
 		(unit 1)
@@ -13712,6 +14538,121 @@
 			(project "RECUV02"
 				(path "/2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
 					(reference "C9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EasyEDA:0805W8J0104T5E")
+		(at 156.21 123.19 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b4ae3158-6805-4231-8052-4b7db84373d2")
+		(property "Reference" "R12"
+			(at 158.75 121.9199 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100k"
+			(at 158.75 124.4599 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "EasyEDA:R0805"
+			(at 148.59 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Chip-Resistor-Surface-Mount-UniOhm_100KR-104-5_C25611.html"
+			(at 146.05 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "100KΩ (104) ±5%"
+			(at 156.21 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "UNI-ROYAL(厚声)"
+			(at 143.51 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "0805W8J0104T5E"
+			(at 140.97 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C25611"
+			(at 138.43 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "6a021525-92a7-4c4e-b54e-edd59b586b3c")
+		)
+		(pin "2"
+			(uuid "8a532bf8-cc9b-4757-bdee-ea9aa7c3f262")
+		)
+		(instances
+			(project "RECUV02"
+				(path "/2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
+					(reference "R12")
 					(unit 1)
 				)
 			)
@@ -13868,6 +14809,121 @@
 			(project "RECUV02"
 				(path "/2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
 					(reference "#PWR016")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EasyEDA:WJ127-5.0-2P")
+		(at 157.48 110.49 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "cd42daf9-56cf-4259-829b-a0d04641949f")
+		(property "Reference" "P2"
+			(at 162.56 106.6799 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "WJ127-5.0-2P"
+			(at 162.56 109.2199 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "EasyEDA:CONN-TH_2P-P5.00_CPC3703CTR"
+			(at 157.48 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Terminal-Blocks_WJ127-5-0-2P_C3703.html"
+			(at 157.48 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "WJ127-5.0-2P"
+			(at 157.48 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "KANGNEX(康奈克斯电气)"
+			(at 157.48 128.27 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "WJ127-5.0-02P-14-00A"
+			(at 157.48 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C3703"
+			(at 157.48 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "0f3a401b-1e34-4aaf-bc4e-3fd245df7211")
+		)
+		(pin "2"
+			(uuid "8e719979-c6d3-4d8a-a0c8-39497c139076")
+		)
+		(instances
+			(project "RECUV02"
+				(path "/2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
+					(reference "P2")
 					(unit 1)
 				)
 			)

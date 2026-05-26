@@ -2337,6 +2337,173 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "EasyEDA:SS54_C22452"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "D"
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SS54_C22452"
+				(at 0 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "EasyEDA:SMA_L4.4-W2.8-LS5.4-R-RD"
+				(at 0 -7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://lcsc.com/product-detail/Schottky-Barrier-Diodes-SBD_SS54_C22452.html"
+				(at 0 -10.16 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "SS54"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "MDD(辰达半导体)"
+				(at 0 -12.7 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "SS54"
+				(at 0 -15.24 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "LCSC Part" "C22452"
+				(at 0 -17.78 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "Schottky Barrier Diodes (SBD)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "SS54_C22452_0_1"
+				(polyline
+					(pts
+						(xy -2.03 1.52) (xy -2.03 1.78) (xy -1.52 1.78) (xy -1.52 -2.03) (xy -1.02 -2.03) (xy -1.02 -1.78)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 1.52) (xy -1.27 0) (xy 1.27 -1.78) (xy 1.27 1.52)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin unspecified line
+					(at 5.08 0 180)
+					(length 3.81)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "EasyEDA:USB-306"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -3452,6 +3619,12 @@
 		(uuid "9a551851-7c74-4bf8-981b-0d047a07cc47")
 	)
 	(junction
+		(at 233.68 33.02)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1d93ceec-1e2b-452a-94e4-a8b9f879f506")
+	)
+	(junction
 		(at 81.28 30.48)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3493,6 +3666,16 @@
 	)
 	(wire
 		(pts
+			(xy 233.68 33.02) (xy 234.95 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0714b2b8-f907-495e-8233-458b583df813")
+	)
+	(wire
+		(pts
 			(xy 68.58 36.83) (xy 69.85 36.83)
 		)
 		(stroke
@@ -3510,6 +3693,16 @@
 			(type default)
 		)
 		(uuid "0f9d5fd9-1a24-4029-ba04-76df942e6162")
+	)
+	(wire
+		(pts
+			(xy 220.98 33.02) (xy 233.68 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "10145db7-1078-404a-a7e6-9144fddebf86")
 	)
 	(wire
 		(pts
@@ -3793,6 +3986,16 @@
 	)
 	(wire
 		(pts
+			(xy 233.68 33.02) (xy 233.68 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7e67192c-5884-4f19-8118-ec969afcfe88")
+	)
+	(wire
+		(pts
 			(xy 119.38 54.61) (xy 113.03 54.61)
 		)
 		(stroke
@@ -3820,6 +4023,16 @@
 			(type default)
 		)
 		(uuid "8d8fed3c-646b-40ac-850b-eb91206bdbe7")
+	)
+	(wire
+		(pts
+			(xy 232.41 35.56) (xy 233.68 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9ecbed23-bfed-4be2-9f14-ef15d4985f5a")
 	)
 	(wire
 		(pts
@@ -3981,6 +4194,16 @@
 		)
 		(uuid "fde84ef3-5736-487d-bd27-c9bf3593c70e")
 	)
+	(wire
+		(pts
+			(xy 220.98 35.56) (xy 222.25 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fe6352ec-973e-414b-8249-db45301bf4e6")
+	)
 	(global_label "U0RXD"
 		(shape input)
 		(at 105.41 52.07 180)
@@ -4042,6 +4265,30 @@
 		(uuid "29ffac64-2af4-4865-a4cc-c9c26c2fa06f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 32.2119 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "VEXT"
+		(shape input)
+		(at 220.98 33.02 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "2a2fb410-e452-4e9f-9cdb-4b0e836b0a17")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 213.5801 33.02 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4149,6 +4396,30 @@
 			)
 		)
 	)
+	(global_label "+5V"
+		(shape input)
+		(at 234.95 33.02 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "599d6157-fe0d-4997-8ed9-5d279742e328")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 241.8057 33.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "UD-"
 		(shape input)
 		(at 69.85 49.53 0)
@@ -4210,6 +4481,30 @@
 		(uuid "6a47caf5-c59f-4454-95ba-1f5c56ae1d08")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 96.4377 54.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "VBUS"
+		(shape input)
+		(at 220.98 35.56 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "6aa2e19c-796a-44c0-9a68-30784383aaf2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 213.0962 35.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4792,6 +5087,120 @@
 			(project "RECUV02"
 				(path "/2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
 					(reference "C3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EasyEDA:SS54_C22452")
+		(at 227.33 35.56 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "07eae8c4-4c4f-48a1-b3a8-bcfb7ca7a67c")
+		(property "Reference" "D1"
+			(at 227.71 29.21 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SS54_C22452"
+			(at 227.71 31.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "EasyEDA:SMA_L4.4-W2.8-LS5.4-R-RD"
+			(at 227.33 27.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Schottky-Barrier-Diodes-SBD_SS54_C22452.html"
+			(at 227.33 25.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "SS54"
+			(at 227.33 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "MDD(辰达半导体)"
+			(at 227.33 22.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "SS54"
+			(at 227.33 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C22452"
+			(at 227.33 17.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "996ffe63-ec55-4335-b924-335f02ee0b3e")
+		)
+		(pin "1"
+			(uuid "31868be4-1d54-43ca-a43a-9a1daa210ac4")
+		)
+		(instances
+			(project "RECUV02"
+				(path "/2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
+					(reference "D1")
 					(unit 1)
 				)
 			)

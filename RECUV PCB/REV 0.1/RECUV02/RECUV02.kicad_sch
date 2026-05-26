@@ -2557,6 +2557,16 @@
 	)
 	(wire
 		(pts
+			(xy 110.49 52.07) (xy 116.84 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0c4f925f-3227-4c58-b532-fe1bf96dc3a2")
+	)
+	(wire
+		(pts
 			(xy 31.75 83.82) (xy 31.75 85.09)
 		)
 		(stroke
@@ -2614,6 +2624,16 @@
 			(type default)
 		)
 		(uuid "31e0a7b5-0b05-46a9-ba0e-fa60abfa90f0")
+	)
+	(wire
+		(pts
+			(xy 101.6 52.07) (xy 102.87 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3970d63c-a489-4e75-b867-79084e933ab4")
 	)
 	(wire
 		(pts
@@ -2744,6 +2764,16 @@
 			(type default)
 		)
 		(uuid "a68b7178-3d51-4684-8ca3-d7573fac4d22")
+	)
+	(wire
+		(pts
+			(xy 115.57 44.45) (xy 116.84 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aeb264ff-361d-4637-b74c-d9c3d30c3822")
 	)
 	(wire
 		(pts
@@ -3214,6 +3244,118 @@
 			(project "RECUV02"
 				(path "/2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
 					(reference "C2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EasyEDA:CL21B104KBCNNNC")
+		(at 106.68 52.07 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "059d6e5c-bda3-4087-88d6-d7ca60c7438b")
+		(property "Reference" "C3"
+			(at 106.68 55.88 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100n"
+			(at 106.68 48.26 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "EasyEDA:C0805"
+			(at 106.68 44.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_SAMSUNG_CL21B104KBCNNNC_100nF-104-10-50V_C1711.html"
+			(at 106.68 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "100nF (104) ±10% 50V"
+			(at 106.68 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "SAMSUNG(三星)"
+			(at 106.68 39.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "CL21B104KBCNNNC"
+			(at 106.68 36.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C1711"
+			(at 106.68 34.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f3d13949-77fa-4e20-a2af-9cc96d5c2fec")
+		)
+		(pin "2"
+			(uuid "b6b9fc1e-fda5-4cee-9620-be82752dc89b")
+		)
+		(instances
+			(project "RECUV02"
+				(path "/2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
+					(reference "C3")
 					(unit 1)
 				)
 			)
@@ -4074,6 +4216,85 @@
 	)
 	(symbol
 		(lib_id "power:GND")
+		(at 115.57 44.45 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4ade4a1d-5dcd-40de-be28-69bf0f754b32")
+		(property "Reference" "#PWR011"
+			(at 109.22 44.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 111.76 44.4499 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 115.57 44.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 115.57 44.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 115.57 44.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f71f55f9-8b4b-454e-ba1f-5ddd44eee984")
+		)
+		(instances
+			(project "RECUV02"
+				(path "/2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
+					(reference "#PWR011")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
 		(at 53.34 27.94 180)
 		(unit 1)
 		(body_style 1)
@@ -4533,6 +4754,85 @@
 			(project "RECUV02"
 				(path "/2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
 					(reference "#PWR09")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 101.6 52.07 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d340fdea-0461-4e91-9b89-636d7399cc30")
+		(property "Reference" "#PWR010"
+			(at 95.25 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 97.79 52.0699 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 101.6 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 101.6 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 101.6 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "09b150ff-b0cf-4e7c-a7b5-b62436eb5aed")
+		)
+		(instances
+			(project "RECUV02"
+				(path "/2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
+					(reference "#PWR010")
 					(unit 1)
 				)
 			)

@@ -648,7 +648,7 @@
         "uuid": "2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
       }
     ],
-    "used_designators": "HX711_2,FC28_2,W_SPEED_1/W_DIR_2,R13-14,PLUVIOMETER_2-3,C16-19,W_SPEED/W_DIR1,BUS_I2C_2_2,BUS_I2C_1_2-4,#PWR32-46,RJ1",
+    "used_designators": "H1-4,P4,HX711_2,FC28_2,W_SPEED_1/W_DIR_2,R13-14,PLUVIOMETER_2-3,C16-19,W_SPEED/W_DIR1,BUS_I2C_2_2,BUS_I2C_1_2-4,#PWR32-46,RJ1",
     "variants": []
   },
   "sheets": [

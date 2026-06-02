@@ -1144,6 +1144,178 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "EasyEDA:1.27mm_1*3p"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "P"
+				(at 0 7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "1.27mm/1*3p"
+				(at 0 -7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "EasyEDA:HDR-TH_3P-P1.27-V-M-1"
+				(at 0 -10.16 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://lcsc.com/product-detail/Male-Header_Single-row-of-row-of-needle1-27-1-3p_C24980.html"
+				(at 0 -12.7 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "1.27-1*3p"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "BOOMELE(博穆精密)"
+				(at 0 -15.24 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "1.27-1*3P针"
+				(at 0 -17.78 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "LCSC Part" "C24980"
+				(at 0 -20.32 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "Pin Headers"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "1.27mm_1*3p_0_1"
+				(rectangle
+					(start -5.08 5.08)
+					(end 0 -5.08)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin unspecified line
+					(at 5.08 2.54 180)
+					(length 5.08)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 5.08 0 180)
+					(length 5.08)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 5.08 -2.54 180)
+					(length 5.08)
+					(name "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "EasyEDA:A1117-3.3"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -3852,6 +4024,541 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "EasyEDA:Header-Male-2.54_1x10"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "H"
+				(at 0 16.51 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Header-Male-2.54_1x10"
+				(at 0 -16.51 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "EasyEDA:HDR-TH_10P-P2.54-V-M-1"
+				(at 0 -19.05 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://lcsc.com/product-detail/Male-Header_Made-in-China-Headers-Pins-2-54mm-1-10P_C57369.html"
+				(at 0 -21.59 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "2.54mm 1*10P"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "BOOMELE(博穆精密)"
+				(at 0 -24.13 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "2.54-1*10P针"
+				(at 0 -26.67 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "LCSC Part" "C57369"
+				(at 0 -29.21 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "Pin Headers"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Header-Male-2.54_1x10_0_1"
+				(rectangle
+					(start -1.78 13.97)
+					(end 4.57 -13.97)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(circle
+					(center -1.02 13.21)
+					(radius 0.38)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin unspecified line
+					(at -3.81 11.43 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -3.81 8.89 0)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -3.81 6.35 0)
+					(length 2.54)
+					(name "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -3.81 3.81 0)
+					(length 2.54)
+					(name "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -3.81 1.27 0)
+					(length 2.54)
+					(name "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -3.81 -1.27 0)
+					(length 2.54)
+					(name "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -3.81 -3.81 0)
+					(length 2.54)
+					(name "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -3.81 -6.35 0)
+					(length 2.54)
+					(name "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -3.81 -8.89 0)
+					(length 2.54)
+					(name "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -3.81 -11.43 0)
+					(length 2.54)
+					(name "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "EasyEDA:Header-Male-2.54_1x6"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "H"
+				(at 0 11.43 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Header-Male-2.54_1x6"
+				(at 0 -11.43 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "EasyEDA:HDR-TH_6P-P2.54-V-M-1"
+				(at 0 -13.97 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://lcsc.com/product-detail/Male-Header_2-54mm-1x6-Header_C37208.html"
+				(at 0 -16.51 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "2.54mm 1x6"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "BOOMELE(博穆精密)"
+				(at 0 -19.05 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "2.54-1x6P直针"
+				(at 0 -21.59 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "LCSC Part" "C37208"
+				(at 0 -24.13 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "Pin Headers"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Header-Male-2.54_1x6_0_1"
+				(rectangle
+					(start -0.51 8.89)
+					(end 4.57 -8.89)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin input line
+					(at -2.54 6.35 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -2.54 3.81 0)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -2.54 1.27 0)
+					(length 2.54)
+					(name "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -2.54 -1.27 0)
+					(length 2.54)
+					(name "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -2.54 -3.81 0)
+					(length 2.54)
+					(name "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -2.54 -6.35 0)
+					(length 2.54)
+					(name "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "EasyEDA:KSR213GLFG"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -5710,6 +6417,18 @@
 		(uuid "5daa6d2c-0912-43dc-8232-386acfa85183")
 	)
 	(rectangle
+		(start 336.55 20.32)
+		(end 403.86 74.93)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "75cb2bbd-787f-48bd-b6b9-ed06f9df7668")
+	)
+	(rectangle
 		(start 182.88 20.32)
 		(end 261.62 74.93)
 		(stroke
@@ -6077,6 +6796,25 @@
 		)
 		(uuid "ffbe3a23-3ae3-4ce5-952c-6919a9352fe0")
 	)
+	(text_box "PIN_HEADERS"
+		(exclude_from_sim no)
+		(at 336.55 12.7 0)
+		(size 67.31 6.35)
+		(margins 0.9525 0.9525 0.9525 0.9525)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "06e91de0-2c9e-465b-aec2-e5b787c0ce4b")
+	)
 	(text_box "USB CONNECTOR"
 		(exclude_from_sim no)
 		(at 12.7 12.7 0)
@@ -6432,6 +7170,16 @@
 	)
 	(wire
 		(pts
+			(xy 391.16 53.34) (xy 392.43 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "03cc5be9-2073-43c2-8988-349d2ca86b21")
+	)
+	(wire
+		(pts
 			(xy 322.58 29.21) (xy 321.31 29.21)
 		)
 		(stroke
@@ -6579,6 +7327,16 @@
 			(type default)
 		)
 		(uuid "0c73925a-31e9-41fd-a972-c0a5993b4ccd")
+	)
+	(wire
+		(pts
+			(xy 351.79 53.34) (xy 353.06 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0ccea27a-2a40-4b61-93c7-63dce37540c9")
 	)
 	(wire
 		(pts
@@ -6749,6 +7507,16 @@
 			(type default)
 		)
 		(uuid "181c9230-8235-48cb-9842-c94ad3aacdf6")
+	)
+	(wire
+		(pts
+			(xy 391.16 50.8) (xy 392.43 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1884e0ef-ab9d-461f-a5de-54ab72eacb5e")
 	)
 	(wire
 		(pts
@@ -7142,6 +7910,16 @@
 	)
 	(wire
 		(pts
+			(xy 372.11 33.02) (xy 373.38 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3adb366f-1094-4c96-a05a-be66e8a646fc")
+	)
+	(wire
+		(pts
 			(xy 57.15 149.86) (xy 58.42 149.86)
 		)
 		(stroke
@@ -7179,6 +7957,16 @@
 			(type default)
 		)
 		(uuid "3cc19531-5514-4a7d-b0ff-42bfd74fc6fc")
+	)
+	(wire
+		(pts
+			(xy 372.11 50.8) (xy 373.38 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3e3414f8-00a5-4a04-ae95-764f157b5cbd")
 	)
 	(wire
 		(pts
@@ -7239,6 +8027,16 @@
 			(type default)
 		)
 		(uuid "44e3ae30-4e6d-48d6-9dff-3aded9124615")
+	)
+	(wire
+		(pts
+			(xy 391.16 43.18) (xy 392.43 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4557b8c2-8bb7-4038-9466-26b58c3c7571")
 	)
 	(wire
 		(pts
@@ -7309,6 +8107,16 @@
 			(type default)
 		)
 		(uuid "49058f45-a0d3-4c3f-955b-88283eb9a246")
+	)
+	(wire
+		(pts
+			(xy 351.79 50.8) (xy 353.06 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4939ae47-0d0f-497a-bac7-944ba2cf13b1")
 	)
 	(wire
 		(pts
@@ -7462,6 +8270,16 @@
 	)
 	(wire
 		(pts
+			(xy 351.79 43.18) (xy 353.06 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "52fef977-ae48-469a-9608-aa0cb55f36e3")
+	)
+	(wire
+		(pts
 			(xy 345.44 125.73) (xy 345.44 124.46)
 		)
 		(stroke
@@ -7469,6 +8287,16 @@
 			(type default)
 		)
 		(uuid "53200f95-acb4-4145-b0c4-dd145eff3e85")
+	)
+	(wire
+		(pts
+			(xy 391.16 60.96) (xy 392.43 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "53a359b9-457d-48fe-be06-ab2b7553668f")
 	)
 	(wire
 		(pts
@@ -7559,6 +8387,16 @@
 			(type default)
 		)
 		(uuid "5e4aec3f-8d7e-4405-bae5-cbea72e6972e")
+	)
+	(wire
+		(pts
+			(xy 391.16 58.42) (xy 392.43 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5f12f05f-1521-4a8f-9b80-bf0df90d1686")
 	)
 	(wire
 		(pts
@@ -7732,6 +8570,16 @@
 	)
 	(wire
 		(pts
+			(xy 391.16 33.02) (xy 392.43 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6f9369fc-3528-4a26-aac1-e3cb393df6ef")
+	)
+	(wire
+		(pts
 			(xy 410.21 100.33) (xy 410.21 99.06)
 		)
 		(stroke
@@ -7789,6 +8637,16 @@
 			(type default)
 		)
 		(uuid "7209184e-6e0b-469f-b166-50c79f1dabe8")
+	)
+	(wire
+		(pts
+			(xy 372.11 45.72) (xy 373.38 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "72c1f8a0-871a-4984-bfcf-158f281eff75")
 	)
 	(wire
 		(pts
@@ -7972,6 +8830,16 @@
 	)
 	(wire
 		(pts
+			(xy 372.11 38.1) (xy 373.38 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "88d0894d-d231-41ef-9d93-9456442fcf54")
+	)
+	(wire
+		(pts
 			(xy 81.28 30.48) (xy 83.82 30.48)
 		)
 		(stroke
@@ -8062,6 +8930,16 @@
 	)
 	(wire
 		(pts
+			(xy 391.16 30.48) (xy 392.43 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "918a1fc4-c678-40ea-ab44-469062b2e62c")
+	)
+	(wire
+		(pts
 			(xy 252.73 66.04) (xy 252.73 67.31)
 		)
 		(stroke
@@ -8132,6 +9010,16 @@
 	)
 	(wire
 		(pts
+			(xy 391.16 48.26) (xy 392.43 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "964ba382-3735-4994-b2eb-f044914f33e8")
+	)
+	(wire
+		(pts
 			(xy 290.83 22.86) (xy 292.1 22.86)
 		)
 		(stroke
@@ -8162,6 +9050,16 @@
 	)
 	(wire
 		(pts
+			(xy 372.11 40.64) (xy 373.38 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9bbb02f4-898c-4311-b2ea-b61991bc7836")
+	)
+	(wire
+		(pts
 			(xy 201.93 63.5) (xy 201.93 67.31)
 		)
 		(stroke
@@ -8189,6 +9087,16 @@
 			(type default)
 		)
 		(uuid "9e53d3fb-de51-4ecf-b547-162418ac1cc5")
+	)
+	(wire
+		(pts
+			(xy 391.16 40.64) (xy 392.43 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9ea8dec2-6677-4d31-8d90-ede7c8381cea")
 	)
 	(wire
 		(pts
@@ -8252,6 +9160,16 @@
 	)
 	(wire
 		(pts
+			(xy 351.79 40.64) (xy 353.06 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a2de4aa6-432b-41ce-acf6-af43f014f351")
+	)
+	(wire
+		(pts
 			(xy 332.74 107.95) (xy 334.01 107.95)
 		)
 		(stroke
@@ -8302,6 +9220,26 @@
 	)
 	(wire
 		(pts
+			(xy 391.16 35.56) (xy 392.43 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a51b3d52-ccd7-4f4c-adb3-35d11168d00b")
+	)
+	(wire
+		(pts
+			(xy 351.79 30.48) (xy 353.06 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a6339aa9-8baf-406d-af53-ea1c4d7e3472")
+	)
+	(wire
+		(pts
 			(xy 68.58 64.77) (xy 69.85 64.77)
 		)
 		(stroke
@@ -8309,6 +9247,16 @@
 			(type default)
 		)
 		(uuid "a68b7178-3d51-4684-8ca3-d7573fac4d22")
+	)
+	(wire
+		(pts
+			(xy 372.11 43.18) (xy 373.38 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a6c12e30-c3b6-4f73-9d63-a70ccc67e3c3")
 	)
 	(wire
 		(pts
@@ -8369,6 +9317,16 @@
 			(type default)
 		)
 		(uuid "ac2c1865-d883-4f23-9081-49cf824362c2")
+	)
+	(wire
+		(pts
+			(xy 351.79 48.26) (xy 353.06 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ac9a223c-ba4d-4738-999c-fe80601db1a6")
 	)
 	(wire
 		(pts
@@ -8442,6 +9400,16 @@
 	)
 	(wire
 		(pts
+			(xy 351.79 33.02) (xy 353.06 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b34f57c3-2ddb-41dd-9f8b-49e34ed3c27f")
+	)
+	(wire
+		(pts
 			(xy 420.37 128.27) (xy 421.64 128.27)
 		)
 		(stroke
@@ -8449,6 +9417,16 @@
 			(type default)
 		)
 		(uuid "b50946d1-c6b7-43ec-9449-58a4288eb498")
+	)
+	(wire
+		(pts
+			(xy 391.16 38.1) (xy 392.43 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b635b36d-ab00-43a7-b70d-7e765171fe86")
 	)
 	(wire
 		(pts
@@ -8692,6 +9670,16 @@
 	)
 	(wire
 		(pts
+			(xy 391.16 55.88) (xy 392.43 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ce79be81-c3b4-4ff8-afe4-c362b9f913a0")
+	)
+	(wire
+		(pts
 			(xy 101.6 121.92) (xy 102.87 121.92)
 		)
 		(stroke
@@ -8852,6 +9840,16 @@
 	)
 	(wire
 		(pts
+			(xy 351.79 45.72) (xy 353.06 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d9f961ec-42a6-4524-b3c0-67091b016c65")
+	)
+	(wire
+		(pts
 			(xy 119.38 52.07) (xy 106.68 52.07)
 		)
 		(stroke
@@ -8879,6 +9877,26 @@
 			(type default)
 		)
 		(uuid "ddf68048-f8d9-44e0-bb5c-6a8b5143d0c6")
+	)
+	(wire
+		(pts
+			(xy 372.11 48.26) (xy 373.38 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "df14826a-1e19-485c-9be7-cc50d09f3698")
+	)
+	(wire
+		(pts
+			(xy 372.11 53.34) (xy 373.38 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e06f66fa-6a0b-4393-9d31-10a7a5dfd086")
 	)
 	(wire
 		(pts
@@ -8972,6 +9990,16 @@
 	)
 	(wire
 		(pts
+			(xy 372.11 30.48) (xy 373.38 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e5d7fe7a-9bf4-42ee-8c44-f151559525b2")
+	)
+	(wire
+		(pts
 			(xy 129.54 52.07) (xy 148.59 52.07)
 		)
 		(stroke
@@ -9059,6 +10087,16 @@
 			(type default)
 		)
 		(uuid "ec4dda07-9918-4cb6-b59c-5f07e0537e1e")
+	)
+	(wire
+		(pts
+			(xy 372.11 35.56) (xy 373.38 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "edc2dc9d-1ac6-4793-b159-08a85eb9f970")
 	)
 	(wire
 		(pts
@@ -9169,6 +10207,16 @@
 			(type default)
 		)
 		(uuid "f36c6aec-e499-4394-8b95-97235a2c8135")
+	)
+	(wire
+		(pts
+			(xy 351.79 35.56) (xy 353.06 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f38b467b-1501-4d41-9d06-51ba0df7e184")
 	)
 	(wire
 		(pts
@@ -9404,6 +10452,30 @@
 			)
 		)
 	)
+	(global_label "GPIO15"
+		(shape input)
+		(at 353.06 43.18 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "02689785-91a3-48f5-b228-6b3b476aba88")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 362.9395 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "CHIP_PU"
 		(shape input)
 		(at 57.15 121.92 180)
@@ -9449,6 +10521,54 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+			)
+		)
+	)
+	(global_label "U0TXD"
+		(shape input)
+		(at 392.43 35.56 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "0623f803-e1e9-4e68-a39c-66bbdfc929ce")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 401.4023 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "GPIO13"
+		(shape input)
+		(at 373.38 43.18 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "099ab72c-b455-4732-be58-130fed37db6a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 383.2595 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 	)
@@ -9609,6 +10729,30 @@
 		(uuid "12481e84-0636-4f12-8d16-bf22e2c47a66")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 431.5195 128.27 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "GPIO11"
+		(shape input)
+		(at 373.38 38.1 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "12698aca-c0a9-4261-9401-026b7423de0c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 383.2595 38.1 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9836,6 +10980,30 @@
 			)
 		)
 	)
+	(global_label "GPIO21"
+		(shape input)
+		(at 373.38 48.26 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "20dca2db-7532-4354-9002-9960a018c954")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 383.2595 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "UD-"
 		(shape input)
 		(at 39.37 52.07 180)
@@ -9897,6 +11065,30 @@
 		(uuid "2a9a8537-27f5-44dd-8634-b4f3be0e5ae0")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 200.8028 135.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "GPIO03"
+		(shape input)
+		(at 373.38 30.48 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "2afb06dc-96ae-4a74-a593-ef20e86c9158")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 383.2595 30.48 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10004,6 +11196,30 @@
 			)
 		)
 	)
+	(global_label "GPIO42"
+		(shape input)
+		(at 392.43 40.64 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "329e8cd2-fc5a-4e48-8202-540ad76ed5aa")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 402.3095 40.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "CHIP_PU"
 		(shape input)
 		(at 22.86 106.68 0)
@@ -10052,6 +11268,30 @@
 			)
 		)
 	)
+	(global_label "U0RXD"
+		(shape input)
+		(at 392.43 38.1 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "394595c8-5f32-436c-a023-c990b8b76c2b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 401.7047 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "3V3"
 		(shape input)
 		(at 299.72 133.35 0)
@@ -10065,6 +11305,30 @@
 		(uuid "3a44dda0-8f27-4a2a-b0bd-fb6440ed009d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 306.2128 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "GPIO02"
+		(shape input)
+		(at 392.43 33.02 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "3b3fdc7f-b11a-41d9-b424-22ee9cb9e38e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 402.3095 33.02 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10148,6 +11412,30 @@
 			)
 		)
 	)
+	(global_label "GPIO41"
+		(shape input)
+		(at 392.43 43.18 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "41fcec6a-a941-4971-ab79-1b89d59f3717")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 402.3095 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "VEXT"
 		(shape input)
 		(at 186.69 33.02 270)
@@ -10196,6 +11484,30 @@
 			)
 		)
 	)
+	(global_label "GPIO05"
+		(shape input)
+		(at 353.06 33.02 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "4886fa43-2b0c-4f08-8442-ac6fb2c6b957")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 362.9395 33.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "GPIO41"
 		(shape input)
 		(at 102.87 132.08 0)
@@ -10209,6 +11521,30 @@
 		(uuid "48c6daec-665d-4304-b24f-87453c2643df")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 112.7495 132.08 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "GPIO10"
+		(shape input)
+		(at 373.38 35.56 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "49290973-fc25-4442-a1c6-a8dfeb4d9e1e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 383.2595 35.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10281,6 +11617,30 @@
 		(uuid "4dccd296-7f92-444d-9069-93c58ead49c2")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 202.9799 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "GPIO16"
+		(shape input)
+		(at 353.06 45.72 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "4f26064e-6d4e-4088-bc2b-0b119b5576d8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 362.9395 45.72 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10425,6 +11785,30 @@
 		(uuid "599d6157-fe0d-4997-8ed9-5d279742e328")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 260.8557 26.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "GPIO08"
+		(shape input)
+		(at 353.06 53.34 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "59c5abe7-a6c6-4034-9eec-45f7da557aea")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 362.9395 53.34 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10748,6 +12132,30 @@
 			)
 		)
 	)
+	(global_label "GPIO09"
+		(shape input)
+		(at 373.38 33.02 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "735b3700-f776-45f6-87f2-f8e7b87e2331")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 383.2595 33.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "GPIO17"
 		(shape input)
 		(at 345.44 130.81 0)
@@ -10916,6 +12324,54 @@
 			)
 		)
 	)
+	(global_label "GPIO36"
+		(shape input)
+		(at 392.43 58.42 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "82d77406-766d-4c5f-9182-58326b868f93")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 402.3095 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "GPIO39"
+		(shape input)
+		(at 392.43 50.8 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "85366db8-4420-4605-b5be-2ad5b9a9c7be")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 402.3095 50.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "UD+"
 		(shape input)
 		(at 147.32 59.69 180)
@@ -10953,6 +12409,30 @@
 		(uuid "89480b6b-2488-498c-8255-eb10aaaaf1b9")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 202.9799 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "GPIO47"
+		(shape input)
+		(at 373.38 50.8 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "89a01720-aecd-4849-8f6a-cb60162b7908")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 383.2595 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11009,6 +12489,30 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+			)
+		)
+	)
+	(global_label "GPIO48"
+		(shape input)
+		(at 373.38 53.34 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "8dc0509f-9140-4902-85a2-f49d7eb0895d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 383.2595 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 	)
@@ -11073,6 +12577,30 @@
 		(uuid "967b5528-97c2-45ef-b009-98a8ac8e382b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 428.1328 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "GPIO18"
+		(shape input)
+		(at 353.06 50.8 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "9a3d8489-eecc-4f74-a764-bb1924be3c87")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 362.9395 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11252,6 +12780,30 @@
 			)
 		)
 	)
+	(global_label "GPIO38"
+		(shape input)
+		(at 392.43 53.34 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "a41003b8-07dd-4561-970d-6959d1dff996")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 402.3095 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "VBAT"
 		(shape input)
 		(at 135.89 96.52 180)
@@ -11420,6 +12972,30 @@
 			)
 		)
 	)
+	(global_label "GPIO06"
+		(shape input)
+		(at 353.06 35.56 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "b1ba5541-675c-4f24-94ea-729692a12a11")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 362.9395 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "3V3"
 		(shape input)
 		(at 20.32 119.38 180)
@@ -11516,6 +13092,30 @@
 			)
 		)
 	)
+	(global_label "GPIO14"
+		(shape input)
+		(at 373.38 45.72 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "b5c28366-be0f-4a5f-bc59-77f2fd74c63d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 383.2595 45.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "GPIO07"
 		(shape input)
 		(at 334.01 105.41 0)
@@ -11585,6 +13185,30 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+			)
+		)
+	)
+	(global_label "GPIO04"
+		(shape input)
+		(at 353.06 30.48 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c478e983-0244-46c8-9fb1-0af1f8dad1bd")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 362.9395 30.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 	)
@@ -11804,6 +13428,30 @@
 			)
 		)
 	)
+	(global_label "GPIO40"
+		(shape input)
+		(at 392.43 48.26 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "dc0a836f-58d1-4510-af8f-55aa8d746d59")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 402.3095 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "VBUS"
 		(shape input)
 		(at 69.85 44.45 0)
@@ -11841,6 +13489,54 @@
 		(uuid "df2f6c74-6a5b-4883-9dbe-03f7c481257e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 200.8028 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "GPIO37"
+		(shape input)
+		(at 392.43 55.88 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "dfedf0aa-ebb4-40fd-93f8-f51e8af2285d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 402.3095 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "GPIO07"
+		(shape input)
+		(at 353.06 40.64 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e0afa068-ea57-4e32-bb1e-204aa9c888a3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 362.9395 40.64 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12017,6 +13713,30 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+			)
+		)
+	)
+	(global_label "GPIO17"
+		(shape input)
+		(at 353.06 48.26 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f3446f7e-082f-43d0-b1dd-c356b69a460b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 362.9395 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 	)
@@ -12212,6 +13932,54 @@
 			)
 		)
 	)
+	(global_label "GPIO01"
+		(shape input)
+		(at 392.43 30.48 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "fc67f3c4-9773-43b4-9c62-be66bcb655c9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 402.3095 30.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "GPIO35"
+		(shape input)
+		(at 392.43 60.96 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "fdf64dda-0465-4148-aab3-74bb5480ed42")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 402.3095 60.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "3V3"
 		(shape input)
 		(at 261.62 120.65 270)
@@ -12249,6 +14017,30 @@
 		(uuid "fe1f8d07-e581-4235-8b39-c2113b871107")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 112.7495 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "GPIO12"
+		(shape input)
+		(at 373.38 40.64 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "fe2d7251-9cb0-407f-8b84-de36a961889f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 383.2595 40.64 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13718,6 +15510,133 @@
 		)
 	)
 	(symbol
+		(lib_id "EasyEDA:Header-Male-2.54_1x6")
+		(at 388.62 36.83 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "229f6859-278b-4198-8ea8-11f22cda34a1")
+		(property "Reference" "H3"
+			(at 388.62 23.622 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "RIGHT_ROW_1"
+			(at 388.62 26.162 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "EasyEDA:HDR-TH_6P-P2.54-V-M-1"
+			(at 388.62 50.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Male-Header_2-54mm-1x6-Header_C37208.html"
+			(at 388.62 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "2.54mm 1x6"
+			(at 388.62 36.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "BOOMELE(博穆精密)"
+			(at 388.62 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "2.54-1x6P直针"
+			(at 388.62 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C37208"
+			(at 388.62 60.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "4"
+			(uuid "1c322710-f059-48bd-b999-1115e2e980ca")
+		)
+		(pin "1"
+			(uuid "21774b89-da76-4088-a896-b31590940395")
+		)
+		(pin "3"
+			(uuid "c4b803c9-c02d-4a64-98a1-6302d8f77211")
+		)
+		(pin "2"
+			(uuid "5b17bc2c-fd0f-4a8e-8293-380d9d0d3f45")
+		)
+		(pin "6"
+			(uuid "e8e7ae6c-b32d-4db8-9341-f06b002915d4")
+		)
+		(pin "5"
+			(uuid "31c4be48-c561-4b9e-84cf-d76341d2a0c8")
+		)
+		(instances
+			(project "RECUV02"
+				(path "/2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
+					(reference "H3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 102.87 116.84 90)
 		(unit 1)
@@ -13791,6 +15710,133 @@
 			(project "RECUV02"
 				(path "/2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
 					(reference "#PWR024")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EasyEDA:Header-Male-2.54_1x6")
+		(at 388.62 54.61 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "24cd45a0-423e-4a99-a83d-ba5ec1ee66e3")
+		(property "Reference" "H4"
+			(at 388.62 65.786 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "RIGHT_ROW_2"
+			(at 388.62 68.326 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "EasyEDA:HDR-TH_6P-P2.54-V-M-1"
+			(at 388.62 68.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Male-Header_2-54mm-1x6-Header_C37208.html"
+			(at 388.62 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "2.54mm 1x6"
+			(at 388.62 54.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "BOOMELE(博穆精密)"
+			(at 388.62 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "2.54-1x6P直针"
+			(at 388.62 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C37208"
+			(at 388.62 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "4"
+			(uuid "b8e7cf3b-7465-440c-a1f0-55104904e29a")
+		)
+		(pin "1"
+			(uuid "c87709e0-fd4c-41f6-ba53-45ae4ed99416")
+		)
+		(pin "3"
+			(uuid "118ca691-4457-43f1-ab7f-ea6978a3c00a")
+		)
+		(pin "2"
+			(uuid "b7453e30-b342-47e4-ac81-556f0dd5126f")
+		)
+		(pin "6"
+			(uuid "278dfd37-78bb-4296-a4a4-552bd93c30a9")
+		)
+		(pin "5"
+			(uuid "77d9806e-dac8-4dc6-b03d-c76aa3e157d1")
+		)
+		(instances
+			(project "RECUV02"
+				(path "/2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
+					(reference "H4")
 					(unit 1)
 				)
 			)
@@ -17403,6 +19449,122 @@
 		)
 	)
 	(symbol
+		(lib_id "EasyEDA:1.27mm_1*3p")
+		(at 346.71 33.02 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "57d4d9b4-dc2c-4417-8a0f-f3d9ffa01c98")
+		(property "Reference" "P4"
+			(at 344.17 22.86 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LEFT_ROW_1"
+			(at 344.17 25.4 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "EasyEDA:HDR-TH_3P-P1.27-V-M-1"
+			(at 346.71 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Male-Header_Single-row-of-row-of-needle1-27-1-3p_C24980.html"
+			(at 346.71 45.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "1.27-1*3p"
+			(at 346.71 33.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "BOOMELE(博穆精密)"
+			(at 346.71 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "1.27-1*3P针"
+			(at 346.71 50.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C24980"
+			(at 346.71 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "76c8b016-95d5-44f3-b1be-064a2292ce32")
+		)
+		(pin "1"
+			(uuid "519b2866-3237-4a68-9bea-a82eab9ac7e4")
+		)
+		(pin "2"
+			(uuid "6a386138-6143-4519-bb4c-c9adb3dce876")
+		)
+		(instances
+			(project "RECUV02"
+				(path "/2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
+					(reference "P4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "EasyEDA:ESP32-S3-WROOM-1")
 		(at 80.01 128.27 0)
 		(unit 1)
@@ -18063,6 +20225,133 @@
 			(project "RECUV02"
 				(path "/2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
 					(reference "U6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EasyEDA:Header-Male-2.54_1x6")
+		(at 349.25 46.99 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "66c97e81-39cc-4048-a0ab-84ec6d3eeead")
+		(property "Reference" "H1"
+			(at 349.25 58.166 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LEFT_ROW_2"
+			(at 349.25 60.706 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "EasyEDA:HDR-TH_6P-P2.54-V-M-1"
+			(at 349.25 60.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Male-Header_2-54mm-1x6-Header_C37208.html"
+			(at 349.25 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "2.54mm 1x6"
+			(at 349.25 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "BOOMELE(博穆精密)"
+			(at 349.25 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "2.54-1x6P直针"
+			(at 349.25 68.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C37208"
+			(at 349.25 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "4"
+			(uuid "f70837db-73c7-44ed-ba41-03a64ab0f4e4")
+		)
+		(pin "1"
+			(uuid "364696fa-96af-4f7d-8194-5d1f93c12d16")
+		)
+		(pin "3"
+			(uuid "c02da78e-b872-42cf-acbe-7782de86da7a")
+		)
+		(pin "2"
+			(uuid "88595595-db24-421a-96f0-37335b275341")
+		)
+		(pin "6"
+			(uuid "2c80e9d8-3722-43c9-bbdb-de1439e58616")
+		)
+		(pin "5"
+			(uuid "e5440b8a-ffc0-4cdf-8f9c-51f5f97b9e12")
+		)
+		(instances
+			(project "RECUV02"
+				(path "/2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
+					(reference "H1")
 					(unit 1)
 				)
 			)
@@ -20469,6 +22758,145 @@
 			(project "RECUV02"
 				(path "/2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
 					(reference "DS18B20_1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EasyEDA:Header-Male-2.54_1x10")
+		(at 368.3 41.91 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "9585b0bd-7026-4c41-b377-e2908afaa1cb")
+		(property "Reference" "H2"
+			(at 368.3 23.368 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LOW_ROW"
+			(at 368.3 25.908 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "EasyEDA:HDR-TH_10P-P2.54-V-M-1"
+			(at 368.3 60.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Male-Header_Made-in-China-Headers-Pins-2-54mm-1-10P_C57369.html"
+			(at 368.3 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "2.54mm 1*10P"
+			(at 368.3 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "BOOMELE(博穆精密)"
+			(at 368.3 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "2.54-1*10P针"
+			(at 368.3 68.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part" "C57369"
+			(at 368.3 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "8"
+			(uuid "cf2fca9b-f1de-4895-bfe6-3fd46ce03b56")
+		)
+		(pin "6"
+			(uuid "a1372588-c023-4837-8a61-5e04882c64db")
+		)
+		(pin "5"
+			(uuid "c9ff15a9-0587-415a-9134-ed1501a34296")
+		)
+		(pin "4"
+			(uuid "19fc2330-6f5f-4067-a70c-b803defce786")
+		)
+		(pin "3"
+			(uuid "0bfbb429-40a3-4e9f-bc38-e1c684327a31")
+		)
+		(pin "2"
+			(uuid "5493ca8e-710c-42fe-a1dc-c928d276cbe8")
+		)
+		(pin "1"
+			(uuid "b97d9774-dc19-4827-adfb-064ae8c415de")
+		)
+		(pin "7"
+			(uuid "678a4e64-d73a-4eca-b053-2d327c87b727")
+		)
+		(pin "9"
+			(uuid "affcf89d-f01d-4209-9757-7dc0efd5dcb1")
+		)
+		(pin "10"
+			(uuid "08331a05-79ab-454b-b205-68bdf059e245")
+		)
+		(instances
+			(project "RECUV02"
+				(path "/2b6cdc4d-a2c2-48c0-8972-6d5f3f53de15"
+					(reference "H2")
 					(unit 1)
 				)
 			)

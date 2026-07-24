@@ -83,7 +83,7 @@ class Estacion {
     void definir_minuto_actual    (const int);
 
     //Reloj
-    void pedir_utc();
+    void pedir_utc(String);
     bool obtener_bandera_utc() const;
     void definir_bandera_utc(const bool);
     bool obtener_bandera_tiempo_correcto() const;

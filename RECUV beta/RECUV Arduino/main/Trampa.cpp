@@ -23,11 +23,11 @@ Trampa::Trampa(int _pin_lluvia_1,
   pinMode(this->pin_lluvia_1, INPUT_PULLUP);
   pinMode(this->pin_lluvia_2, INPUT_PULLUP);
 
-  this->peso_1.begin(this->pin_dato_peso_1, this->pin_reloj_peso_1);
+  this->peso_1.begin(this->pin_dato_peso_1, this->pin_reloj_peso_1, false, false);
   this->peso_1.set_offset(PESO_1_OFFSET);
   this->peso_1.set_scale(PESO_1_SCALE);
 
-  this->peso_2.begin(this->pin_dato_peso_2, this->pin_reloj_peso_2);
+  this->peso_2.begin(this->pin_dato_peso_2, this->pin_reloj_peso_2, false, false);
   this->peso_2.set_offset(PESO_2_OFFSET);
   this->peso_2.set_scale(PESO_2_SCALE);
 
@@ -51,11 +51,13 @@ float Trampa::pedir_precipitacion_2_s() {
 }
 
 float Trampa::pedir_peso_1() {
-  return this->peso_1.get_units(5);
+  if (this->peso_1.is_ready()) return this->peso_1.get_units(5);
+  return 0.0;
 }
 
 float Trampa::pedir_peso_2() {
-  return this->peso_2.get_units(5);
+  if (this->peso_2.is_ready()) return this->peso_2.get_units(5);
+  return 0.0;
 }
 
 void Trampa::habilitar_interrupcion_lluvia_1() {

@@ -31,7 +31,7 @@ class Reloj {
 
     String obtener_tiempo();
     int obtener_minuto();
-    void pedir_utc();
+    void pedir_utc(String);
 };
 
 #endif

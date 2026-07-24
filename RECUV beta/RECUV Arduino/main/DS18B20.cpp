@@ -21,6 +21,10 @@ void DS18B20::definir_direccion(const DeviceAddress _direccion) { memcpy(this->d
 void DS18B20::definir_bandera_exito(const bool _bandera_exito) { this->bandera_exito = _bandera_exito; }
 
 float DS18B20::pedir_temperatura() {
+  if (!this->bandera_exito) {
+    this->ds18b20.getAddress(this->direccion, 0);
+    this->bandera_exito = true;
+  }
   this->ds18b20.requestTemperatures();
   delay(100);
   float temperatura = this->ds18b20.getTempC(this->direccion);

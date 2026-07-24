@@ -1,7 +1,7 @@
 {
   "post_urls": [
    "http://192.168.46.6:80/2022/sigla/php/post_farallones.php",
-   "https://server.linda.gismodel.click/2022/sigla/php/post_farallones.php"
+   "http://75.119.148.160:80/2022/sigla/php/post_farallones.php"
 
   ],
 
@@ -9,6 +9,8 @@
     "tiempo_envio_s" : 600,
     "tiempo_sincronizar_utc" : 600
   },
+
+  "utc_url": "https://timeapi.world/api/timezone/America/Bogota",
 
   "version": 3
 }

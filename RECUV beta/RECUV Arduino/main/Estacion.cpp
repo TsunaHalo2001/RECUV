@@ -120,12 +120,12 @@ void Estacion::definir_bandera_wifi(const bool _bandera_wifi) { this->bandera_wi
 void Estacion::definir_minuto_actual(const int _minuto_actual) { this->minuto_actual = _minuto_actual; }
 
 //Reloj
-void Estacion::pedir_utc() {
+void Estacion::pedir_utc(String utc_url) {
   deshabilitar_interrupcion_viento();
   deshabilitar_interrupcion_lluvia();
   deshabilitar_interrupcion_trampa();
   this->sensor_davis6450.definir_bandera_espera(true);
-  this->sensor_reloj.pedir_utc();
+  this->sensor_reloj.pedir_utc(utc_url);
   habilitar_interrupcion_viento();
   habilitar_interrupcion_lluvia();
   habilitar_interrupcion_trampa();

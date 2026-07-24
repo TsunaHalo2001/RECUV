@@ -8,5 +8,7 @@
     "tiempo_sincronizar_utc" : 6000
   },
 
+  "utc_url": "http://timeapi.world/api/timezone/America/Bogota",
+
   "version": 9
 }

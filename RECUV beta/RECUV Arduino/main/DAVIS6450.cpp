@@ -15,7 +15,7 @@ void DAVIS6450::definir_bandera_espera(const bool _bandera_espera) { this->bande
 float DAVIS6450::pedir_radiacion_solar() {
   int radiacion_conver = analogRead(this->pin);
   float radiacion_valor = radiacion_conver * DAVIS6450_ADC_FACTOR;
-  float retorno = radiacion_valor / 0.00167;
+  float retorno = radiacion_valor * 1000 * 1.67;
 
   delay(100);
 

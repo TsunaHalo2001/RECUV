@@ -10,7 +10,7 @@
     "tiempo_sincronizar_utc" : 600
   },
 
-  "utc_url": "https://timeapi.world/api/timezone/America/Bogota",
+  "utc_url": "https://time.now/developer/api/timezone/America/Bogota",
 
   "version": 3
 }

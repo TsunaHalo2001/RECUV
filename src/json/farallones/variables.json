@@ -10,7 +10,7 @@
     "tiempo_sincronizar_utc" : 600
   },
 
-  "utc_url": "https://world-time-api3.p.rapidapi.com/api/timezone/America/Bogota",
+  "utc_url": "https://world-time-api3.p.rapidapi.com/timezone/America/Bogota",
 
   "version": 8
 }

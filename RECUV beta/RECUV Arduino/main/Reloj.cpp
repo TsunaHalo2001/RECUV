@@ -43,6 +43,7 @@ void Reloj::pedir_utc(String utc_url) {
     http.begin(utc_url); // Uses WiFiClient internally
     http.addHeader(UTC_HEADER_NAME, UTC_HEADER_VALUE);
   }
+  http.addHeader(UTC_HEADER_NAME, UTC_HEADER_VALUE);
   LOG_HTTP("GET: " + String(utc_url));
   int code = http.GET();
   LOG_HTTP("Codigo de estado: " + String(code));

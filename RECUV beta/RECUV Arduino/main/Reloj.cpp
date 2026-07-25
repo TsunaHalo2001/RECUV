@@ -29,7 +29,7 @@ void Reloj::pedir_utc(String utc_url) {
 
   HTTPClient http;
 
-  if (utc_url.indexOf("https")) {
+  if (utc_url.startsWith("https")) {
     WiFiClientSecure client;
     client.setInsecure();
 

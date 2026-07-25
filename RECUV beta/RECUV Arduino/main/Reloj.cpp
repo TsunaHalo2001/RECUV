@@ -28,8 +28,21 @@ void Reloj::pedir_utc(String utc_url) {
   if (WiFi.status() != WL_CONNECTED) return;
 
   HTTPClient http;
-  http.begin(utc_url); // Uses WiFiClient internally
-  http.addHeader(UTC_HEADER_NAME, UTC_HEADER_VALUE);
+
+  if (utc_url.indexOf("https")) {
+    WiFiClientSecure client;
+    client.setInsecure();
+
+    http.begin(client, utc_url);
+
+    http.addHeader("x-rapidapi-key", RAPIDAPI_KEY);
+    http.addHeader("x-rapidapi-host", RAPIDAPI_HOST);
+    http.addHeader("Content-Type", "application/json");
+  }
+  else {
+    http.begin(utc_url); // Uses WiFiClient internally
+    http.addHeader(UTC_HEADER_NAME, UTC_HEADER_VALUE);
+  }
   LOG_HTTP("GET: " + String(utc_url));
   int code = http.GET();
   LOG_HTTP("Codigo de estado: " + String(code));
@@ -39,14 +52,15 @@ void Reloj::pedir_utc(String utc_url) {
   else if (code == 200) {
     this->bandera_utc = false;
     this->bandera_tiempo_correcto = true;
-    WiFiClient *client = http.getStreamPtr();
+    String payload = http.getString();
 
     JsonDocument doc;
 
-    DeserializationError error = deserializeJson(doc, *client);
+    DeserializationError error = deserializeJson(doc, payload);
 
     if (error) {
       LOG_ERROR("JSON parseado fallido: " + String(error.c_str()));
+      LOG_ERROR(payload);
       http.end();
       return;
     }

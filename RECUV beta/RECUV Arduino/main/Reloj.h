@@ -8,6 +8,8 @@
 #include <ESP32Time.h>
 #include <WiFi.h>
 #include <HTTPClient.h>
+#include <WiFiClientSecure.h>
+#include "secrets.h"
 
 #include "log.h";
 

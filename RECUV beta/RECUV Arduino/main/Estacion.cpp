@@ -304,7 +304,8 @@ bool Estacion::enviar_medidas(String url) {
   this->contador["vel_viento"] = 1;
   this->contador["temperatura_suelo"] = 1;
   this->contador["humedad_suelo"] = 1;
-  this->contador["arduino"] = 1;
+  this->contador["peso_malla1"] = 1;
+  this->contador["peso_malla1"] = 1;
 
   this->trama["corriente"] = String(this->medidas["corriente"]);
   this->trama["temperatura_ambiente"] = String(this->medidas["temperatura_ambiente"]);

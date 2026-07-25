@@ -7,7 +7,7 @@
 
   "variables": {
     "tiempo_envio_s" : 600,
-    "tiempo_sincronizar_utc" : 50
+    "tiempo_sincronizar_utc" : 6000
   },
 
   "utc_url": "https://time.now/developer/api/timezone/America/Bogota",

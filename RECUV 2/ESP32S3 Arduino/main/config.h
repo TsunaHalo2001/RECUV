@@ -9,8 +9,8 @@
 #define VARIABLES_API "https://raw.githubusercontent.com/TsunaHalo2001/RECUV/refs/heads/main/src/json/k18/variables.json"
 
 //SERIAL
-#define RX_1 3
-#define TX_1 9
+#define RX_1 9
+#define TX_1 3
 
 //I2C
 #define SDA_1 36

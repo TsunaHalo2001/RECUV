@@ -6,7 +6,7 @@
 #define VALOR_M   60
 
 #define VERSION_JSON 1
-#define VARIABLES_API "https://raw.githubusercontent.com/TsunaHalo2001/RECUV/refs/heads/main/src/json/k18/variables.json"
+#define VARIABLES_API "https://raw.githubusercontent.com/TsunaHalo2001/RECUV/refs/heads/main/src/json/farallones/variables.json"
 
 //SERIAL
 #define RX_1 3
@@ -104,11 +104,11 @@
 #define V_337_5_BOT V_225_0_TOP
 
 //DAVIS6450
-#define DAVIS6450_ADC_FACTOR 2.93255132
+#define DAVIS6450_ADC_FACTOR 0.0008056640625 //2.93255132
 
 //DHT
 #define PIN_DHT  17
-#define TIPO_DHT DHT22
+#define TIPO_DHT DHT11
 
 //DS18B20
 #define PIN_DS18B20 15
@@ -123,5 +123,17 @@
 #define ACS712_CORRIENTE 5
 #define ACS712_SENSIBILIDAD 0.185
 #define ACS712_VCC 3.3
+
+//Trampa
+#define PIN_LLUVIA_1 18
+#define PIN_LLUVIA_2 8
+#define PIN_DATO_PESO_1 9
+#define PIN_DATO_PESO_2 11
+#define PIN_RELOJ_PESO_1 3
+#define PIN_RELOJ_PESO_2 10
+#define PESO_1_OFFSET 372119
+#define PESO_2_OFFSET 194475
+#define PESO_1_SCALE -437.272916
+#define PESO_2_SCALE -430.578949
 
 #endif

@@ -28,6 +28,7 @@ bool bandera_variables    = true;
 bool bandera_envio        = false;
 
 std::vector<String> direcciones;
+String utc_url = UTC_API;
 std::vector<bool> banderas_envio;
 int version_json = VERSION_JSON;
 
@@ -56,7 +57,7 @@ void chequear_conexion() {
     if(estacion->obtener_bandera_wifi() && bandera_ip) {
       LOG_WIFI("IP address: " + WiFi.localIP().toString());
 
-      estacion->pedir_utc();
+      estacion->pedir_utc(utc_url);
       pedir_variables();
       bandera_ip = false;
     }
@@ -107,6 +108,7 @@ void pedir_variables() {
 
     tiempo_envio_s = doc["variables"]["tiempo_envio_s"];
     tiempo_sincronizar_utc = doc["variables"]["tiempo_sincronizar_utc"];
+    utc_url = doc["utc_url"].as<String>();
 
     JsonArray urls = doc["post_urls"];
 
@@ -135,7 +137,7 @@ void chequear_variables() {
   if ((tiempo_transcurrido_utc >= tiempo_sincronizar_utc * VALOR_S) || estacion->obtener_bandera_utc()) {
     tiempo_base_utc = millis();
     estacion->definir_bandera_utc(false);
-    estacion->pedir_utc();
+    estacion->pedir_utc(utc_url);
   }
 
   if ((tiempo_transcurrido_utc >= tiempo_sincronizar_utc * VALOR_S) || bandera_variables) {

@@ -1,0 +1,33 @@
+#ifndef CONFIG_H
+#define CONFIG_H
+
+#define VALOR_S   1000
+#define VALOR_10S 10
+#define VALOR_M   60
+
+//Serial
+#define RX_1 21
+#define TX_1 22
+
+//Estacion
+#define TIEMPO_ENVIO_S 5
+#define TIEMPO_MUESTRA 10
+
+//Trampa
+#define PIN_LLUVIA_1 13
+#define PIN_LLUVIA_2 14
+#define PIN_DATO_PESO_1 18
+#define PIN_DATO_PESO_2 25
+#define PIN_RELOJ_PESO_1 19
+#define PIN_RELOJ_PESO_2 32
+#define PESO_1_OFFSET 21469
+#define PESO_2_OFFSET 194414
+#define PESO_1_SCALE -409.057128
+#define PESO_2_SCALE -413.962249
+
+//SEN15901
+#define SEN15901_MS_FACTOR_VIENTO 0.666667
+#define SEN15901_MS_FACTOR_LLUVIA 0.2794
+#define SEN15901_ADC_FACTOR       0.000805861
+
+#endif

@@ -24,13 +24,15 @@ String Reloj::obtener_tiempo() {
 
 int Reloj::obtener_minuto() { return this->rtc.getMinute(); }
 
-void Reloj::pedir_utc() {
+void Reloj::pedir_utc(String utc_url) {
   if (WiFi.status() != WL_CONNECTED) return;
 
   HTTPClient http;
-  http.begin(UTC_API); // Uses WiFiClient internally
+
+    http.begin(utc_url); // Uses WiFiClient internally
+    http.addHeader(UTC_HEADER_NAME, UTC_HEADER_VALUE);
   http.addHeader(UTC_HEADER_NAME, UTC_HEADER_VALUE);
-  LOG_HTTP("GET: " + String(UTC_API));
+  LOG_HTTP("GET: " + String(utc_url));
   int code = http.GET();
   LOG_HTTP("Codigo de estado: " + String(code));
   if (code == -1 || code == -4 || code == -5 || code == -7 || code == -11) {
@@ -39,14 +41,15 @@ void Reloj::pedir_utc() {
   else if (code == 200) {
     this->bandera_utc = false;
     this->bandera_tiempo_correcto = true;
-    WiFiClient *client = http.getStreamPtr();
+    String payload = http.getString();
 
     JsonDocument doc;
 
-    DeserializationError error = deserializeJson(doc, *client);
+    DeserializationError error = deserializeJson(doc, payload);
 
     if (error) {
       LOG_ERROR("JSON parseado fallido: " + String(error.c_str()));
+      LOG_ERROR(payload);
       http.end();
       return;
     }

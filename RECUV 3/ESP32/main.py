@@ -1,6 +1,6 @@
 # Escribe tu código aquí :-)
 from system_communication import *
-from machine import *
+from machine import Pin, UART, SPI, reset, deepsleep, WDT
 import json
 from time import *
 import network

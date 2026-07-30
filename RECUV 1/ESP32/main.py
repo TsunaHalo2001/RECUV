@@ -1,9 +1,10 @@
 # Escribe tu código aquí :-)
 from system_communication import *
-from machine import *
+from machine import Pin, UART, SPI, reset, deepsleep, WDT
 import json
 from time import *
 import network
+import ntptime
 
 wdt = WDT(timeout=60000)
 
@@ -24,6 +25,9 @@ CONNECTION_MODE  = "WIFI"
 
 SSID     = "GISMODEL"
 PASSWORD = "GISMODEL2023"
+
+ntptime.host = "pool.ntp.org"
+ntptime.timeout = 5
 
 
 global tramaRx, sensor_amb_values, gprs, modemwifi, bandera_muestreo
@@ -105,19 +109,11 @@ def interpreta_trama(tramaRx):
     try:
         if(tramaRx[0] == "b'T"):
            print("Llegaron variables Temporales")
-           dia  = tramaRx[3]
-           mes  = tramaRx[2]
-           anio = tramaRx[1]
-           hora = tramaRx[4]
-           minn = tramaRx[5]
-           seg  = tramaRx[6]
-
-           dia  = int(dia)
-           mes  = int(mes)
-           hora = int(hora)
-           minn = int(minn)
-           seg  = int(seg)
-
+           stamp = ntptime.time()
+           stamplocal = stamp - 18000
+           anio, mes, dia, hora, minn, seg, dsemana, dannio = localtime(stamplocal)
+           
+           anio = str(anio)
            dia  = '{0:02d}'.format(dia)
            mes  = '{0:02d}'.format(mes)
            hora = '{0:02d}'.format(hora)
@@ -142,7 +138,7 @@ def interpreta_trama(tramaRx):
             pluvi     = tramaRx[7]
             bmp       = tramaRx[8]
 
-            rad_solar = float(rad_solar) - 355
+            rad_solar = float(rad_solar)
             fc28      = float(fc28)
             dht22_tmp = float(dht22_tmp)
             dht22_hum = float(dht22_hum)
@@ -283,8 +279,8 @@ def interpreta_trama(tramaRx):
         elif(tramaRx[0] == "b'G"):
             print("Reenviando datos al ATMEGA2560")
             uart.write(trama)
-    except:
-        print("Error recibiendo trama de arduino")
+    except Exception as e:
+        print("Error recibiendo trama de arduino", e)
         print("Se solicitan nuevamente datos")
         return 1
     
@@ -387,7 +383,7 @@ def enviarWifi():
         except:
             errorenv = 1
         try:
-            modemwifi.post_var_ambientales(sensor_amb_values,"CLIMATE")
+            modemwifi.post_var_ambientales(sensor_amb_values,"LINDA")
         except:
             errorenv = 1
         #modemwifi.post_var_ambientales(sensor_amb_values,"AWS")
@@ -403,16 +399,17 @@ def enviarWifi():
         except:
             errorenv = 1
         try:
-            modemwifi.post_var_consumo(sensor_consumo_values,"CLIMATE")
-        except:
+            modemwifi.post_var_consumo(sensor_consumo_values,"LINDA")
+        except Exception as e:
             errorenv = 1
+            print(e)
         #modemwifi.post_var_consumo(sensor_consumo_values,"AWS")
         #banderaConsumo=0
 
         if banderaNivel == 1:
             modemwifi.post_var_nivel(sensor_nivel_values,"THOMASA1")
             modemwifi.post_var_nivel(sensor_nivel_values,"THOMASA2")
-            modemwifi.post_var_nivel(sensor_nivel_values,"CLIMATE")
+            modemwifi.post_var_nivel(sensor_nivel_values,"LINDA")
             #modemwifi.post_var_nivel(sensor_nivel_values,"AWS")
             #banderaNivel=0
             
@@ -481,6 +478,11 @@ def sta_connection(connectionMode):
                 intentos = 5
         print("EL SISTEMA CONECTO CORRECTAMENTE A LA RED SSID: "+SSID)
         sleep(2)
+        try:
+            ntptime.settime()
+            print("Hora ", localtime())
+        except Exception as e:
+            print("error NTP ", e)
 
 def getDatosServer(server):
     global gprs, bandera_muestreo, modemwifi, CONNECTION_MODE

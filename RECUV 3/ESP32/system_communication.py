@@ -6,6 +6,7 @@ import socket
 from time import sleep
 import os
 import ubinascii
+import gc
 
 import urequests as requests
 import ujson
@@ -14,7 +15,7 @@ import ujson
 NUEVO_SERVER   = 'http://3.234.78.150:80/sigla/php/post.php'
 SERVER_THOMASA1 = 'http://45.5.164.43:80/2022/sigla/php/post_tocota.php'
 SERVER_THOMASA2 = 'http://45.5.164.26:80/2022/sigla/php/post_tocota.php'
-CLIMATE = 'http://climate.gismodel.click/2022/sigla/php/post_tocota.php'
+CLIMATE = "https://server.linda.gismodel.click/2022/SIGLA/php/post_tocota.php"
 
 
 URL_GET_COMPUERTAS = 'http://44.207.50.4/sigla/PHP/controlCompuertas.php'
@@ -72,11 +73,15 @@ class system_wifi():
                
         data = json.dumps(value_data)
         print(data)
+        gc.collect()
+        gc.collect()
         r = requests.post(self.URL_POST, data=data)
         print(r)
         print(" ")
         print (r.text)
         print("Codigo Respuesta: "+ str(r.status_code))
+        r.close()
+        gc,collect()
 
 
     def post_var_consumo(self, value_data, server):
